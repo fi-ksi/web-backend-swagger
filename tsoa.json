@@ -3,7 +3,7 @@
   "noImplicitAdditionalProperties": "throw-on-extras",
   "controllerPathGlobs": ["src/endpoints/*.ts"],
   "spec": {
-    "outputDirectory": "build",
+    "outputDirectory": "src/swagger",
     "specVersion": 3,
     "securityDefinitions": {
       "ksi": {

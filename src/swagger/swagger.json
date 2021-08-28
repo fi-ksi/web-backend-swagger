@@ -1,0 +1,191 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"Year": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"year": {
+						"type": "string"
+					},
+					"sealed": {
+						"type": "boolean"
+					},
+					"point_pad": {
+						"type": "number",
+						"format": "double"
+					},
+					"sum_points": {
+						"type": "number",
+						"format": "double"
+					},
+					"tasks_cnt": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"id",
+					"year",
+					"sealed",
+					"point_pad",
+					"sum_points",
+					"tasks_cnt"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"YearsResponse": {
+				"properties": {
+					"years": {
+						"items": {
+							"$ref": "#/components/schemas/Year"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"years"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"YearResponse": {
+				"properties": {
+					"year": {
+						"$ref": "#/components/schemas/Year"
+					}
+				},
+				"required": [
+					"year"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"YearBase": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"year": {
+						"type": "string"
+					},
+					"sealed": {
+						"type": "boolean"
+					},
+					"point_pad": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"id",
+					"year",
+					"sealed",
+					"point_pad"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"YearCreationRequest": {
+				"properties": {
+					"year": {
+						"$ref": "#/components/schemas/YearBase"
+					}
+				},
+				"required": [
+					"year"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {
+			"ksi": {
+				"type": "oauth2",
+				"flows": {
+					"implicit": {
+						"authorizationUrl": "https://ksi.fi.muni.cz/login/",
+						"scopes": {}
+					}
+				}
+			}
+		}
+	},
+	"info": {
+		"title": "web-backend-swagger",
+		"version": "1.0.0",
+		"license": {
+			"name": "MIT"
+		},
+		"contact": {
+			"name": "KSI"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/years": {
+			"get": {
+				"operationId": "GetAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/YearsResponse"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": []
+			},
+			"post": {
+				"operationId": "CreateNew",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/YearResponse"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"ksi": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/YearCreationRequest"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
