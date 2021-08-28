@@ -14,13 +14,13 @@ import { EmptyDict } from '../models/emptyDict';
 @Route('years')
 export class EndpointYears extends ProxyController {
     @Get()
-    public async getAll(@Request() request: express.Request): Promise<Years> {
+    public async yearsGetAll(@Request() request: express.Request): Promise<Years> {
         return await this.proxy(request);
     }
 
     @Post()
     @Security('ksi')
-    public async createNew(
+    public async yearsCreateNew(
         @Request() request: express.Request,
         @Body() yearCreationRequest: YearCreationRequest
     ): Promise<YearResponse> {
@@ -28,7 +28,7 @@ export class EndpointYears extends ProxyController {
     }
 
     @Get('{yearId}')
-    public async getSingle(
+    public async yearsGetSingle(
         @Request() request: express.Request,
         @Path() yearId: number,
     ): Promise<YearResponse> {
@@ -37,7 +37,7 @@ export class EndpointYears extends ProxyController {
 
     @Put('{yearId}')
     @Security('ksi')
-    public async updateSingle(
+    public async yearsUpdateSingle(
         @Request() request: express.Request,
         @Path() yearId: number,
         @Body() yearUpdateRequest: YearUpdateRequest
@@ -47,7 +47,7 @@ export class EndpointYears extends ProxyController {
 
     @Delete('{yearId}')
     @Security('ksi')
-    public async deleteSingle(
+    public async yearsDeleteSingle(
         @Request() request: express.Request,
         @Path() yearId: number,
     ): Promise<EmptyDict> {

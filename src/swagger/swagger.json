@@ -183,6 +183,148 @@
 				"type": "object",
 				"additionalProperties": false
 			},
+			"Category": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"answer": {
+						"type": "string"
+					},
+					"ftype": {
+						"type": "string",
+						"enum": [
+							"stars",
+							"line",
+							"text_large"
+						]
+					},
+					"text": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"answer",
+					"ftype",
+					"text"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"FeedbackCreation": {
+				"properties": {
+					"categories": {
+						"items": {
+							"$ref": "#/components/schemas/Category"
+						},
+						"type": "array"
+					},
+					"taskId": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"categories",
+					"taskId"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"FeedbackCreationRequest": {
+				"properties": {
+					"feedback": {
+						"$ref": "#/components/schemas/FeedbackCreation"
+					}
+				},
+				"required": [
+					"feedback"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Feedback": {
+				"properties": {
+					"categories": {
+						"items": {
+							"$ref": "#/components/schemas/Category"
+						},
+						"type": "array"
+					},
+					"taskId": {
+						"type": "number",
+						"format": "double"
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"userId": {
+						"type": "number",
+						"format": "double"
+					},
+					"lastUpdated": {
+						"type": "string"
+					},
+					"filled": {
+						"type": "boolean",
+						"enum": [
+							"true"
+						],
+						"nullable": false
+					}
+				},
+				"required": [
+					"categories",
+					"taskId",
+					"id",
+					"userId",
+					"lastUpdated",
+					"filled"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"FeedbackResponse": {
+				"properties": {
+					"feedback": {
+						"$ref": "#/components/schemas/Feedback"
+					}
+				},
+				"required": [
+					"feedback"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"FeedbackUpdate": {
+				"properties": {
+					"categories": {
+						"items": {
+							"$ref": "#/components/schemas/Category"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"categories"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"FeedbackUpdateRequest": {
+				"properties": {
+					"feedback": {
+						"$ref": "#/components/schemas/FeedbackUpdate"
+					}
+				},
+				"required": [
+					"feedback"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
 			"Year": {
 				"properties": {
 					"id": {
@@ -371,7 +513,7 @@
 	"paths": {
 		"/articles": {
 			"get": {
-				"operationId": "GetAll",
+				"operationId": "YearsGetAll",
 				"responses": {
 					"200": {
 						"description": "Ok",
@@ -420,7 +562,7 @@
 				]
 			},
 			"post": {
-				"operationId": "CreateNew",
+				"operationId": "YearsCreateNew",
 				"responses": {
 					"200": {
 						"description": "Ok",
@@ -453,7 +595,7 @@
 		},
 		"/articles/{articleId}": {
 			"get": {
-				"operationId": "GetSingle",
+				"operationId": "YearsGetSingle",
 				"responses": {
 					"200": {
 						"description": "Ok",
@@ -484,7 +626,7 @@
 				]
 			},
 			"put": {
-				"operationId": "EditSingle",
+				"operationId": "YearsEditSingle",
 				"responses": {
 					"200": {
 						"description": "Ok",
@@ -525,7 +667,7 @@
 				}
 			},
 			"delete": {
-				"operationId": "DeleteSingle",
+				"operationId": "YearsDeleteSingle",
 				"responses": {
 					"200": {
 						"description": "Ok",
@@ -556,9 +698,147 @@
 				]
 			}
 		},
+		"/feedbacks": {
+			"post": {
+				"operationId": "FeedbackCreateNew",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/FeedbackCreationRequest"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"ksi": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/FeedbackCreationRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/feedbacks/{feedbackId}": {
+			"get": {
+				"operationId": "FeedbackGetSingle",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/FeedbackResponse"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"ksi": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "feedbackId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "FeedbackEditSingle",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/FeedbackResponse"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"ksi": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "feedbackId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/FeedbackUpdateRequest"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "FeedbackDeleteSingle",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/EmptyDict"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"ksi": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "feedbackId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
 		"/years": {
 			"get": {
-				"operationId": "GetAll",
+				"operationId": "YearsGetAll",
 				"responses": {
 					"200": {
 						"description": "Ok",
@@ -575,7 +855,7 @@
 				"parameters": []
 			},
 			"post": {
-				"operationId": "CreateNew",
+				"operationId": "YearsCreateNew",
 				"responses": {
 					"200": {
 						"description": "Ok",
@@ -608,7 +888,7 @@
 		},
 		"/years/{yearId}": {
 			"get": {
-				"operationId": "GetSingle",
+				"operationId": "YearsGetSingle",
 				"responses": {
 					"200": {
 						"description": "Ok",
@@ -635,7 +915,7 @@
 				]
 			},
 			"put": {
-				"operationId": "UpdateSingle",
+				"operationId": "YearsUpdateSingle",
 				"responses": {
 					"200": {
 						"description": "Ok",
@@ -676,7 +956,7 @@
 				}
 			},
 			"delete": {
-				"operationId": "DeleteSingle",
+				"operationId": "YearsDeleteSingle",
 				"responses": {
 					"200": {
 						"description": "Ok",

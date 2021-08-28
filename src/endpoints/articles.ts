@@ -15,7 +15,7 @@ import { ArticleCreationRequest, ArticleResponse, ArticlesResponse } from '../mo
 export class EndpointArticles extends ProxyController {
     @Security('ksi')
     @Get()
-    public async getAll(
+    public async yearsGetAll(
         @Request() request: express.Request,
         @Query() _limit?: number,
         @Query() _start?: number,
@@ -26,7 +26,7 @@ export class EndpointArticles extends ProxyController {
 
     @Post()
     @Security('ksi')
-    public async createNew(
+    public async yearsCreateNew(
         @Request() request: express.Request,
         @Body() articleCreationRequest: ArticleCreationRequest
     ): Promise<ArticleCreationRequest> {
@@ -35,7 +35,7 @@ export class EndpointArticles extends ProxyController {
 
     @Security('ksi')
     @Get('{articleId}')
-    public async getSingle(
+    public async yearsGetSingle(
         @Request() request: express.Request,
         @Path() articleId: number,
     ): Promise<ArticleResponse> {
@@ -44,7 +44,7 @@ export class EndpointArticles extends ProxyController {
 
     @Security('ksi')
     @Put('{articleId}')
-    public async editSingle(
+    public async yearsEditSingle(
         @Request() request: express.Request,
         @Path() articleId: number,
         @Body() articleUpdateRequest: ArticleCreationRequest,
@@ -54,7 +54,7 @@ export class EndpointArticles extends ProxyController {
 
     @Security('ksi')
     @Delete('{articleId}')
-    public async deleteSingle(
+    public async yearsDeleteSingle(
         @Request() request: express.Request,
         @Path() articleId: number,
     ): Promise<EmptyDict> {
