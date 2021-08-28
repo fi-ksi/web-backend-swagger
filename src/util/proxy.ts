@@ -1,6 +1,6 @@
 import { Request } from 'express';
-import fetch, { RequestInit } from "node-fetch";
-import { Controller } from "@tsoa/runtime";
+import fetch, { RequestInit } from 'node-fetch';
+import { Controller } from '@tsoa/runtime';
 
 export const proxyHost = 'http://localhost:3030';
 

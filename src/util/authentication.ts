@@ -1,4 +1,5 @@
-import * as express from "express";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import * as express from 'express';
 
 // noinspection JSUnusedGlobalSymbols
 export function expressAuthentication(

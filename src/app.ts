@@ -1,10 +1,10 @@
-import express from "express";
-import bodyParser from "body-parser";
-import { RegisterRoutes } from "../build/routes";
+import express from 'express';
+import bodyParser from 'body-parser';
+import { RegisterRoutes } from '../build/routes';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import swaggerUI from 'swagger-ui-dist';
-import path from "path";
+import path from 'path';
 
 export const app = express();
 
@@ -13,9 +13,9 @@ app.use('/swagger', express.static(path.resolve(path.join(__dirname, 'swagger'))
 
 // Use body parser to read sent json payloads
 app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
+    bodyParser.urlencoded({
+        extended: true,
+    })
 );
 app.use(bodyParser.json());
 
