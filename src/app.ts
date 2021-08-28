@@ -10,6 +10,9 @@ export const app = express();
 
 app.use('/swagger-ui', express.static(swaggerUI.absolutePath()));
 app.use('/swagger', express.static(path.resolve(path.join(__dirname, 'swagger'))));
+app.get('/', (req, res) => {
+    res.redirect('/swagger-ui/');
+});
 
 // Use body parser to read sent json payloads
 app.use(
