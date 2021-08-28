@@ -7,17 +7,18 @@ export interface YearResponse {
 }
 
 export interface YearBase {
-    id: number,
-    year: string,
-    sealed: boolean
-    point_pad: number
+    id: number;
+    year: string;
+    sealed: boolean;
+    point_pad: number;
+    active_orgs?: number[];
 }
 
 export interface Year extends YearBase {
-    sum_points: number,
-    tasks_cnt:  number,
+    sum_points: number;
+    tasks_cnt:  number;
 }
 
 export interface YearCreationRequest {
-    year: YearBase
+    year: YearBase;
 }
