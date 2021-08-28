@@ -1,22 +1,27 @@
 import {
     Body,
-    Controller,
     Get,
-    Path,
     Post,
-    Query,
     Route,
-    SuccessResponse,
-    Request,
+    Request, Security,
 } from "tsoa";
-import { Years } from "../models/years";
+import { YearCreationRequest, YearResponse, YearsResponse } from "../models/yearsResponse";
 import express from "express";
 import { ProxyController } from "../util/proxy-controller";
 
 @Route("years")
 export class EndpointYears extends ProxyController {
     @Get()
-    public async getAll(@Request() request: express.Request): Promise<Years> {
-        return await this.proxy(request) as Years;
+    public async getAll(@Request() request: express.Request): Promise<YearsResponse> {
+        return await this.proxy(request);
+    }
+
+    @Post()
+    @Security("ksi")
+    public async createNew(
+        @Request() request: express.Request,
+        @Body() yearCreationRequest: YearCreationRequest
+        ): Promise<YearResponse> {
+        return await this.proxy(request);
     }
 }

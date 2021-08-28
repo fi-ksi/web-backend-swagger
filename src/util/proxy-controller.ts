@@ -3,7 +3,7 @@ import express from "express";
 import { proxyRequest } from "./proxy";
 
 export class ProxyController extends Controller {
-    protected proxy(request: express.Request): Promise<unknown> {
+    protected proxy(request: express.Request): Promise<any> {
         return proxyRequest(this, request);
     }
 }

@@ -4,9 +4,17 @@
   "controllerPathGlobs": ["src/endpoints/*.ts"],
   "spec": {
     "outputDirectory": "build",
-    "specVersion": 3
+    "specVersion": 3,
+    "securityDefinitions": {
+      "ksi": {
+        "type": "oauth2",
+        "authorizationUrl": "https://ksi.fi.muni.cz/login/",
+        "flow": "implicit"
+      }
+    }
   },
   "routes": {
-    "routesDir": "build"
+    "routesDir": "build",
+    "authenticationModule": "src/util/authentication.ts"
   }
 }
