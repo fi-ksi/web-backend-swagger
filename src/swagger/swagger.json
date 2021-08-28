@@ -6,6 +6,183 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
+			"Article": {
+				"properties": {
+					"title": {
+						"type": "string"
+					},
+					"body": {
+						"type": "string"
+					},
+					"published": {
+						"type": "boolean"
+					},
+					"year": {
+						"type": "number",
+						"format": "double"
+					},
+					"time_published": {
+						"type": "string"
+					},
+					"picture": {
+						"type": "string"
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"author": {
+						"type": "number",
+						"format": "double"
+					},
+					"resource": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"title",
+					"body",
+					"published",
+					"year",
+					"time_published",
+					"picture",
+					"id",
+					"author",
+					"resource"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"DirContent": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"files": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"dirs": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"files",
+					"dirs"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ArticlesResponse": {
+				"properties": {
+					"articles": {
+						"items": {
+							"$ref": "#/components/schemas/Article"
+						},
+						"type": "array"
+					},
+					"contents": {
+						"items": {
+							"$ref": "#/components/schemas/DirContent"
+						},
+						"type": "array"
+					},
+					"meta": {
+						"properties": {
+							"total": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"total"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"articles",
+					"contents",
+					"meta"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ArticleCreation": {
+				"properties": {
+					"title": {
+						"type": "string"
+					},
+					"body": {
+						"type": "string"
+					},
+					"published": {
+						"type": "boolean"
+					},
+					"year": {
+						"type": "number",
+						"format": "double"
+					},
+					"time_published": {
+						"type": "string"
+					},
+					"picture": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"title",
+					"body",
+					"published",
+					"year",
+					"time_published",
+					"picture"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ArticleCreationRequest": {
+				"properties": {
+					"article": {
+						"$ref": "#/components/schemas/ArticleCreation"
+					}
+				},
+				"required": [
+					"article"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ArticleResponse": {
+				"properties": {
+					"article": {
+						"$ref": "#/components/schemas/Article"
+					},
+					"contents": {
+						"items": {
+							"$ref": "#/components/schemas/DirContent"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"article",
+					"contents"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"EmptyDict": {
+				"properties": {},
+				"type": "object",
+				"additionalProperties": false
+			},
 			"Year": {
 				"properties": {
 					"id": {
@@ -49,7 +226,7 @@
 				"type": "object",
 				"additionalProperties": false
 			},
-			"YearsResponse": {
+			"Years": {
 				"properties": {
 					"years": {
 						"items": {
@@ -166,11 +343,6 @@
 				],
 				"type": "object",
 				"additionalProperties": false
-			},
-			"EmptyDict": {
-				"properties": {},
-				"type": "object",
-				"additionalProperties": false
 			}
 		},
 		"securitySchemes": {
@@ -197,6 +369,193 @@
 	},
 	"openapi": "3.0.0",
 	"paths": {
+		"/articles": {
+			"get": {
+				"operationId": "GetAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ArticlesResponse"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"ksi": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "_limit",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "_start",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "header",
+						"name": "year",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "CreateNew",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ArticleCreationRequest"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"ksi": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ArticleCreationRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/articles/{articleId}": {
+			"get": {
+				"operationId": "GetSingle",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ArticleResponse"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"ksi": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "articleId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "EditSingle",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ArticleResponse"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"ksi": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "articleId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ArticleCreationRequest"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteSingle",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/EmptyDict"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"ksi": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "articleId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
 		"/years": {
 			"get": {
 				"operationId": "GetAll",
@@ -206,7 +565,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/YearsResponse"
+									"$ref": "#/components/schemas/Years"
 								}
 							}
 						}

@@ -1,4 +1,4 @@
-export interface YearsResponse {
+export interface Years {
     years: Year[];
 }
 
