@@ -3,11 +3,12 @@ import {
     Body,
     Get,
     Route,
-    Request, Security, Path, Put
+    Request, Security, Path, Put, Post, UploadedFile
 } from 'tsoa';
 import express from 'express';
 import { ProxyController } from '../util/proxy-controller';
 import { ProfileEdit, ProfileResponse } from '../models/profile';
+import { EmptyDict } from '../models/emptyDict';
 
 @Route('profile')
 export class EndpointProfile extends ProxyController {
@@ -32,9 +33,17 @@ export class EndpointProfile extends ProxyController {
     @Put()
     public async profileEditMy(
         @Request() request: express.Request,
-        @Path() profileId: number,
         @Body() profileUpdateRequest: ProfileEdit,
     ): Promise<ProfileResponse> {
+        return await this.proxy(request);
+    }
+
+    @Security('ksi')
+    @Post('picture')
+    public async profileUploadPicture(
+        @Request() request: express.Request,
+        @UploadedFile() file: unknown,
+    ): Promise<EmptyDict> {
         return await this.proxy(request);
     }
 }
