@@ -28,6 +28,6 @@ export interface Feedback extends FeedbackCreation {
     filled: true;
 }
 
-export interface FeedbackResponse {
+export interface FeedbacksResponse {
     feedback: Feedback;
 }

@@ -24,7 +24,7 @@ export class EndpointSubmFiles extends ProxyController {
     @Delete('{submFileId}')
     public async subFilesDeleteSingle(
         @Request() request: express.Request,
-        @Path() submFilesId: number,
+        @Path() submFileId: number,
     ): Promise<EmptyDict> {
         return await this.proxy(request);
     }

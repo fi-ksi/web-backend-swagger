@@ -1,6 +1,6 @@
 import { Achievement } from './achievements';
 import { Post } from './posts';
-import { Module, ModuleScore } from './modules';
+import { KSIModule, ModuleScore } from './modules';
 import { Thread } from './threads';
 import { ThreadDetail } from './thread-details';
 
@@ -20,7 +20,7 @@ export interface TaskDetailResponse {
     taskDetails: TaskDetails;
     achievements: Achievement[];
     posts: Post[];
-    modules: Module[];
+    modules: KSIModule[];
     moduleScores: ModuleScore[];
     userScores: UserScore[];
     threads: Thread[];

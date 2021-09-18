@@ -11,7 +11,7 @@ import { ProxyController } from '../util/proxy-controller';
 import { EmptyDict } from '../models/emptyDict';
 import {
     FeedbackCreationRequest,
-    FeedbackResponse,
+    FeedbacksResponse,
     FeedbackUpdateRequest
 } from '../models/feedbacks';
 
@@ -31,7 +31,7 @@ export class EndpointFeedbacks extends ProxyController {
     public async feedbackGetSingle(
         @Request() request: express.Request,
         @Path() feedbackId: number,
-    ): Promise<FeedbackResponse> {
+    ): Promise<FeedbacksResponse> {
         return await this.proxy(request);
     }
 
@@ -41,7 +41,7 @@ export class EndpointFeedbacks extends ProxyController {
         @Request() request: express.Request,
         @Path() feedbackId: number,
         @Body() feedbackUpdateRequest: FeedbackUpdateRequest,
-    ): Promise<FeedbackResponse> {
+    ): Promise<FeedbacksResponse> {
         return await this.proxy(request);
     }
 

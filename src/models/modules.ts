@@ -1,4 +1,4 @@
-export type Module = ModuleProgramming | ModuleQuiz | ModuleSortable | ModuleGeneral | ModuleText;
+export type KSIModule = ModuleProgramming | ModuleQuiz | ModuleSortable | ModuleGeneral | ModuleText;
 
 interface ModuleBase {
     id: number,
@@ -52,7 +52,7 @@ interface ModuleText extends ModuleBase {
 }
 
 export interface ModuleResponse {
-    module: Module;
+    module: KSIModule;
 }
 
 export interface ModuleScore {

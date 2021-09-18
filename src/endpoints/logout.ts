@@ -7,7 +7,7 @@ import express from 'express';
 import { ProxyController } from '../util/proxy-controller';
 
 @Route('logout')
-export class EndpointFeedback extends ProxyController {
+export class EndpointLogout extends ProxyController {
     @Get()
     @Security('ksi')
     public async sendEmailWithFeedback(
