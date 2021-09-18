@@ -1,3 +1,6 @@
+import { Task } from './tasks';
+import { TaskScore } from './task-details';
+
 export interface ProfileEdit {
     email: string;
     nick_name?: string;
@@ -32,4 +35,6 @@ export interface Profile extends ProfileEdit {
 
 export interface ProfileResponse {
     profile: Profile;
+    tasks: Task[];
+    taskScores: TaskScore[];
 }

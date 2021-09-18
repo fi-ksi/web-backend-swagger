@@ -1,4 +1,4 @@
-export interface Tasks {
+export interface Task {
     id: number;
     title: string;
     author: number;
@@ -17,9 +17,9 @@ export interface Tasks {
 }
 
 export interface TasksResponse {
-    tasks: Tasks[];
+    tasks: Task[];
 }
 
 export interface TaskResponse {
-    task: Tasks;
+    task: Task;
 }

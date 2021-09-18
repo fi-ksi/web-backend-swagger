@@ -54,3 +54,10 @@ interface ModuleText extends ModuleBase {
 export interface ModuleResponse {
     module: Module;
 }
+
+export interface ModuleScore {
+    id: number;
+    is_corrected: boolean;
+    score: number;
+    reviewed_by: number;
+}
