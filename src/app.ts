@@ -23,4 +23,4 @@ app.use(
 app.use(bodyParser.json());
 
 RegisterRoutes(app);
-console.log('this');
+
