@@ -44,6 +44,7 @@ export class EndpointThreads extends ProxyController {
     @Put('{threadsId}')
     public async threadsMarkVisited(
         @Request() request: express.Request,
+        @Path() threadsId: number,
     ): Promise<EmptyDict> {
         return await this.proxy(request);
     }

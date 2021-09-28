@@ -3,7 +3,7 @@ import {
     Body,
     Post,
     Route,
-    Request, Security,
+    Request, Security, Path,
 } from 'tsoa';
 import express from 'express';
 import { ProxyController } from '../util/proxy-controller';
@@ -15,6 +15,7 @@ export class EndpointRunCode extends ProxyController {
     @Post('{moduleId}/submit')
     public async runCode(
         @Request() request: express.Request,
+        @Path() moduleId: number,
         @Body() body: RunCodeRequest
     ): Promise<RunCodeResponse> {
         return await this.proxy(request);
