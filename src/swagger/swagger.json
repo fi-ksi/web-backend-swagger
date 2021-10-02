@@ -2553,6 +2553,15 @@
 							"format": "double",
 							"type": "number"
 						}
+					},
+					{
+						"in": "header",
+						"name": "YEAR",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
 					}
 				]
 			},
@@ -2731,6 +2740,15 @@
 					{
 						"in": "header",
 						"name": "article",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "header",
+						"name": "YEAR",
 						"required": false,
 						"schema": {
 							"format": "double",
@@ -3983,7 +4001,17 @@
 						"ksi": []
 					}
 				],
-				"parameters": []
+				"parameters": [
+					{
+						"in": "header",
+						"name": "YEAR",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
 			}
 		},
 		"/tasks/{tasksId}": {
@@ -4076,6 +4104,15 @@
 					{
 						"in": "query",
 						"name": "_wave",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "header",
+						"name": "YEAR",
 						"required": false,
 						"schema": {
 							"format": "double",
@@ -4216,6 +4253,15 @@
 						"schema": {
 							"type": "string"
 						}
+					},
+					{
+						"in": "header",
+						"name": "YEAR",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
 					}
 				]
 			}
@@ -4300,7 +4346,17 @@
 					}
 				},
 				"security": [],
-				"parameters": []
+				"parameters": [
+					{
+						"in": "header",
+						"name": "YEAR",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
 			},
 			"post": {
 				"operationId": "WavesCreateNew",
