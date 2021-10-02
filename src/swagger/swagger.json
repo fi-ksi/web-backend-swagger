@@ -2559,7 +2559,7 @@
 					},
 					{
 						"in": "header",
-						"name": "YEAR",
+						"name": "year",
 						"required": false,
 						"schema": {
 							"format": "double",
@@ -2751,7 +2751,7 @@
 					},
 					{
 						"in": "header",
-						"name": "YEAR",
+						"name": "year",
 						"required": false,
 						"schema": {
 							"format": "double",
@@ -4007,7 +4007,7 @@
 				"parameters": [
 					{
 						"in": "header",
-						"name": "YEAR",
+						"name": "year",
 						"required": false,
 						"schema": {
 							"format": "double",
@@ -4115,7 +4115,7 @@
 					},
 					{
 						"in": "header",
-						"name": "YEAR",
+						"name": "year",
 						"required": false,
 						"schema": {
 							"format": "double",
@@ -4259,7 +4259,7 @@
 					},
 					{
 						"in": "header",
-						"name": "YEAR",
+						"name": "year",
 						"required": false,
 						"schema": {
 							"format": "double",
@@ -4352,7 +4352,7 @@
 				"parameters": [
 					{
 						"in": "header",
-						"name": "YEAR",
+						"name": "year",
 						"required": false,
 						"schema": {
 							"format": "double",

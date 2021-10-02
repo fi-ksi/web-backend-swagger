@@ -19,7 +19,7 @@ export class EndpointAchievements extends ProxyController {
         @Query() _limit?: number,
         @Query() _start?: number,
         @Header() achievement?: number,
-        @Header('YEAR') year?: number
+        @Header() year?: number
     ): Promise<AchievementsResponse> {
         return await this.proxy(request);
     }

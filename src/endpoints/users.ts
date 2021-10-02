@@ -17,7 +17,7 @@ export class EndpointUsers extends ProxyController {
         @Request() request: express.Request,
         @Query() filter?: string,
         @Query() sort?: string,
-        @Header('YEAR') year?: number
+        @Header() year?: number
     ): Promise<UsersResponse> {
         return await this.proxy(request);
     }

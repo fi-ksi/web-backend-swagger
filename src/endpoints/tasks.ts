@@ -14,7 +14,7 @@ export class EndpointTasks extends ProxyController {
     @Get()
     public async tasksGetAll(
         @Request() request: express.Request,
-        @Header('YEAR') year?: number): Promise<TasksResponse> {
+        @Header() year?: number): Promise<TasksResponse> {
         return await this.proxy(request);
     }
 

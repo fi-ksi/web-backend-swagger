@@ -18,7 +18,7 @@ export class EndpointThreads extends ProxyController {
     public async threadsGetAll(
         @Request() request: express.Request,
         @Query() _wave?: number,
-        @Header('YEAR') year?: number): Promise<ThreadsResponse> {
+        @Header() year?: number): Promise<ThreadsResponse> {
         return await this.proxy(request);
     }
 

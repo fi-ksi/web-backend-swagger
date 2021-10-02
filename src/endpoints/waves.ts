@@ -16,7 +16,7 @@ export class EndpointWaves extends ProxyController {
     @Get()
     public async wavesGetAll(
         @Request() request: express.Request,
-        @Header('YEAR') year?: number
+        @Header() year?: number
     ): Promise<Waves> {
         return await this.proxy(request);
     }
