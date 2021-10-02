@@ -2142,7 +2142,10 @@
 			"UsersResponse": {
 				"properties": {
 					"users": {
-						"$ref": "#/components/schemas/User"
+						"items": {
+							"$ref": "#/components/schemas/User"
+						},
+						"type": "array"
 					}
 				},
 				"required": [
