@@ -20,6 +20,7 @@ export class EndpointArticles extends ProxyController {
         @Query() _limit?: number,
         @Query() _start?: number,
         @Header() article?: number,
+        @Header('YEAR') year?: number
     ): Promise<ArticlesResponse> {
         return await this.proxy(request);
     }

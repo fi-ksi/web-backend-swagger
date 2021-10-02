@@ -4,7 +4,7 @@ import {
     Get,
     Post,
     Route,
-    Request, Security, Path, Put, Delete,
+    Request, Security, Path, Put, Delete, Header,
 } from 'tsoa';
 import { WaveCreationRequest, WaveResponse, Waves, WaveUpdateRequest } from '../models/waves';
 import express from 'express';
@@ -14,7 +14,10 @@ import { EmptyDict } from '../models/emptyDict';
 @Route('waves')
 export class EndpointWaves extends ProxyController {
     @Get()
-    public async wavesGetAll(@Request() request: express.Request): Promise<Waves> {
+    public async wavesGetAll(
+        @Request() request: express.Request,
+        @Header('YEAR') year?: number
+    ): Promise<Waves> {
         return await this.proxy(request);
     }
 

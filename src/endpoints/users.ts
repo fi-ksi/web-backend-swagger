@@ -2,7 +2,7 @@
 import {
     Get,
     Route,
-    Request, Security, Path, Delete, Query,
+    Request, Security, Path, Delete, Query, Header,
 } from 'tsoa';
 import express from 'express';
 import { ProxyController } from '../util/proxy-controller';
@@ -17,6 +17,7 @@ export class EndpointUsers extends ProxyController {
         @Request() request: express.Request,
         @Query() filter?: string,
         @Query() sort?: string,
+        @Header('YEAR') year?: number
     ): Promise<UsersResponse> {
         return await this.proxy(request);
     }

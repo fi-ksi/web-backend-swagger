@@ -2,7 +2,7 @@
 import {
     Get,
     Route,
-    Request, Security, Path,
+    Request, Security, Path, Header,
 } from 'tsoa';
 import express from 'express';
 import { ProxyController } from '../util/proxy-controller';
@@ -14,7 +14,7 @@ export class EndpointTasks extends ProxyController {
     @Get()
     public async tasksGetAll(
         @Request() request: express.Request,
-    ): Promise<TasksResponse> {
+        @Header('YEAR') year?: number): Promise<TasksResponse> {
         return await this.proxy(request);
     }
 

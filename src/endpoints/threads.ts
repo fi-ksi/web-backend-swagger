@@ -4,7 +4,7 @@ import {
     Get,
     Post,
     Route,
-    Request, Security, Path, Put, Query,
+    Request, Security, Path, Put, Query, Header,
 } from 'tsoa';
 import express from 'express';
 import { ProxyController } from '../util/proxy-controller';
@@ -18,7 +18,7 @@ export class EndpointThreads extends ProxyController {
     public async threadsGetAll(
         @Request() request: express.Request,
         @Query() _wave?: number,
-    ): Promise<ThreadsResponse> {
+        @Header('YEAR') year?: number): Promise<ThreadsResponse> {
         return await this.proxy(request);
     }
 
