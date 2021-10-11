@@ -2069,7 +2069,7 @@
 						"type": "number",
 						"format": "double"
 					},
-					"task_num": {
+					"tasks_num": {
 						"type": "number",
 						"format": "double"
 					},
@@ -2131,7 +2131,7 @@
 					"gender",
 					"role",
 					"score",
-					"task_num",
+					"tasks_num",
 					"achievements",
 					"enabled",
 					"nick_name"
