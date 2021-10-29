@@ -301,60 +301,6 @@
 				"type": "object",
 				"additionalProperties": false
 			},
-			"AuthRequestPassword": {
-				"properties": {
-					"grant_type": {
-						"type": "string",
-						"enum": [
-							"password"
-						],
-						"nullable": false
-					},
-					"username": {
-						"type": "string"
-					},
-					"password": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"grant_type",
-					"username",
-					"password"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"AuthRequestRefreshToken": {
-				"properties": {
-					"grant_type": {
-						"type": "string",
-						"enum": [
-							"refresh_token"
-						],
-						"nullable": false
-					},
-					"refresh_token": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"grant_type",
-					"refresh_token"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"AuthRequest": {
-				"anyOf": [
-					{
-						"$ref": "#/components/schemas/AuthRequestPassword"
-					},
-					{
-						"$ref": "#/components/schemas/AuthRequestRefreshToken"
-					}
-				]
-			},
 			"BasicProfileResponse": {
 				"properties": {
 					"basicProfile": {
@@ -2917,9 +2863,26 @@
 				"requestBody": {
 					"required": true,
 					"content": {
-						"application/json": {
+						"multipart/form-data": {
 							"schema": {
-								"$ref": "#/components/schemas/AuthRequest"
+								"type": "object",
+								"properties": {
+									"grant_type": {
+										"type": "string"
+									},
+									"username": {
+										"type": "string"
+									},
+									"password": {
+										"type": "string"
+									},
+									"refresh_token": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"grant_type"
+								]
 							}
 						}
 					}

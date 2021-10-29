@@ -1,20 +1,23 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {
-    Body,
     Post,
     Route,
     Request,
+    FormField
 } from 'tsoa';
 import express from 'express';
 import { ProxyController } from '../util/proxy-controller';
-import { AuthRequest, AuthResponse } from '../models/auth';
+import { AuthGrantType, AuthResponse } from '../models/auth';
 
 @Route('auth')
 export class EndpointAuth extends ProxyController {
     @Post()
     public async authorize(
         @Request() request: express.Request,
-        @Body() body: AuthRequest
+        @FormField('grant_type') grantType: AuthGrantType,
+        @FormField() username?: string,
+        @FormField() password?: string,
+        @FormField('refresh_token') refresh_token?: string
     ): Promise<AuthResponse> {
         return await this.proxy(request);
     }
