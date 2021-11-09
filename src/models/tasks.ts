@@ -13,7 +13,7 @@ export interface Task {
     picture_suffix: '.svg';
     wave: number;
     feedbacks: number;
-    prerequisites: number[] | number[][];
+    prerequisities: number[] | number[][];
 }
 
 export interface TasksResponse {

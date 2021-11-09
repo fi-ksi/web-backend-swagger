@@ -1288,7 +1288,7 @@
 						"type": "number",
 						"format": "double"
 					},
-					"prerequisites": {
+					"prerequisities": {
 						"anyOf": [
 							{
 								"items": {
@@ -1325,7 +1325,7 @@
 					"picture_suffix",
 					"wave",
 					"feedbacks",
-					"prerequisites"
+					"prerequisities"
 				],
 				"type": "object",
 				"additionalProperties": false
