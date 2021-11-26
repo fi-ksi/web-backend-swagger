@@ -10,7 +10,7 @@ import {
     ThreadDetailResponse,
 } from '../models/thread-details';
 
-@Route('thread-details')
+@Route('threadDetails')
 export class EndpointThreadDetails extends ProxyController {
 
     @Security('ksi')

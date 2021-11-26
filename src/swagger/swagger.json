@@ -1943,12 +1943,12 @@
 			},
 			"ThreadResponse": {
 				"properties": {
-					"threads": {
+					"thread": {
 						"$ref": "#/components/schemas/Thread"
 					}
 				},
 				"required": [
-					"threads"
+					"thread"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -4013,7 +4013,7 @@
 				]
 			}
 		},
-		"/thread-details/{threadDetailsId}": {
+		"/threadDetails/{threadDetailsId}": {
 			"get": {
 				"operationId": "ThreadDetailsGetSingle",
 				"responses": {
