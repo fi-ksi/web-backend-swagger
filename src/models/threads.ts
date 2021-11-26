@@ -20,5 +20,5 @@ export interface ThreadsResponse {
 }
 
 export interface ThreadResponse {
-    threads: Thread;
+    thread: Thread;
 }
