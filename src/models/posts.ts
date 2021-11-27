@@ -1,6 +1,6 @@
 export interface PostsCreation {
     body: string;
-    thread_id: number;
+    thread: number;
     parent?: number;
 }
 
