@@ -61,3 +61,17 @@ export interface ModuleScore {
     score: number;
     reviewed_by: number;
 }
+
+export interface ModuleSubmitResponse {
+    result: 'ok' | 'error' | 'nok';
+    report?: string;
+    error?: string;
+    message?: string;
+    score?: number;
+}
+
+export interface ModuleSubmissionRequest {
+    content: ModuleSubmissionData;
+}
+
+export type ModuleSubmissionData = string | string[];

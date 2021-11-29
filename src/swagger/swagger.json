@@ -1017,6 +1017,61 @@
 				"type": "object",
 				"additionalProperties": false
 			},
+			"ModuleSubmitResponse": {
+				"properties": {
+					"result": {
+						"type": "string",
+						"enum": [
+							"ok",
+							"error",
+							"nok"
+						]
+					},
+					"report": {
+						"type": "string"
+					},
+					"error": {
+						"type": "string"
+					},
+					"message": {
+						"type": "string"
+					},
+					"score": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"result"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ModuleSubmissionData": {
+				"anyOf": [
+					{
+						"type": "string"
+					},
+					{
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					}
+				]
+			},
+			"ModuleSubmissionRequest": {
+				"properties": {
+					"content": {
+						"$ref": "#/components/schemas/ModuleSubmissionData"
+					}
+				},
+				"required": [
+					"content"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
 			"PostsCreation": {
 				"properties": {
 					"body": {
@@ -3364,7 +3419,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/ModuleResponse"
+									"$ref": "#/components/schemas/ModuleSubmitResponse"
 								}
 							}
 						}
@@ -3391,17 +3446,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"anyOf": [
-									{
-										"type": "string"
-									},
-									{
-										"items": {
-											"type": "string"
-										},
-										"type": "array"
-									}
-								]
+								"$ref": "#/components/schemas/ModuleSubmissionRequest"
 							}
 						}
 					}

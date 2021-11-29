@@ -8,7 +8,7 @@ import {
 } from 'tsoa';
 import express from 'express';
 import { ProxyController } from '../util/proxy-controller';
-import { ModuleResponse } from '../models/modules';
+import { ModuleResponse, ModuleSubmissionRequest, ModuleSubmitResponse } from '../models/modules';
 
 @Route('modules')
 export class EndpointModules extends ProxyController {
@@ -26,8 +26,8 @@ export class EndpointModules extends ProxyController {
     public async modulesSubmitSingle(
         @Request() request: express.Request,
         @Path() modulesId: number,
-        @Body() data?: string | string[],
-    ): Promise<ModuleResponse> {
+        @Body() data?: ModuleSubmissionRequest,
+    ): Promise<ModuleSubmitResponse> {
         return await this.proxy(request);
     }
 }
