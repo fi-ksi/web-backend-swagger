@@ -1,3 +1,5 @@
+import { UserRole } from './user';
+
 export interface BasicProfileResponse {
     basicProfile: {
         id: number;
@@ -9,6 +11,6 @@ export interface BasicProfileResponse {
         short_info: string;
         email: string;
         gender: string;
-        role: string;
+        role: UserRole;
     }
 }

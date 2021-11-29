@@ -5,7 +5,7 @@ export interface User {
     profile_picture: string | null;
     gender: string;
     email?: string;
-    role: string;
+    role: UserRole;
     score: number;
     tasks_num: number;
     achievements: number[];
@@ -30,3 +30,5 @@ export interface UserResponse {
 export interface UsersResponse {
     users: User[];
 }
+
+export type UserRole = 'admin' | 'org' | 'tester' | 'participant' | 'participant_hidden';

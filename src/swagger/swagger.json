@@ -301,12 +301,22 @@
 				"type": "object",
 				"additionalProperties": false
 			},
+			"UserRole": {
+				"type": "string",
+				"enum": [
+					"admin",
+					"org",
+					"tester",
+					"participant",
+					"participant_hidden"
+				]
+			},
 			"BasicProfileResponse": {
 				"properties": {
 					"basicProfile": {
 						"properties": {
 							"role": {
-								"type": "string"
+								"$ref": "#/components/schemas/UserRole"
 							},
 							"gender": {
 								"type": "string"
@@ -2009,7 +2019,7 @@
 						"type": "string"
 					},
 					"role": {
-						"type": "string"
+						"$ref": "#/components/schemas/UserRole"
 					},
 					"score": {
 						"type": "number",
