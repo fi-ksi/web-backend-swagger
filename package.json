@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "serve.dev": "tsoa routes && ts-node src/server.ts",
-    "gen.api": "tsoa spec && sed 's|https://petstore.swagger.io/v2/swagger.json|/swagger/swagger.json|' -i node_modules/swagger-ui-dist/index.html && ( [ -d 'build' ] && ( [ -d 'build/swagger' ] || mkdir 'build/swagger'; ) && cp src/swagger/swagger.json build/swagger/swagger.json || true )",
+    "gen.api": "tsoa spec && sed 's|https://petstore.swagger.io/v2/swagger.json|/swagger/swagger.json|' -i node_modules/swagger-ui-dist/index.html && ( [ -d 'build' ] && ( [ -d 'build/swagger' ] || mkdir 'build/swagger'; ) && cp src/swagger/swagger.json build/swagger/swagger.json || true ) && node utils/fix-swagger.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

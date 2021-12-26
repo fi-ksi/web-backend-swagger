@@ -1,4676 +1,4729 @@
 {
-	"components": {
-		"examples": {},
-		"headers": {},
-		"parameters": {},
-		"requestBodies": {},
-		"responses": {},
-		"schemas": {
-			"Achievement": {
-				"properties": {
-					"title": {
-						"type": "string"
-					},
-					"picture": {
-						"type": "string"
-					},
-					"description": {
-						"type": "string"
-					},
-					"year": {
-						"type": "number",
-						"format": "double",
-						"nullable": true
-					}
-				},
-				"required": [
-					"title",
-					"picture",
-					"description",
-					"year"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"AchievementsResponse": {
-				"properties": {
-					"achievements": {
-						"items": {
-							"$ref": "#/components/schemas/Achievement"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"achievements"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"AchievementCreation": {
-				"properties": {
-					"title": {
-						"type": "string"
-					},
-					"picture": {
-						"type": "string"
-					},
-					"description": {
-						"type": "string"
-					},
-					"persistent": {
-						"type": "boolean"
-					}
-				},
-				"required": [
-					"title",
-					"picture",
-					"description",
-					"persistent"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"AchievementCreationRequest": {
-				"properties": {
-					"achievement": {
-						"$ref": "#/components/schemas/AchievementCreation"
-					}
-				},
-				"required": [
-					"achievement"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"AchievementResponse": {
-				"properties": {
-					"achievement": {
-						"$ref": "#/components/schemas/Achievement"
-					}
-				},
-				"required": [
-					"achievement"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"EmptyDict": {
-				"properties": {},
-				"type": "object",
-				"additionalProperties": false
-			},
-			"Article": {
-				"properties": {
-					"title": {
-						"type": "string"
-					},
-					"body": {
-						"type": "string"
-					},
-					"published": {
-						"type": "boolean"
-					},
-					"year": {
-						"type": "number",
-						"format": "double"
-					},
-					"time_published": {
-						"type": "string"
-					},
-					"picture": {
-						"type": "string"
-					},
-					"id": {
-						"type": "number",
-						"format": "double"
-					},
-					"author": {
-						"type": "number",
-						"format": "double"
-					},
-					"resource": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"title",
-					"body",
-					"published",
-					"year",
-					"time_published",
-					"picture",
-					"id",
-					"author",
-					"resource"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"DirContent": {
-				"properties": {
-					"id": {
-						"type": "string"
-					},
-					"files": {
-						"items": {
-							"type": "string"
-						},
-						"type": "array"
-					},
-					"dirs": {
-						"items": {
-							"type": "string"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"id",
-					"files",
-					"dirs"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ArticlesResponse": {
-				"properties": {
-					"articles": {
-						"items": {
-							"$ref": "#/components/schemas/Article"
-						},
-						"type": "array"
-					},
-					"contents": {
-						"items": {
-							"$ref": "#/components/schemas/DirContent"
-						},
-						"type": "array"
-					},
-					"meta": {
-						"properties": {
-							"total": {
-								"type": "number",
-								"format": "double"
-							}
-						},
-						"required": [
-							"total"
-						],
-						"type": "object"
-					}
-				},
-				"required": [
-					"articles",
-					"contents",
-					"meta"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ArticleCreation": {
-				"properties": {
-					"title": {
-						"type": "string"
-					},
-					"body": {
-						"type": "string"
-					},
-					"published": {
-						"type": "boolean"
-					},
-					"year": {
-						"type": "number",
-						"format": "double"
-					},
-					"time_published": {
-						"type": "string"
-					},
-					"picture": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"title",
-					"body",
-					"published",
-					"year",
-					"time_published",
-					"picture"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ArticleCreationRequest": {
-				"properties": {
-					"article": {
-						"$ref": "#/components/schemas/ArticleCreation"
-					}
-				},
-				"required": [
-					"article"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ArticleResponse": {
-				"properties": {
-					"article": {
-						"$ref": "#/components/schemas/Article"
-					},
-					"contents": {
-						"items": {
-							"$ref": "#/components/schemas/DirContent"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"article",
-					"contents"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"AuthResponse": {
-				"properties": {
-					"access_token": {
-						"type": "string"
-					},
-					"expires_in": {
-						"type": "number",
-						"format": "double"
-					},
-					"refresh_token": {
-						"type": "string"
-					},
-					"token_type": {
-						"type": "string",
-						"enum": [
-							"Bearer"
-						],
-						"nullable": false
-					}
-				},
-				"required": [
-					"access_token",
-					"expires_in",
-					"refresh_token",
-					"token_type"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"UserRole": {
-				"type": "string",
-				"enum": [
-					"admin",
-					"org",
-					"tester",
-					"participant",
-					"participant_hidden"
-				]
-			},
-			"BasicProfileResponse": {
-				"properties": {
-					"basicProfile": {
-						"properties": {
-							"role": {
-								"$ref": "#/components/schemas/UserRole"
-							},
-							"gender": {
-								"type": "string"
-							},
-							"email": {
-								"type": "string"
-							},
-							"short_info": {
-								"type": "string"
-							},
-							"profile_picture": {
-								"type": "number",
-								"format": "double"
-							},
-							"nick_name": {
-								"type": "string"
-							},
-							"last_name": {
-								"type": "string"
-							},
-							"first_name": {
-								"type": "string"
-							},
-							"signed_in": {
-								"type": "boolean",
-								"enum": [
-									"true"
-								],
-								"nullable": false
-							},
-							"id": {
-								"type": "number",
-								"format": "double"
-							}
-						},
-						"required": [
-							"role",
-							"gender",
-							"email",
-							"short_info",
-							"profile_picture",
-							"nick_name",
-							"last_name",
-							"first_name",
-							"signed_in",
-							"id"
-						],
-						"type": "object"
-					}
-				},
-				"required": [
-					"basicProfile"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"Uint8Array": {
-				"description": "A typed array of 8-bit unsigned integer values. The contents are initialized to 0. If the\r\nrequested number of bytes could not be allocated an exception is raised.",
-				"properties": {},
-				"type": "object",
-				"additionalProperties": false
-			},
-			"DirContentResponse": {
-				"properties": {
-					"content": {
-						"$ref": "#/components/schemas/DirContent"
-					}
-				},
-				"required": [
-					"content"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"FeedbackResponse": {
-				"properties": {
-					"result": {
-						"type": "string",
-						"enum": [
-							"ok"
-						],
-						"nullable": false
-					}
-				},
-				"required": [
-					"result"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"FeedbackRequest": {
-				"properties": {
-					"body": {
-						"type": "string"
-					},
-					"email": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"body"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"Category": {
-				"properties": {
-					"id": {
-						"type": "string"
-					},
-					"answer": {
-						"type": "string"
-					},
-					"ftype": {
-						"type": "string",
-						"enum": [
-							"stars",
-							"line",
-							"text_large"
-						]
-					},
-					"text": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"id",
-					"answer",
-					"ftype",
-					"text"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"FeedbackCreation": {
-				"properties": {
-					"categories": {
-						"items": {
-							"$ref": "#/components/schemas/Category"
-						},
-						"type": "array"
-					},
-					"taskId": {
-						"type": "number",
-						"format": "double"
-					}
-				},
-				"required": [
-					"categories",
-					"taskId"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"FeedbackCreationRequest": {
-				"properties": {
-					"feedback": {
-						"$ref": "#/components/schemas/FeedbackCreation"
-					}
-				},
-				"required": [
-					"feedback"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"Feedback": {
-				"properties": {
-					"categories": {
-						"items": {
-							"$ref": "#/components/schemas/Category"
-						},
-						"type": "array"
-					},
-					"taskId": {
-						"type": "number",
-						"format": "double"
-					},
-					"id": {
-						"type": "number",
-						"format": "double"
-					},
-					"userId": {
-						"type": "number",
-						"format": "double"
-					},
-					"lastUpdated": {
-						"type": "string"
-					},
-					"filled": {
-						"type": "boolean",
-						"enum": [
-							"true"
-						],
-						"nullable": false
-					}
-				},
-				"required": [
-					"categories",
-					"taskId",
-					"id",
-					"userId",
-					"lastUpdated",
-					"filled"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"FeedbacksResponse": {
-				"properties": {
-					"feedback": {
-						"$ref": "#/components/schemas/Feedback"
-					}
-				},
-				"required": [
-					"feedback"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"FeedbackUpdate": {
-				"properties": {
-					"categories": {
-						"items": {
-							"$ref": "#/components/schemas/Category"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"categories"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"FeedbackUpdateRequest": {
-				"properties": {
-					"feedback": {
-						"$ref": "#/components/schemas/FeedbackUpdate"
-					}
-				},
-				"required": [
-					"feedback"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ForgottenPasswordResult": {
-				"properties": {
-					"result": {
-						"type": "string",
-						"enum": [
-							"ok"
-						],
-						"nullable": false
-					}
-				},
-				"required": [
-					"result"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ForgottenPasswordRequest": {
-				"properties": {
-					"email": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"email"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ModuleProgramming": {
-				"properties": {
-					"id": {
-						"type": "number",
-						"format": "double"
-					},
-					"type": {
-						"type": "string",
-						"enum": [
-							"general",
-							"programming",
-							"quiz",
-							"sortable",
-							"text"
-						]
-					},
-					"name": {
-						"type": "string"
-					},
-					"description": {
-						"type": "string"
-					},
-					"autocorrect": {
-						"type": "boolean"
-					},
-					"max_score": {
-						"type": "number",
-						"format": "double"
-					},
-					"state": {
-						"type": "string",
-						"enum": [
-							"correct",
-							"incorrect",
-							"blank"
-						]
-					},
-					"score": {
-						"type": "number",
-						"format": "double",
-						"nullable": true
-					},
-					"code": {
-						"type": "string"
-					},
-					"default_code": {
-						"type": "string"
-					},
-					"last_time": {
-						"type": "string"
-					},
-					"last_origin": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"id",
-					"type",
-					"name",
-					"description",
-					"autocorrect",
-					"max_score",
-					"state",
-					"score",
-					"code",
-					"default_code"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ModuleQuiz": {
-				"properties": {
-					"id": {
-						"type": "number",
-						"format": "double"
-					},
-					"type": {
-						"type": "string",
-						"enum": [
-							"general",
-							"programming",
-							"quiz",
-							"sortable",
-							"text"
-						]
-					},
-					"name": {
-						"type": "string"
-					},
-					"description": {
-						"type": "string"
-					},
-					"autocorrect": {
-						"type": "boolean"
-					},
-					"max_score": {
-						"type": "number",
-						"format": "double"
-					},
-					"state": {
-						"type": "string",
-						"enum": [
-							"correct",
-							"incorrect",
-							"blank"
-						]
-					},
-					"score": {
-						"type": "number",
-						"format": "double",
-						"nullable": true
-					},
-					"questions": {
-						"items": {
-							"properties": {
-								"options": {
-									"items": {
-										"type": "string"
-									},
-									"type": "array"
-								},
-								"text": {
-									"type": "string"
-								},
-								"question": {
-									"type": "string"
-								},
-								"type": {
-									"type": "string",
-									"enum": [
-										"radio",
-										"checkbox"
-									]
-								}
-							},
-							"required": [
-								"options",
-								"text",
-								"question",
-								"type"
-							],
-							"type": "object"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"id",
-					"type",
-					"name",
-					"description",
-					"autocorrect",
-					"max_score",
-					"state",
-					"score",
-					"questions"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"SortableItem": {
-				"properties": {
-					"content": {
-						"type": "string"
-					},
-					"offset": {
-						"type": "number",
-						"format": "double"
-					}
-				},
-				"required": [
-					"content",
-					"offset"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ModuleSortable": {
-				"properties": {
-					"id": {
-						"type": "number",
-						"format": "double"
-					},
-					"type": {
-						"type": "string",
-						"enum": [
-							"general",
-							"programming",
-							"quiz",
-							"sortable",
-							"text"
-						]
-					},
-					"name": {
-						"type": "string"
-					},
-					"description": {
-						"type": "string"
-					},
-					"autocorrect": {
-						"type": "boolean"
-					},
-					"max_score": {
-						"type": "number",
-						"format": "double"
-					},
-					"state": {
-						"type": "string",
-						"enum": [
-							"correct",
-							"incorrect",
-							"blank"
-						]
-					},
-					"score": {
-						"type": "number",
-						"format": "double",
-						"nullable": true
-					},
-					"sortable_list": {
-						"properties": {
-							"movable": {
-								"items": {
-									"$ref": "#/components/schemas/SortableItem"
-								},
-								"type": "array"
-							},
-							"fixed": {
-								"items": {
-									"$ref": "#/components/schemas/SortableItem"
-								},
-								"type": "array"
-							}
-						},
-						"required": [
-							"movable",
-							"fixed"
-						],
-						"type": "object"
-					}
-				},
-				"required": [
-					"id",
-					"type",
-					"name",
-					"description",
-					"autocorrect",
-					"max_score",
-					"state",
-					"score",
-					"sortable_list"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ModuleGeneral": {
-				"properties": {
-					"id": {
-						"type": "number",
-						"format": "double"
-					},
-					"type": {
-						"type": "string",
-						"enum": [
-							"general",
-							"programming",
-							"quiz",
-							"sortable",
-							"text"
-						]
-					},
-					"name": {
-						"type": "string"
-					},
-					"description": {
-						"type": "string"
-					},
-					"autocorrect": {
-						"type": "boolean"
-					},
-					"max_score": {
-						"type": "number",
-						"format": "double"
-					},
-					"state": {
-						"type": "string",
-						"enum": [
-							"correct",
-							"incorrect",
-							"blank"
-						]
-					},
-					"score": {
-						"type": "number",
-						"format": "double",
-						"nullable": true
-					},
-					"submitted_files": {
-						"items": {
-							"properties": {
-								"filename": {
-									"type": "string"
-								},
-								"id": {
-									"type": "number",
-									"format": "double"
-								}
-							},
-							"required": [
-								"filename",
-								"id"
-							],
-							"type": "object"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"id",
-					"type",
-					"name",
-					"description",
-					"autocorrect",
-					"max_score",
-					"state",
-					"score",
-					"submitted_files"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ModuleText": {
-				"properties": {
-					"id": {
-						"type": "number",
-						"format": "double"
-					},
-					"type": {
-						"type": "string",
-						"enum": [
-							"general",
-							"programming",
-							"quiz",
-							"sortable",
-							"text"
-						]
-					},
-					"name": {
-						"type": "string"
-					},
-					"description": {
-						"type": "string"
-					},
-					"autocorrect": {
-						"type": "boolean"
-					},
-					"max_score": {
-						"type": "number",
-						"format": "double"
-					},
-					"state": {
-						"type": "string",
-						"enum": [
-							"correct",
-							"incorrect",
-							"blank"
-						]
-					},
-					"score": {
-						"type": "number",
-						"format": "double",
-						"nullable": true
-					},
-					"fields": {
-						"items": {
-							"type": "string"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"id",
-					"type",
-					"name",
-					"description",
-					"autocorrect",
-					"max_score",
-					"state",
-					"score",
-					"fields"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"KSIModule": {
-				"anyOf": [
-					{
-						"$ref": "#/components/schemas/ModuleProgramming"
-					},
-					{
-						"$ref": "#/components/schemas/ModuleQuiz"
-					},
-					{
-						"$ref": "#/components/schemas/ModuleSortable"
-					},
-					{
-						"$ref": "#/components/schemas/ModuleGeneral"
-					},
-					{
-						"$ref": "#/components/schemas/ModuleText"
-					}
-				]
-			},
-			"ModuleResponse": {
-				"properties": {
-					"module": {
-						"$ref": "#/components/schemas/KSIModule"
-					}
-				},
-				"required": [
-					"module"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ModuleSubmitResponse": {
-				"properties": {
-					"result": {
-						"type": "string",
-						"enum": [
-							"ok",
-							"error",
-							"nok"
-						]
-					},
-					"report": {
-						"type": "string"
-					},
-					"error": {
-						"type": "string"
-					},
-					"message": {
-						"type": "string"
-					},
-					"score": {
-						"type": "number",
-						"format": "double"
-					}
-				},
-				"required": [
-					"result"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ModuleSubmissionData": {
-				"anyOf": [
-					{
-						"type": "string"
-					},
-					{
-						"items": {
-							"type": "string"
-						},
-						"type": "array"
-					},
-					{
-						"items": {
-							"items": {
-								"type": "string"
-							},
-							"type": "array"
-						},
-						"type": "array"
-					}
-				]
-			},
-			"ModuleSubmissionRequest": {
-				"properties": {
-					"content": {
-						"$ref": "#/components/schemas/ModuleSubmissionData"
-					}
-				},
-				"required": [
-					"content"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"PostsCreation": {
-				"properties": {
-					"body": {
-						"type": "string"
-					},
-					"thread": {
-						"type": "number",
-						"format": "double"
-					},
-					"parent": {
-						"type": "number",
-						"format": "double"
-					}
-				},
-				"required": [
-					"body",
-					"thread"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"PostsCreationRequest": {
-				"properties": {
-					"post": {
-						"$ref": "#/components/schemas/PostsCreation"
-					}
-				},
-				"required": [
-					"post"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"Post": {
-				"properties": {
-					"author": {
-						"type": "number",
-						"format": "double"
-					},
-					"body": {
-						"type": "string"
-					},
-					"id": {
-						"type": "number",
-						"format": "double"
-					},
-					"thread": {
-						"type": "number",
-						"format": "double"
-					},
-					"published_at": {
-						"type": "string"
-					},
-					"reaction": {
-						"items": {
-							"type": "number",
-							"format": "double"
-						},
-						"type": "array"
-					},
-					"is_new": {
-						"type": "boolean"
-					}
-				},
-				"required": [
-					"author",
-					"body",
-					"id",
-					"thread",
-					"published_at",
-					"reaction",
-					"is_new"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"PostResponse": {
-				"properties": {
-					"post": {
-						"$ref": "#/components/schemas/Post"
-					}
-				},
-				"required": [
-					"post"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"PostEdit": {
-				"properties": {
-					"author": {
-						"type": "number",
-						"format": "double"
-					},
-					"body": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"author",
-					"body"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"PostsEditRequest": {
-				"properties": {
-					"post": {
-						"$ref": "#/components/schemas/PostEdit"
-					}
-				},
-				"required": [
-					"post"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"Profile": {
-				"properties": {
-					"email": {
-						"type": "string"
-					},
-					"nick_name": {
-						"type": "string"
-					},
-					"first_name": {
-						"type": "string"
-					},
-					"last_name": {
-						"type": "string"
-					},
-					"gender": {
-						"type": "string"
-					},
-					"short_info": {
-						"type": "string"
-					},
-					"addr_street": {
-						"type": "string"
-					},
-					"addr_city": {
-						"type": "string"
-					},
-					"addr_zip": {
-						"type": "string"
-					},
-					"addr_country": {
-						"type": "string"
-					},
-					"school_name": {
-						"type": "string"
-					},
-					"school_street": {
-						"type": "string"
-					},
-					"school_city": {
-						"type": "string"
-					},
-					"school_zip": {
-						"type": "string"
-					},
-					"school_country": {
-						"type": "string"
-					},
-					"school_finish": {
-						"type": "number",
-						"format": "double"
-					},
-					"tshirt_size": {
-						"type": "string"
-					},
-					"notify_eval": {
-						"type": "boolean"
-					},
-					"notify_response": {
-						"type": "boolean"
-					},
-					"notify_ksi": {
-						"type": "boolean"
-					},
-					"notify_events": {
-						"type": "boolean"
-					},
-					"id": {
-						"type": "number",
-						"format": "double"
-					},
-					"author": {
-						"type": "number",
-						"format": "double"
-					},
-					"resource": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"email",
-					"first_name",
-					"last_name",
-					"gender",
-					"short_info",
-					"addr_street",
-					"addr_city",
-					"addr_zip",
-					"addr_country",
-					"school_name",
-					"school_street",
-					"school_city",
-					"school_zip",
-					"school_country",
-					"school_finish",
-					"tshirt_size",
-					"id",
-					"author",
-					"resource"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"Task": {
-				"properties": {
-					"id": {
-						"type": "number",
-						"format": "double"
-					},
-					"title": {
-						"type": "string"
-					},
-					"author": {
-						"type": "number",
-						"format": "double"
-					},
-					"co_author": {
-						"type": "number",
-						"format": "double"
-					},
-					"details": {
-						"type": "number",
-						"format": "double"
-					},
-					"intro": {
-						"type": "string"
-					},
-					"max_score": {
-						"type": "number",
-						"format": "double"
-					},
-					"time_published": {
-						"type": "string"
-					},
-					"time_deadline": {
-						"type": "string",
-						"nullable": true
-					},
-					"state": {
-						"type": "string",
-						"enum": [
-							"locked",
-							"base",
-							"correcting",
-							"done"
-						]
-					},
-					"picture_base": {
-						"type": "string"
-					},
-					"picture_suffix": {
-						"type": "string",
-						"enum": [
-							".svg"
-						],
-						"nullable": false
-					},
-					"wave": {
-						"type": "number",
-						"format": "double"
-					},
-					"feedbacks": {
-						"type": "number",
-						"format": "double"
-					},
-					"prerequisities": {
-						"anyOf": [
-							{
-								"items": {
-									"type": "number",
-									"format": "double"
-								},
-								"type": "array"
-							},
-							{
-								"items": {
-									"items": {
-										"type": "number",
-										"format": "double"
-									},
-									"type": "array"
-								},
-								"type": "array"
-							}
-						]
-					}
-				},
-				"required": [
-					"id",
-					"title",
-					"author",
-					"co_author",
-					"details",
-					"intro",
-					"max_score",
-					"time_published",
-					"time_deadline",
-					"state",
-					"picture_base",
-					"picture_suffix",
-					"wave",
-					"feedbacks",
-					"prerequisities"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"TaskScore": {
-				"properties": {
-					"id": {
-						"type": "number",
-						"format": "double"
-					},
-					"task": {
-						"type": "number",
-						"format": "double"
-					},
-					"achievements": {
-						"items": {
-							"type": "number",
-							"format": "double"
-						},
-						"type": "array"
-					},
-					"score": {
-						"type": "number",
-						"format": "double",
-						"nullable": true
-					}
-				},
-				"required": [
-					"id",
-					"task",
-					"achievements",
-					"score"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ProfileResponse": {
-				"properties": {
-					"profile": {
-						"$ref": "#/components/schemas/Profile"
-					},
-					"tasks": {
-						"items": {
-							"$ref": "#/components/schemas/Task"
-						},
-						"type": "array"
-					},
-					"taskScores": {
-						"items": {
-							"$ref": "#/components/schemas/TaskScore"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"profile",
-					"tasks",
-					"taskScores"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ProfileEdit": {
-				"properties": {
-					"email": {
-						"type": "string"
-					},
-					"nick_name": {
-						"type": "string"
-					},
-					"first_name": {
-						"type": "string"
-					},
-					"last_name": {
-						"type": "string"
-					},
-					"gender": {
-						"type": "string"
-					},
-					"short_info": {
-						"type": "string"
-					},
-					"addr_street": {
-						"type": "string"
-					},
-					"addr_city": {
-						"type": "string"
-					},
-					"addr_zip": {
-						"type": "string"
-					},
-					"addr_country": {
-						"type": "string"
-					},
-					"school_name": {
-						"type": "string"
-					},
-					"school_street": {
-						"type": "string"
-					},
-					"school_city": {
-						"type": "string"
-					},
-					"school_zip": {
-						"type": "string"
-					},
-					"school_country": {
-						"type": "string"
-					},
-					"school_finish": {
-						"type": "number",
-						"format": "double"
-					},
-					"tshirt_size": {
-						"type": "string"
-					},
-					"notify_eval": {
-						"type": "boolean"
-					},
-					"notify_response": {
-						"type": "boolean"
-					},
-					"notify_ksi": {
-						"type": "boolean"
-					},
-					"notify_events": {
-						"type": "boolean"
-					}
-				},
-				"required": [
-					"email",
-					"first_name",
-					"last_name",
-					"gender",
-					"short_info",
-					"addr_street",
-					"addr_city",
-					"addr_zip",
-					"addr_country",
-					"school_name",
-					"school_street",
-					"school_city",
-					"school_zip",
-					"school_country",
-					"school_finish",
-					"tshirt_size"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"RegistrationRequest": {
-				"properties": {
-					"email": {
-						"type": "string"
-					},
-					"nick_name": {
-						"type": "string"
-					},
-					"first_name": {
-						"type": "string"
-					},
-					"last_name": {
-						"type": "string"
-					},
-					"gender": {
-						"type": "string"
-					},
-					"short_info": {
-						"type": "string"
-					},
-					"addr_street": {
-						"type": "string"
-					},
-					"addr_city": {
-						"type": "string"
-					},
-					"addr_zip": {
-						"type": "string"
-					},
-					"addr_country": {
-						"type": "string"
-					},
-					"school_name": {
-						"type": "string"
-					},
-					"school_street": {
-						"type": "string"
-					},
-					"school_city": {
-						"type": "string"
-					},
-					"school_zip": {
-						"type": "string"
-					},
-					"school_country": {
-						"type": "string"
-					},
-					"school_finish": {
-						"type": "number",
-						"format": "double"
-					},
-					"tshirt_size": {
-						"type": "string"
-					},
-					"notify_eval": {
-						"type": "boolean"
-					},
-					"notify_response": {
-						"type": "boolean"
-					},
-					"notify_ksi": {
-						"type": "boolean"
-					},
-					"notify_events": {
-						"type": "boolean"
-					},
-					"password": {
-						"type": "string"
-					},
-					"referral": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"email",
-					"first_name",
-					"last_name",
-					"gender",
-					"short_info",
-					"addr_street",
-					"addr_city",
-					"addr_zip",
-					"addr_country",
-					"school_name",
-					"school_street",
-					"school_city",
-					"school_zip",
-					"school_country",
-					"school_finish",
-					"tshirt_size",
-					"password",
-					"referral"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"RunCodeResponse": {
-				"properties": {
-					"report": {
-						"type": "string"
-					},
-					"message": {
-						"type": "string"
-					},
-					"stdout": {
-						"type": "string"
-					},
-					"result": {
-						"type": "string",
-						"enum": [
-							"ok",
-							"error"
-						]
-					}
-				},
-				"required": [
-					"stdout",
-					"result"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"RunCodeRequest": {
-				"properties": {
-					"content": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"content"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ChangePasswordResult": {
-				"properties": {
-					"result": {
-						"type": "string",
-						"enum": [
-							"ok"
-						],
-						"nullable": false
-					}
-				},
-				"required": [
-					"result"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ChangePasswordRequest": {
-				"properties": {
-					"old_password": {
-						"type": "string"
-					},
-					"new_password": {
-						"type": "string"
-					},
-					"new_password2": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"old_password",
-					"new_password",
-					"new_password2"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"TaskDetails": {
-				"properties": {
-					"id": {
-						"type": "number",
-						"format": "double"
-					},
-					"body": {
-						"type": "string"
-					},
-					"thread": {
-						"type": "number",
-						"format": "double"
-					},
-					"modules": {
-						"items": {
-							"type": "number",
-							"format": "double"
-						},
-						"type": "array"
-					},
-					"best_scores": {
-						"items": {
-							"type": "number",
-							"format": "double"
-						},
-						"type": "array"
-					},
-					"comment": {
-						"type": "number",
-						"format": "double",
-						"nullable": true
-					},
-					"solution": {
-						"type": "string"
-					},
-					"achievements": {
-						"items": {
-							"type": "number",
-							"format": "double"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"id",
-					"body",
-					"thread",
-					"modules",
-					"best_scores",
-					"comment",
-					"solution",
-					"achievements"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ModuleScore": {
-				"properties": {
-					"id": {
-						"type": "number",
-						"format": "double"
-					},
-					"is_corrected": {
-						"type": "boolean"
-					},
-					"score": {
-						"type": "number",
-						"format": "double"
-					},
-					"reviewed_by": {
-						"type": "number",
-						"format": "double"
-					}
-				},
-				"required": [
-					"id",
-					"is_corrected",
-					"score",
-					"reviewed_by"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"UserScore": {
-				"properties": {
-					"id": {
-						"type": "number",
-						"format": "double"
-					},
-					"user": {
-						"type": "number",
-						"format": "double"
-					},
-					"score": {
-						"type": "number",
-						"format": "double"
-					}
-				},
-				"required": [
-					"id",
-					"user",
-					"score"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"Thread": {
-				"properties": {
-					"public": {
-						"type": "boolean"
-					},
-					"title": {
-						"type": "string"
-					},
-					"year": {
-						"type": "number",
-						"format": "double"
-					},
-					"id": {
-						"type": "number",
-						"format": "double"
-					},
-					"unread": {
-						"type": "number",
-						"format": "double"
-					},
-					"posts_count": {
-						"type": "number",
-						"format": "double"
-					},
-					"details": {
-						"type": "number",
-						"format": "double"
-					}
-				},
-				"required": [
-					"public",
-					"title",
-					"year",
-					"id",
-					"unread",
-					"posts_count",
-					"details"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ThreadDetail": {
-				"properties": {
-					"id": {
-						"type": "number",
-						"format": "double"
-					},
-					"root_posts": {
-						"items": {
-							"type": "number",
-							"format": "double"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"id",
-					"root_posts"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"TaskDetailResponse": {
-				"properties": {
-					"taskDetails": {
-						"$ref": "#/components/schemas/TaskDetails"
-					},
-					"achievements": {
-						"items": {
-							"$ref": "#/components/schemas/Achievement"
-						},
-						"type": "array"
-					},
-					"posts": {
-						"items": {
-							"$ref": "#/components/schemas/Post"
-						},
-						"type": "array"
-					},
-					"modules": {
-						"items": {
-							"$ref": "#/components/schemas/KSIModule"
-						},
-						"type": "array"
-					},
-					"moduleScores": {
-						"items": {
-							"$ref": "#/components/schemas/ModuleScore"
-						},
-						"type": "array"
-					},
-					"userScores": {
-						"items": {
-							"$ref": "#/components/schemas/UserScore"
-						},
-						"type": "array"
-					},
-					"threads": {
-						"items": {
-							"$ref": "#/components/schemas/Thread"
-						},
-						"type": "array"
-					},
-					"threadDetails": {
-						"items": {
-							"$ref": "#/components/schemas/ThreadDetail"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"taskDetails",
-					"achievements",
-					"posts",
-					"modules",
-					"moduleScores",
-					"userScores",
-					"threads",
-					"threadDetails"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"TasksResponse": {
-				"properties": {
-					"tasks": {
-						"items": {
-							"$ref": "#/components/schemas/Task"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"tasks"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"TaskResponse": {
-				"properties": {
-					"task": {
-						"$ref": "#/components/schemas/Task"
-					}
-				},
-				"required": [
-					"task"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ThreadDetailResponse": {
-				"properties": {
-					"threadDetails": {
-						"$ref": "#/components/schemas/ThreadDetail"
-					},
-					"posts": {
-						"items": {
-							"$ref": "#/components/schemas/Post"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"threadDetails",
-					"posts"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ThreadsResponse": {
-				"properties": {
-					"threads": {
-						"items": {
-							"$ref": "#/components/schemas/Thread"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"threads"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ThreadResponse": {
-				"properties": {
-					"thread": {
-						"$ref": "#/components/schemas/Thread"
-					}
-				},
-				"required": [
-					"thread"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ThreadCreation": {
-				"properties": {
-					"public": {
-						"type": "boolean"
-					},
-					"title": {
-						"type": "string"
-					},
-					"year": {
-						"type": "number",
-						"format": "double"
-					}
-				},
-				"required": [
-					"public",
-					"title",
-					"year"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ThreadsCreationRequest": {
-				"properties": {
-					"thread": {
-						"$ref": "#/components/schemas/ThreadCreation"
-					}
-				},
-				"required": [
-					"thread"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"User": {
-				"properties": {
-					"id": {
-						"type": "number",
-						"format": "double"
-					},
-					"first_name": {
-						"type": "string"
-					},
-					"last_name": {
-						"type": "string"
-					},
-					"profile_picture": {
-						"type": "string",
-						"nullable": true
-					},
-					"gender": {
-						"type": "string"
-					},
-					"email": {
-						"type": "string"
-					},
-					"role": {
-						"$ref": "#/components/schemas/UserRole"
-					},
-					"score": {
-						"type": "number",
-						"format": "double"
-					},
-					"tasks_num": {
-						"type": "number",
-						"format": "double"
-					},
-					"achievements": {
-						"items": {
-							"type": "number",
-							"format": "double"
-						},
-						"type": "array"
-					},
-					"enabled": {
-						"type": "boolean"
-					},
-					"nick_name": {
-						"type": "string"
-					},
-					"addr_country": {
-						"type": "string"
-					},
-					"school_name": {
-						"type": "string"
-					},
-					"seasons": {
-						"items": {
-							"type": "number",
-							"format": "double"
-						},
-						"type": "array"
-					},
-					"successful": {
-						"type": "boolean"
-					},
-					"cheat": {
-						"type": "boolean"
-					},
-					"tasks": {
-						"items": {
-							"type": "number",
-							"format": "double"
-						},
-						"type": "array"
-					},
-					"co_tasks": {
-						"items": {
-							"type": "number",
-							"format": "double"
-						},
-						"type": "array"
-					},
-					"short_info": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"id",
-					"first_name",
-					"last_name",
-					"profile_picture",
-					"gender",
-					"role",
-					"score",
-					"tasks_num",
-					"achievements",
-					"enabled",
-					"nick_name"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"UsersResponse": {
-				"properties": {
-					"users": {
-						"items": {
-							"$ref": "#/components/schemas/User"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"users"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"UserResponse": {
-				"properties": {
-					"user": {
-						"$ref": "#/components/schemas/User"
-					}
-				},
-				"required": [
-					"user"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"Wave": {
-				"properties": {
-					"index": {
-						"type": "number",
-						"format": "double"
-					},
-					"caption": {
-						"type": "string",
-						"nullable": true
-					},
-					"garant": {
-						"type": "number",
-						"format": "double"
-					},
-					"time_published": {
-						"type": "string",
-						"nullable": true
-					},
-					"year": {
-						"type": "number",
-						"format": "double"
-					},
-					"id": {
-						"type": "number",
-						"format": "double"
-					},
-					"public": {
-						"type": "boolean"
-					},
-					"sum_points": {
-						"type": "number",
-						"format": "double"
-					},
-					"task_cnt": {
-						"type": "number",
-						"format": "double"
-					}
-				},
-				"required": [
-					"index",
-					"caption",
-					"garant",
-					"year",
-					"id",
-					"public",
-					"sum_points",
-					"task_cnt"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"Waves": {
-				"properties": {
-					"waves": {
-						"items": {
-							"$ref": "#/components/schemas/Wave"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"waves"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"WaveResponse": {
-				"properties": {
-					"wave": {
-						"$ref": "#/components/schemas/Wave"
-					}
-				},
-				"required": [
-					"wave"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"WaveCreate": {
-				"properties": {
-					"index": {
-						"type": "number",
-						"format": "double"
-					},
-					"caption": {
-						"type": "string",
-						"nullable": true
-					},
-					"garant": {
-						"type": "number",
-						"format": "double"
-					},
-					"time_published": {
-						"type": "string",
-						"nullable": true
-					},
-					"year": {
-						"type": "number",
-						"format": "double"
-					}
-				},
-				"required": [
-					"index",
-					"caption",
-					"garant",
-					"year"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"WaveCreationRequest": {
-				"properties": {
-					"wave": {
-						"$ref": "#/components/schemas/WaveCreate"
-					}
-				},
-				"required": [
-					"wave"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"WaveBase": {
-				"properties": {
-					"index": {
-						"type": "number",
-						"format": "double"
-					},
-					"caption": {
-						"type": "string",
-						"nullable": true
-					},
-					"garant": {
-						"type": "number",
-						"format": "double"
-					},
-					"time_published": {
-						"type": "string",
-						"nullable": true
-					}
-				},
-				"required": [
-					"index",
-					"caption",
-					"garant"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"WaveUpdateRequest": {
-				"properties": {
-					"wave": {
-						"$ref": "#/components/schemas/WaveBase"
-					}
-				},
-				"required": [
-					"wave"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"Year": {
-				"properties": {
-					"id": {
-						"type": "number",
-						"format": "double"
-					},
-					"year": {
-						"type": "string"
-					},
-					"sealed": {
-						"type": "boolean"
-					},
-					"point_pad": {
-						"type": "number",
-						"format": "double"
-					},
-					"active_orgs": {
-						"items": {
-							"type": "number",
-							"format": "double"
-						},
-						"type": "array"
-					},
-					"sum_points": {
-						"type": "number",
-						"format": "double"
-					},
-					"tasks_cnt": {
-						"type": "number",
-						"format": "double"
-					}
-				},
-				"required": [
-					"id",
-					"year",
-					"sealed",
-					"point_pad",
-					"sum_points",
-					"tasks_cnt"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"Years": {
-				"properties": {
-					"years": {
-						"items": {
-							"$ref": "#/components/schemas/Year"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"years"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"YearResponse": {
-				"properties": {
-					"year": {
-						"$ref": "#/components/schemas/Year"
-					}
-				},
-				"required": [
-					"year"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"YearBase": {
-				"properties": {
-					"id": {
-						"type": "number",
-						"format": "double"
-					},
-					"year": {
-						"type": "string"
-					},
-					"sealed": {
-						"type": "boolean"
-					},
-					"point_pad": {
-						"type": "number",
-						"format": "double"
-					},
-					"active_orgs": {
-						"items": {
-							"type": "number",
-							"format": "double"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"id",
-					"year",
-					"sealed",
-					"point_pad"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"YearCreationRequest": {
-				"properties": {
-					"year": {
-						"$ref": "#/components/schemas/YearBase"
-					}
-				},
-				"required": [
-					"year"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"YearUpdate": {
-				"properties": {
-					"id": {
-						"type": "number",
-						"format": "double"
-					},
-					"year": {
-						"type": "string"
-					},
-					"sealed": {
-						"type": "boolean"
-					},
-					"point_pad": {
-						"type": "number",
-						"format": "double"
-					},
-					"active_orgs": {
-						"items": {
-							"type": "number",
-							"format": "double"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"id",
-					"year",
-					"sealed",
-					"point_pad",
-					"active_orgs"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"YearUpdateRequest": {
-				"properties": {
-					"year": {
-						"$ref": "#/components/schemas/YearUpdate"
-					}
-				},
-				"required": [
-					"year"
-				],
-				"type": "object",
-				"additionalProperties": false
-			}
-		},
-		"securitySchemes": {
-			"ksi": {
-				"type": "oauth2",
-				"flows": {
-					"implicit": {
-						"authorizationUrl": "https://ksi.fi.muni.cz/login/",
-						"scopes": {}
-					}
-				}
-			}
-		}
-	},
-	"info": {
-		"title": "web-backend-swagger",
-		"version": "1.0.0",
-		"license": {
-			"name": "MIT"
-		},
-		"contact": {
-			"name": "KSI"
-		}
-	},
-	"openapi": "3.0.0",
-	"paths": {
-		"/achievements": {
-			"get": {
-				"operationId": "AchievementsGetAll",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/AchievementsResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [],
-				"parameters": [
-					{
-						"in": "query",
-						"name": "_limit",
-						"required": false,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					},
-					{
-						"in": "query",
-						"name": "_start",
-						"required": false,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					},
-					{
-						"in": "header",
-						"name": "achievement",
-						"required": false,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					},
-					{
-						"in": "header",
-						"name": "year",
-						"required": false,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			},
-			"post": {
-				"operationId": "AchievementsCreateNew",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/AchievementCreationRequest"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/AchievementCreationRequest"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/achievements/{achievementId}": {
-			"get": {
-				"operationId": "AchievementsGetSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/AchievementResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "achievementId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			},
-			"put": {
-				"operationId": "AchievementsEditSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/AchievementResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "achievementId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/AchievementCreationRequest"
-							}
-						}
-					}
-				}
-			},
-			"delete": {
-				"operationId": "AchievementsDeleteSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/EmptyDict"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "achievementId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			}
-		},
-		"/articles": {
-			"get": {
-				"operationId": "ArticlesGetAll",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/ArticlesResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "query",
-						"name": "_limit",
-						"required": false,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					},
-					{
-						"in": "query",
-						"name": "_start",
-						"required": false,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					},
-					{
-						"in": "header",
-						"name": "article",
-						"required": false,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					},
-					{
-						"in": "header",
-						"name": "year",
-						"required": false,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			},
-			"post": {
-				"operationId": "ArticlesCreateNew",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/ArticleCreationRequest"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/ArticleCreationRequest"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/articles/{articleId}": {
-			"get": {
-				"operationId": "ArticlesGetSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/ArticleResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "articleId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			},
-			"put": {
-				"operationId": "ArticlesEditSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/ArticleResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "articleId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/ArticleCreationRequest"
-							}
-						}
-					}
-				}
-			},
-			"delete": {
-				"operationId": "ArticlesDeleteSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/EmptyDict"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "articleId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			}
-		},
-		"/auth": {
-			"post": {
-				"operationId": "Authorize",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/AuthResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"multipart/form-data": {
-							"schema": {
-								"type": "object",
-								"properties": {
-									"grant_type": {
-										"type": "string"
-									},
-									"username": {
-										"type": "string"
-									},
-									"password": {
-										"type": "string"
-									},
-									"refresh_token": {
-										"type": "string"
-									}
-								},
-								"required": [
-									"grant_type"
-								]
-							}
-						}
-					}
-				}
-			}
-		},
-		"/basicProfile": {
-			"get": {
-				"operationId": "BasicProfileGetSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/BasicProfileResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": []
-			}
-		},
-		"/content": {
-			"post": {
-				"operationId": "ContentsCreateNew",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/EmptyDict"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "query",
-						"name": "path",
-						"required": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"multipart/form-data": {
-							"schema": {
-								"type": "object",
-								"properties": {
-									"files": {
-										"items": {
-											"type": "string",
-											"format": "binary"
-										},
-										"type": "array"
-									}
-								},
-								"required": [
-									"files"
-								]
-							}
-						}
-					}
-				}
-			},
-			"get": {
-				"operationId": "ContentsGetSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"anyOf": [
-										{
-											"$ref": "#/components/schemas/Uint8Array"
-										},
-										{
-											"$ref": "#/components/schemas/DirContentResponse"
-										}
-									]
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "query",
-						"name": "path",
-						"required": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				]
-			},
-			"delete": {
-				"operationId": "ContentsDeleteSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/EmptyDict"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "query",
-						"name": "path",
-						"required": false,
-						"schema": {
-							"type": "string"
-						}
-					}
-				]
-			}
-		},
-		"/feedback": {
-			"post": {
-				"operationId": "SendEmailWithFeedback",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/FeedbackResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/FeedbackRequest"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/feedbacks": {
-			"post": {
-				"operationId": "FeedbackCreateNew",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/FeedbackCreationRequest"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/FeedbackCreationRequest"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/feedbacks/{feedbackId}": {
-			"get": {
-				"operationId": "FeedbackGetSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/FeedbacksResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "feedbackId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			},
-			"put": {
-				"operationId": "FeedbackEditSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/FeedbacksResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "feedbackId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/FeedbackUpdateRequest"
-							}
-						}
-					}
-				}
-			},
-			"delete": {
-				"operationId": "FeedbackDeleteSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/EmptyDict"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "feedbackId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			}
-		},
-		"/forgottenPassword": {
-			"post": {
-				"operationId": "ForgottenPasswordReset",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/ForgottenPasswordResult"
-								}
-							}
-						}
-					}
-				},
-				"security": [],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/ForgottenPasswordRequest"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/images/{context}/{imagesId}": {
-			"get": {
-				"operationId": "ImagesGetSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/Uint8Array"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "context",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"in": "path",
-						"name": "imagesId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					},
-					{
-						"in": "query",
-						"name": "file",
-						"required": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"in": "query",
-						"name": "module",
-						"required": false,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					},
-					{
-						"in": "query",
-						"name": "user",
-						"required": false,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			}
-		},
-		"/logout": {
-			"get": {
-				"operationId": "SendEmailWithFeedback",
-				"responses": {
-					"204": {
-						"description": "No content"
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": []
-			}
-		},
-		"/modules/{modulesId}": {
-			"get": {
-				"operationId": "ModulesGetSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/ModuleResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "modulesId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			}
-		},
-		"/modules/{modulesId}/submit": {
-			"post": {
-				"operationId": "ModulesSubmitSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/ModuleSubmitResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "modulesId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				],
-				"requestBody": {
-					"required": false,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/ModuleSubmissionRequest"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/posts": {
-			"post": {
-				"operationId": "PostsCreateNew",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/PostsCreationRequest"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/PostsCreationRequest"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/posts/{postsId}": {
-			"get": {
-				"operationId": "PostsGetSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/PostResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "postsId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			},
-			"put": {
-				"operationId": "PostsEditSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/PostResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "postsId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/PostsEditRequest"
-							}
-						}
-					}
-				}
-			},
-			"delete": {
-				"operationId": "PostsDeleteSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/EmptyDict"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "postsId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			}
-		},
-		"/profile": {
-			"get": {
-				"operationId": "ProfileGetMy",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/ProfileResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": []
-			},
-			"put": {
-				"operationId": "ProfileEditMy",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/ProfileResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/ProfileEdit"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/profile/{profileId}": {
-			"get": {
-				"operationId": "ProfileGetSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/ProfileResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "profileId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			}
-		},
-		"/profile/picture": {
-			"post": {
-				"operationId": "ProfileUploadPicture",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/EmptyDict"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"multipart/form-data": {
-							"schema": {
-								"type": "object",
-								"properties": {
-									"file": {
-										"type": "string",
-										"format": "binary"
-									}
-								},
-								"required": [
-									"file"
-								]
-							}
-						}
-					}
-				}
-			}
-		},
-		"/registration": {
-			"post": {
-				"operationId": "RegisterNewUser",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/EmptyDict"
-								}
-							}
-						}
-					}
-				},
-				"security": [],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/RegistrationRequest"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/runCode/{moduleId}/submit": {
-			"post": {
-				"operationId": "RunCode",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/RunCodeResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "moduleId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/RunCodeRequest"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/settings/changePassword": {
-			"post": {
-				"operationId": "ForgottenPasswordReset",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/ChangePasswordResult"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/ChangePasswordRequest"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/submFiles/{submFileId}": {
-			"get": {
-				"operationId": "SubmFilesGetSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/Uint8Array"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "submFileId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			},
-			"delete": {
-				"operationId": "SubFilesDeleteSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/EmptyDict"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "submFileId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			}
-		},
-		"/task-content/{contentId}/{view}": {
-			"get": {
-				"operationId": "TaskContentGetSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/Uint8Array"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "view",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"in": "path",
-						"name": "contentId",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					}
-				]
-			}
-		},
-		"/taskContent/{contentId}/{view}": {
-			"get": {
-				"operationId": "TaskContent2GetSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/Uint8Array"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "view",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"in": "path",
-						"name": "contentId",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					}
-				]
-			}
-		},
-		"/task-details/{taskDetailsId}": {
-			"get": {
-				"operationId": "TaskDetailsGetSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/TaskDetailResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "taskDetailsId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			}
-		},
-		"/tasks": {
-			"get": {
-				"operationId": "TasksGetAll",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/TasksResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "header",
-						"name": "year",
-						"required": false,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			}
-		},
-		"/tasks/{tasksId}": {
-			"get": {
-				"operationId": "TasksGetSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/TaskResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "tasksId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			}
-		},
-		"/threadDetails/{threadDetailsId}": {
-			"get": {
-				"operationId": "ThreadDetailsGetSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/ThreadDetailResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "threadDetailsId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			}
-		},
-		"/threads": {
-			"get": {
-				"operationId": "ThreadsGetAll",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/ThreadsResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "query",
-						"name": "_wave",
-						"required": false,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					},
-					{
-						"in": "header",
-						"name": "year",
-						"required": false,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			},
-			"post": {
-				"operationId": "ThreadsCreateNew",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/ThreadResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/ThreadsCreationRequest"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/threads/{threadsId}": {
-			"get": {
-				"operationId": "ThreadsGetSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/ThreadResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "threadsId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			},
-			"put": {
-				"operationId": "ThreadsMarkVisited",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/EmptyDict"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "threadsId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			}
-		},
-		"/users": {
-			"get": {
-				"operationId": "UsersGetAll",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/UsersResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "query",
-						"name": "filter",
-						"required": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"in": "query",
-						"name": "sort",
-						"required": false,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"in": "header",
-						"name": "year",
-						"required": false,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			}
-		},
-		"/users/{usersId}": {
-			"get": {
-				"operationId": "UsersGetSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/UserResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "usersId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			},
-			"delete": {
-				"operationId": "UsersDeleteSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/EmptyDict"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "usersId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			}
-		},
-		"/waves": {
-			"get": {
-				"operationId": "WavesGetAll",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/Waves"
-								}
-							}
-						}
-					}
-				},
-				"security": [],
-				"parameters": [
-					{
-						"in": "header",
-						"name": "year",
-						"required": false,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			},
-			"post": {
-				"operationId": "WavesCreateNew",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/WaveResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/WaveCreationRequest"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/waves/{waveId}": {
-			"get": {
-				"operationId": "WavesGetSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/WaveResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "waveId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			},
-			"put": {
-				"operationId": "WavesUpdateSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/WaveResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "waveId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/WaveUpdateRequest"
-							}
-						}
-					}
-				}
-			},
-			"delete": {
-				"operationId": "WavesDeleteSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/EmptyDict"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "waveId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			}
-		},
-		"/years": {
-			"get": {
-				"operationId": "YearsGetAll",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/Years"
-								}
-							}
-						}
-					}
-				},
-				"security": [],
-				"parameters": []
-			},
-			"post": {
-				"operationId": "YearsCreateNew",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/YearResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/YearCreationRequest"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/years/{yearId}": {
-			"get": {
-				"operationId": "YearsGetSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/YearResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "yearId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			},
-			"put": {
-				"operationId": "YearsUpdateSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/YearResponse"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "yearId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/YearUpdateRequest"
-							}
-						}
-					}
-				}
-			},
-			"delete": {
-				"operationId": "YearsDeleteSingle",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/EmptyDict"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"ksi": []
-					}
-				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "yearId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			}
-		}
-	},
-	"servers": [
-		{
-			"url": "/"
-		}
-	]
+  "components": {
+    "examples": {},
+    "headers": {},
+    "parameters": {},
+    "requestBodies": {},
+    "responses": {},
+    "schemas": {
+      "Achievement": {
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "picture": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "year": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "required": [
+          "title",
+          "picture",
+          "description",
+          "year"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AchievementsResponse": {
+        "properties": {
+          "achievements": {
+            "items": {
+              "$ref": "#/components/schemas/Achievement"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "achievements"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AchievementCreation": {
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "picture": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "persistent": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "title",
+          "picture",
+          "description",
+          "persistent"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AchievementCreationRequest": {
+        "properties": {
+          "achievement": {
+            "$ref": "#/components/schemas/AchievementCreation"
+          }
+        },
+        "required": [
+          "achievement"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AchievementResponse": {
+        "properties": {
+          "achievement": {
+            "$ref": "#/components/schemas/Achievement"
+          }
+        },
+        "required": [
+          "achievement"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "EmptyDict": {
+        "properties": {},
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Article": {
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "published": {
+            "type": "boolean"
+          },
+          "year": {
+            "type": "number",
+            "format": "double"
+          },
+          "time_published": {
+            "type": "string"
+          },
+          "picture": {
+            "type": "string"
+          },
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "author": {
+            "type": "number",
+            "format": "double"
+          },
+          "resource": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "body",
+          "published",
+          "year",
+          "time_published",
+          "picture",
+          "id",
+          "author",
+          "resource"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "DirContent": {
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "files": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "dirs": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "files",
+          "dirs"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ArticlesResponse": {
+        "properties": {
+          "articles": {
+            "items": {
+              "$ref": "#/components/schemas/Article"
+            },
+            "type": "array"
+          },
+          "contents": {
+            "items": {
+              "$ref": "#/components/schemas/DirContent"
+            },
+            "type": "array"
+          },
+          "meta": {
+            "properties": {
+              "total": {
+                "type": "number",
+                "format": "double"
+              }
+            },
+            "required": [
+              "total"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "articles",
+          "contents",
+          "meta"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ArticleCreation": {
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "published": {
+            "type": "boolean"
+          },
+          "year": {
+            "type": "number",
+            "format": "double"
+          },
+          "time_published": {
+            "type": "string"
+          },
+          "picture": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "body",
+          "published",
+          "year",
+          "time_published",
+          "picture"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ArticleCreationRequest": {
+        "properties": {
+          "article": {
+            "$ref": "#/components/schemas/ArticleCreation"
+          }
+        },
+        "required": [
+          "article"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ArticleResponse": {
+        "properties": {
+          "article": {
+            "$ref": "#/components/schemas/Article"
+          },
+          "contents": {
+            "items": {
+              "$ref": "#/components/schemas/DirContent"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "article",
+          "contents"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AuthResponse": {
+        "properties": {
+          "access_token": {
+            "type": "string"
+          },
+          "expires_in": {
+            "type": "number",
+            "format": "double"
+          },
+          "refresh_token": {
+            "type": "string"
+          },
+          "token_type": {
+            "type": "string",
+            "enum": [
+              "Bearer"
+            ],
+            "nullable": false
+          }
+        },
+        "required": [
+          "access_token",
+          "expires_in",
+          "refresh_token",
+          "token_type"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "UserRole": {
+        "type": "string",
+        "enum": [
+          "admin",
+          "org",
+          "tester",
+          "participant",
+          "participant_hidden"
+        ]
+      },
+      "BasicProfileResponse": {
+        "properties": {
+          "basicProfile": {
+            "properties": {
+              "role": {
+                "$ref": "#/components/schemas/UserRole"
+              },
+              "gender": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "short_info": {
+                "type": "string"
+              },
+              "profile_picture": {
+                "type": "number",
+                "format": "double"
+              },
+              "nick_name": {
+                "type": "string"
+              },
+              "last_name": {
+                "type": "string"
+              },
+              "first_name": {
+                "type": "string"
+              },
+              "signed_in": {
+                "type": "boolean",
+                "enum": [
+                  "true"
+                ],
+                "nullable": false
+              },
+              "id": {
+                "type": "number",
+                "format": "double"
+              }
+            },
+            "required": [
+              "role",
+              "gender",
+              "email",
+              "short_info",
+              "profile_picture",
+              "nick_name",
+              "last_name",
+              "first_name",
+              "signed_in",
+              "id"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "basicProfile"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Uint8Array": {
+        "description": "A typed array of 8-bit unsigned integer values. The contents are initialized to 0. If the\r\nrequested number of bytes could not be allocated an exception is raised.",
+        "properties": {},
+        "type": "object",
+        "additionalProperties": false
+      },
+      "DirContentResponse": {
+        "properties": {
+          "content": {
+            "$ref": "#/components/schemas/DirContent"
+          }
+        },
+        "required": [
+          "content"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "FeedbackResponse": {
+        "properties": {
+          "result": {
+            "type": "string",
+            "enum": [
+              "ok"
+            ],
+            "nullable": false
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "FeedbackRequest": {
+        "properties": {
+          "body": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "body"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Category": {
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "ftype": {
+            "type": "string",
+            "enum": [
+              "stars",
+              "line",
+              "text_large"
+            ]
+          },
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "answer",
+          "ftype",
+          "text"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "FeedbackCreation": {
+        "properties": {
+          "categories": {
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            },
+            "type": "array"
+          },
+          "taskId": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": [
+          "categories",
+          "taskId"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "FeedbackCreationRequest": {
+        "properties": {
+          "feedback": {
+            "$ref": "#/components/schemas/FeedbackCreation"
+          }
+        },
+        "required": [
+          "feedback"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Feedback": {
+        "properties": {
+          "categories": {
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            },
+            "type": "array"
+          },
+          "taskId": {
+            "type": "number",
+            "format": "double"
+          },
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "userId": {
+            "type": "number",
+            "format": "double"
+          },
+          "lastUpdated": {
+            "type": "string"
+          },
+          "filled": {
+            "type": "boolean",
+            "enum": [
+              "true"
+            ],
+            "nullable": false
+          }
+        },
+        "required": [
+          "categories",
+          "taskId",
+          "id",
+          "userId",
+          "lastUpdated",
+          "filled"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "FeedbacksResponse": {
+        "properties": {
+          "feedback": {
+            "$ref": "#/components/schemas/Feedback"
+          }
+        },
+        "required": [
+          "feedback"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "FeedbackUpdate": {
+        "properties": {
+          "categories": {
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "categories"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "FeedbackUpdateRequest": {
+        "properties": {
+          "feedback": {
+            "$ref": "#/components/schemas/FeedbackUpdate"
+          }
+        },
+        "required": [
+          "feedback"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ForgottenPasswordResult": {
+        "properties": {
+          "result": {
+            "type": "string",
+            "enum": [
+              "ok"
+            ],
+            "nullable": false
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ForgottenPasswordRequest": {
+        "properties": {
+          "email": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ModuleProgramming": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "general",
+              "programming",
+              "quiz",
+              "sortable",
+              "text"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "autocorrect": {
+            "type": "boolean"
+          },
+          "max_score": {
+            "type": "number",
+            "format": "double"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "correct",
+              "incorrect",
+              "blank"
+            ]
+          },
+          "score": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "code": {
+            "type": "string"
+          },
+          "default_code": {
+            "type": "string"
+          },
+          "last_time": {
+            "type": "string"
+          },
+          "last_origin": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "name",
+          "description",
+          "autocorrect",
+          "max_score",
+          "state",
+          "score",
+          "code",
+          "default_code"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ModuleQuiz": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "general",
+              "programming",
+              "quiz",
+              "sortable",
+              "text"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "autocorrect": {
+            "type": "boolean"
+          },
+          "max_score": {
+            "type": "number",
+            "format": "double"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "correct",
+              "incorrect",
+              "blank"
+            ]
+          },
+          "score": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "questions": {
+            "items": {
+              "properties": {
+                "options": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "question": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "radio",
+                    "checkbox"
+                  ]
+                }
+              },
+              "required": [
+                "options",
+                "text",
+                "question",
+                "type"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "name",
+          "description",
+          "autocorrect",
+          "max_score",
+          "state",
+          "score",
+          "questions"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "SortableItem": {
+        "properties": {
+          "content": {
+            "type": "string"
+          },
+          "offset": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": [
+          "content",
+          "offset"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ModuleSortable": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "general",
+              "programming",
+              "quiz",
+              "sortable",
+              "text"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "autocorrect": {
+            "type": "boolean"
+          },
+          "max_score": {
+            "type": "number",
+            "format": "double"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "correct",
+              "incorrect",
+              "blank"
+            ]
+          },
+          "score": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "sortable_list": {
+            "properties": {
+              "movable": {
+                "items": {
+                  "$ref": "#/components/schemas/SortableItem"
+                },
+                "type": "array"
+              },
+              "fixed": {
+                "items": {
+                  "$ref": "#/components/schemas/SortableItem"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "movable",
+              "fixed"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "name",
+          "description",
+          "autocorrect",
+          "max_score",
+          "state",
+          "score",
+          "sortable_list"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ModuleGeneral": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "general",
+              "programming",
+              "quiz",
+              "sortable",
+              "text"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "autocorrect": {
+            "type": "boolean"
+          },
+          "max_score": {
+            "type": "number",
+            "format": "double"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "correct",
+              "incorrect",
+              "blank"
+            ]
+          },
+          "score": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "submitted_files": {
+            "items": {
+              "properties": {
+                "filename": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "number",
+                  "format": "double"
+                }
+              },
+              "required": [
+                "filename",
+                "id"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "name",
+          "description",
+          "autocorrect",
+          "max_score",
+          "state",
+          "score",
+          "submitted_files"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ModuleText": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "general",
+              "programming",
+              "quiz",
+              "sortable",
+              "text"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "autocorrect": {
+            "type": "boolean"
+          },
+          "max_score": {
+            "type": "number",
+            "format": "double"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "correct",
+              "incorrect",
+              "blank"
+            ]
+          },
+          "score": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "name",
+          "description",
+          "autocorrect",
+          "max_score",
+          "state",
+          "score",
+          "fields"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "KSIModule": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/ModuleProgramming"
+          },
+          {
+            "$ref": "#/components/schemas/ModuleQuiz"
+          },
+          {
+            "$ref": "#/components/schemas/ModuleSortable"
+          },
+          {
+            "$ref": "#/components/schemas/ModuleGeneral"
+          },
+          {
+            "$ref": "#/components/schemas/ModuleText"
+          }
+        ]
+      },
+      "ModuleResponse": {
+        "properties": {
+          "module": {
+            "$ref": "#/components/schemas/KSIModule"
+          }
+        },
+        "required": [
+          "module"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ModuleSubmitResponse": {
+        "properties": {
+          "result": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "error",
+              "nok"
+            ]
+          },
+          "report": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ModuleSubmissionData": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          {
+            "items": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "type": "array"
+          }
+        ]
+      },
+      "ModuleSubmissionRequest": {
+        "properties": {
+          "content": {
+            "$ref": "#/components/schemas/ModuleSubmissionData"
+          }
+        },
+        "required": [
+          "content"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "PostsCreation": {
+        "properties": {
+          "body": {
+            "type": "string"
+          },
+          "thread": {
+            "type": "number",
+            "format": "double"
+          },
+          "parent": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": [
+          "body",
+          "thread"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "PostsCreationRequest": {
+        "properties": {
+          "post": {
+            "$ref": "#/components/schemas/PostsCreation"
+          }
+        },
+        "required": [
+          "post"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Post": {
+        "properties": {
+          "author": {
+            "type": "number",
+            "format": "double"
+          },
+          "body": {
+            "type": "string"
+          },
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "thread": {
+            "type": "number",
+            "format": "double"
+          },
+          "published_at": {
+            "type": "string"
+          },
+          "reaction": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          },
+          "is_new": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "author",
+          "body",
+          "id",
+          "thread",
+          "published_at",
+          "reaction",
+          "is_new"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "PostResponse": {
+        "properties": {
+          "post": {
+            "$ref": "#/components/schemas/Post"
+          }
+        },
+        "required": [
+          "post"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "PostEdit": {
+        "properties": {
+          "author": {
+            "type": "number",
+            "format": "double"
+          },
+          "body": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "author",
+          "body"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "PostsEditRequest": {
+        "properties": {
+          "post": {
+            "$ref": "#/components/schemas/PostEdit"
+          }
+        },
+        "required": [
+          "post"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Profile": {
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "nick_name": {
+            "type": "string"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "short_info": {
+            "type": "string"
+          },
+          "addr_street": {
+            "type": "string"
+          },
+          "addr_city": {
+            "type": "string"
+          },
+          "addr_zip": {
+            "type": "string"
+          },
+          "addr_country": {
+            "type": "string"
+          },
+          "school_name": {
+            "type": "string"
+          },
+          "school_street": {
+            "type": "string"
+          },
+          "school_city": {
+            "type": "string"
+          },
+          "school_zip": {
+            "type": "string"
+          },
+          "school_country": {
+            "type": "string"
+          },
+          "school_finish": {
+            "type": "number",
+            "format": "double"
+          },
+          "tshirt_size": {
+            "type": "string"
+          },
+          "notify_eval": {
+            "type": "boolean"
+          },
+          "notify_response": {
+            "type": "boolean"
+          },
+          "notify_ksi": {
+            "type": "boolean"
+          },
+          "notify_events": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "author": {
+            "type": "number",
+            "format": "double"
+          },
+          "resource": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "first_name",
+          "last_name",
+          "gender",
+          "short_info",
+          "addr_street",
+          "addr_city",
+          "addr_zip",
+          "addr_country",
+          "school_name",
+          "school_street",
+          "school_city",
+          "school_zip",
+          "school_country",
+          "school_finish",
+          "tshirt_size",
+          "id",
+          "author",
+          "resource"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Task": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "title": {
+            "type": "string"
+          },
+          "author": {
+            "type": "number",
+            "format": "double"
+          },
+          "co_author": {
+            "type": "number",
+            "format": "double"
+          },
+          "details": {
+            "type": "number",
+            "format": "double"
+          },
+          "intro": {
+            "type": "string"
+          },
+          "max_score": {
+            "type": "number",
+            "format": "double"
+          },
+          "time_published": {
+            "type": "string"
+          },
+          "time_deadline": {
+            "type": "string",
+            "nullable": true
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "locked",
+              "base",
+              "correcting",
+              "done"
+            ]
+          },
+          "picture_base": {
+            "type": "string"
+          },
+          "picture_suffix": {
+            "type": "string",
+            "enum": [
+              ".svg"
+            ],
+            "nullable": false
+          },
+          "wave": {
+            "type": "number",
+            "format": "double"
+          },
+          "feedbacks": {
+            "type": "number",
+            "format": "double"
+          },
+          "prerequisities": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number",
+                  "format": "double"
+                },
+                "type": "array"
+              },
+              {
+                "items": {
+                  "items": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "type": "array"
+                },
+                "type": "array"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "author",
+          "co_author",
+          "details",
+          "intro",
+          "max_score",
+          "time_published",
+          "time_deadline",
+          "state",
+          "picture_base",
+          "picture_suffix",
+          "wave",
+          "feedbacks",
+          "prerequisities"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "TaskScore": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "task": {
+            "type": "number",
+            "format": "double"
+          },
+          "achievements": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          },
+          "score": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "required": [
+          "id",
+          "task",
+          "achievements",
+          "score"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ProfileResponse": {
+        "properties": {
+          "profile": {
+            "$ref": "#/components/schemas/Profile"
+          },
+          "tasks": {
+            "items": {
+              "$ref": "#/components/schemas/Task"
+            },
+            "type": "array"
+          },
+          "taskScores": {
+            "items": {
+              "$ref": "#/components/schemas/TaskScore"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "profile",
+          "tasks",
+          "taskScores"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ProfileEdit": {
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "nick_name": {
+            "type": "string"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "short_info": {
+            "type": "string"
+          },
+          "addr_street": {
+            "type": "string"
+          },
+          "addr_city": {
+            "type": "string"
+          },
+          "addr_zip": {
+            "type": "string"
+          },
+          "addr_country": {
+            "type": "string"
+          },
+          "school_name": {
+            "type": "string"
+          },
+          "school_street": {
+            "type": "string"
+          },
+          "school_city": {
+            "type": "string"
+          },
+          "school_zip": {
+            "type": "string"
+          },
+          "school_country": {
+            "type": "string"
+          },
+          "school_finish": {
+            "type": "number",
+            "format": "double"
+          },
+          "tshirt_size": {
+            "type": "string"
+          },
+          "notify_eval": {
+            "type": "boolean"
+          },
+          "notify_response": {
+            "type": "boolean"
+          },
+          "notify_ksi": {
+            "type": "boolean"
+          },
+          "notify_events": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "email",
+          "first_name",
+          "last_name",
+          "gender",
+          "short_info",
+          "addr_street",
+          "addr_city",
+          "addr_zip",
+          "addr_country",
+          "school_name",
+          "school_street",
+          "school_city",
+          "school_zip",
+          "school_country",
+          "school_finish",
+          "tshirt_size"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "RegistrationRequest": {
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "nick_name": {
+            "type": "string"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "short_info": {
+            "type": "string"
+          },
+          "addr_street": {
+            "type": "string"
+          },
+          "addr_city": {
+            "type": "string"
+          },
+          "addr_zip": {
+            "type": "string"
+          },
+          "addr_country": {
+            "type": "string"
+          },
+          "school_name": {
+            "type": "string"
+          },
+          "school_street": {
+            "type": "string"
+          },
+          "school_city": {
+            "type": "string"
+          },
+          "school_zip": {
+            "type": "string"
+          },
+          "school_country": {
+            "type": "string"
+          },
+          "school_finish": {
+            "type": "number",
+            "format": "double"
+          },
+          "tshirt_size": {
+            "type": "string"
+          },
+          "notify_eval": {
+            "type": "boolean"
+          },
+          "notify_response": {
+            "type": "boolean"
+          },
+          "notify_ksi": {
+            "type": "boolean"
+          },
+          "notify_events": {
+            "type": "boolean"
+          },
+          "password": {
+            "type": "string"
+          },
+          "referral": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "first_name",
+          "last_name",
+          "gender",
+          "short_info",
+          "addr_street",
+          "addr_city",
+          "addr_zip",
+          "addr_country",
+          "school_name",
+          "school_street",
+          "school_city",
+          "school_zip",
+          "school_country",
+          "school_finish",
+          "tshirt_size",
+          "password",
+          "referral"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "RunCodeResponse": {
+        "properties": {
+          "report": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "stdout": {
+            "type": "string"
+          },
+          "result": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "error"
+            ]
+          }
+        },
+        "required": [
+          "stdout",
+          "result"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "RunCodeRequest": {
+        "properties": {
+          "content": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "content"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ChangePasswordResult": {
+        "properties": {
+          "result": {
+            "type": "string",
+            "enum": [
+              "ok"
+            ],
+            "nullable": false
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ChangePasswordRequest": {
+        "properties": {
+          "old_password": {
+            "type": "string"
+          },
+          "new_password": {
+            "type": "string"
+          },
+          "new_password2": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "old_password",
+          "new_password",
+          "new_password2"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "TaskDetails": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "body": {
+            "type": "string"
+          },
+          "thread": {
+            "type": "number",
+            "format": "double"
+          },
+          "modules": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          },
+          "best_scores": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          },
+          "comment": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "solution": {
+            "type": "string"
+          },
+          "achievements": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "body",
+          "thread",
+          "modules",
+          "best_scores",
+          "comment",
+          "solution",
+          "achievements"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ModuleScore": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "is_corrected": {
+            "type": "boolean"
+          },
+          "score": {
+            "type": "number",
+            "format": "double"
+          },
+          "reviewed_by": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": [
+          "id",
+          "is_corrected",
+          "score",
+          "reviewed_by"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "UserScore": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "user": {
+            "type": "number",
+            "format": "double"
+          },
+          "score": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": [
+          "id",
+          "user",
+          "score"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Thread": {
+        "properties": {
+          "public": {
+            "type": "boolean"
+          },
+          "title": {
+            "type": "string"
+          },
+          "year": {
+            "type": "number",
+            "format": "double"
+          },
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "unread": {
+            "type": "number",
+            "format": "double"
+          },
+          "posts_count": {
+            "type": "number",
+            "format": "double"
+          },
+          "details": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": [
+          "public",
+          "title",
+          "year",
+          "id",
+          "unread",
+          "posts_count",
+          "details"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ThreadDetail": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "root_posts": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "root_posts"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "TaskDetailResponse": {
+        "properties": {
+          "taskDetails": {
+            "$ref": "#/components/schemas/TaskDetails"
+          },
+          "achievements": {
+            "items": {
+              "$ref": "#/components/schemas/Achievement"
+            },
+            "type": "array"
+          },
+          "posts": {
+            "items": {
+              "$ref": "#/components/schemas/Post"
+            },
+            "type": "array"
+          },
+          "modules": {
+            "items": {
+              "$ref": "#/components/schemas/KSIModule"
+            },
+            "type": "array"
+          },
+          "moduleScores": {
+            "items": {
+              "$ref": "#/components/schemas/ModuleScore"
+            },
+            "type": "array"
+          },
+          "userScores": {
+            "items": {
+              "$ref": "#/components/schemas/UserScore"
+            },
+            "type": "array"
+          },
+          "threads": {
+            "items": {
+              "$ref": "#/components/schemas/Thread"
+            },
+            "type": "array"
+          },
+          "threadDetails": {
+            "items": {
+              "$ref": "#/components/schemas/ThreadDetail"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "taskDetails",
+          "achievements",
+          "posts",
+          "modules",
+          "moduleScores",
+          "userScores",
+          "threads",
+          "threadDetails"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "TasksResponse": {
+        "properties": {
+          "tasks": {
+            "items": {
+              "$ref": "#/components/schemas/Task"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "tasks"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "TaskResponse": {
+        "properties": {
+          "task": {
+            "$ref": "#/components/schemas/Task"
+          }
+        },
+        "required": [
+          "task"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ThreadDetailResponse": {
+        "properties": {
+          "threadDetails": {
+            "$ref": "#/components/schemas/ThreadDetail"
+          },
+          "posts": {
+            "items": {
+              "$ref": "#/components/schemas/Post"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "threadDetails",
+          "posts"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ThreadsResponse": {
+        "properties": {
+          "threads": {
+            "items": {
+              "$ref": "#/components/schemas/Thread"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "threads"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ThreadResponse": {
+        "properties": {
+          "thread": {
+            "$ref": "#/components/schemas/Thread"
+          }
+        },
+        "required": [
+          "thread"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ThreadCreation": {
+        "properties": {
+          "public": {
+            "type": "boolean"
+          },
+          "title": {
+            "type": "string"
+          },
+          "year": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": [
+          "public",
+          "title",
+          "year"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ThreadsCreationRequest": {
+        "properties": {
+          "thread": {
+            "$ref": "#/components/schemas/ThreadCreation"
+          }
+        },
+        "required": [
+          "thread"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "User": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "profile_picture": {
+            "type": "string",
+            "nullable": true
+          },
+          "gender": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "role": {
+            "$ref": "#/components/schemas/UserRole"
+          },
+          "score": {
+            "type": "number",
+            "format": "double"
+          },
+          "tasks_num": {
+            "type": "number",
+            "format": "double"
+          },
+          "achievements": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "nick_name": {
+            "type": "string"
+          },
+          "addr_country": {
+            "type": "string"
+          },
+          "school_name": {
+            "type": "string"
+          },
+          "seasons": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          },
+          "successful": {
+            "type": "boolean"
+          },
+          "cheat": {
+            "type": "boolean"
+          },
+          "tasks": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          },
+          "co_tasks": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          },
+          "short_info": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "first_name",
+          "last_name",
+          "profile_picture",
+          "gender",
+          "role",
+          "score",
+          "tasks_num",
+          "achievements",
+          "enabled",
+          "nick_name"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "UsersResponse": {
+        "properties": {
+          "users": {
+            "items": {
+              "$ref": "#/components/schemas/User"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "users"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "UserResponse": {
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "required": [
+          "user"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Wave": {
+        "properties": {
+          "index": {
+            "type": "number",
+            "format": "double"
+          },
+          "caption": {
+            "type": "string",
+            "nullable": true
+          },
+          "garant": {
+            "type": "number",
+            "format": "double"
+          },
+          "time_published": {
+            "type": "string",
+            "nullable": true
+          },
+          "year": {
+            "type": "number",
+            "format": "double"
+          },
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "public": {
+            "type": "boolean"
+          },
+          "sum_points": {
+            "type": "number",
+            "format": "double"
+          },
+          "task_cnt": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": [
+          "index",
+          "caption",
+          "garant",
+          "year",
+          "id",
+          "public",
+          "sum_points",
+          "task_cnt"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Waves": {
+        "properties": {
+          "waves": {
+            "items": {
+              "$ref": "#/components/schemas/Wave"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "waves"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "WaveResponse": {
+        "properties": {
+          "wave": {
+            "$ref": "#/components/schemas/Wave"
+          }
+        },
+        "required": [
+          "wave"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "WaveCreate": {
+        "properties": {
+          "index": {
+            "type": "number",
+            "format": "double"
+          },
+          "caption": {
+            "type": "string",
+            "nullable": true
+          },
+          "garant": {
+            "type": "number",
+            "format": "double"
+          },
+          "time_published": {
+            "type": "string",
+            "nullable": true
+          },
+          "year": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": [
+          "index",
+          "caption",
+          "garant",
+          "year"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "WaveCreationRequest": {
+        "properties": {
+          "wave": {
+            "$ref": "#/components/schemas/WaveCreate"
+          }
+        },
+        "required": [
+          "wave"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "WaveBase": {
+        "properties": {
+          "index": {
+            "type": "number",
+            "format": "double"
+          },
+          "caption": {
+            "type": "string",
+            "nullable": true
+          },
+          "garant": {
+            "type": "number",
+            "format": "double"
+          },
+          "time_published": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "required": [
+          "index",
+          "caption",
+          "garant"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "WaveUpdateRequest": {
+        "properties": {
+          "wave": {
+            "$ref": "#/components/schemas/WaveBase"
+          }
+        },
+        "required": [
+          "wave"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Year": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "year": {
+            "type": "string"
+          },
+          "sealed": {
+            "type": "boolean"
+          },
+          "point_pad": {
+            "type": "number",
+            "format": "double"
+          },
+          "active_orgs": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          },
+          "sum_points": {
+            "type": "number",
+            "format": "double"
+          },
+          "tasks_cnt": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": [
+          "id",
+          "year",
+          "sealed",
+          "point_pad",
+          "sum_points",
+          "tasks_cnt"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Years": {
+        "properties": {
+          "years": {
+            "items": {
+              "$ref": "#/components/schemas/Year"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "years"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "YearResponse": {
+        "properties": {
+          "year": {
+            "$ref": "#/components/schemas/Year"
+          }
+        },
+        "required": [
+          "year"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "YearBase": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "year": {
+            "type": "string"
+          },
+          "sealed": {
+            "type": "boolean"
+          },
+          "point_pad": {
+            "type": "number",
+            "format": "double"
+          },
+          "active_orgs": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "year",
+          "sealed",
+          "point_pad"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "YearCreationRequest": {
+        "properties": {
+          "year": {
+            "$ref": "#/components/schemas/YearBase"
+          }
+        },
+        "required": [
+          "year"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "YearUpdate": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "year": {
+            "type": "string"
+          },
+          "sealed": {
+            "type": "boolean"
+          },
+          "point_pad": {
+            "type": "number",
+            "format": "double"
+          },
+          "active_orgs": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "year",
+          "sealed",
+          "point_pad",
+          "active_orgs"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "YearUpdateRequest": {
+        "properties": {
+          "year": {
+            "$ref": "#/components/schemas/YearUpdate"
+          }
+        },
+        "required": [
+          "year"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "ksi": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://ksi.fi.muni.cz/login/",
+            "scopes": {}
+          }
+        }
+      }
+    }
+  },
+  "info": {
+    "title": "web-backend-swagger",
+    "version": "1.0.0",
+    "license": {
+      "name": "MIT"
+    },
+    "contact": {
+      "name": "KSI"
+    }
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/achievements": {
+      "get": {
+        "operationId": "AchievementsGetAll",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AchievementsResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "_limit",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "_start",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "header",
+            "name": "achievement",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "header",
+            "name": "year",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "post": {
+        "operationId": "AchievementsCreateNew",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AchievementCreationRequest"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AchievementCreationRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/achievements/{achievementId}": {
+      "get": {
+        "operationId": "AchievementsGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AchievementResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "achievementId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "put": {
+        "operationId": "AchievementsEditSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AchievementResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "achievementId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AchievementCreationRequest"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "AchievementsDeleteSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyDict"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "achievementId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/articles": {
+      "get": {
+        "operationId": "ArticlesGetAll",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticlesResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "_limit",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "_start",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "header",
+            "name": "article",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "header",
+            "name": "year",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "post": {
+        "operationId": "ArticlesCreateNew",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleCreationRequest"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ArticleCreationRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/articles/{articleId}": {
+      "get": {
+        "operationId": "ArticlesGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "articleId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "put": {
+        "operationId": "ArticlesEditSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "articleId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ArticleCreationRequest"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "ArticlesDeleteSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyDict"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "articleId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/auth": {
+      "post": {
+        "operationId": "Authorize",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "grant_type": {
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "refresh_token": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "grant_type"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/basicProfile": {
+      "get": {
+        "operationId": "BasicProfileGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BasicProfileResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": []
+      }
+    },
+    "/content": {
+      "post": {
+        "operationId": "ContentsCreateNew",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyDict"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "path",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "files": {
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    },
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "files"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "ContentsGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Uint8Array"
+                    },
+                    {
+                      "$ref": "#/components/schemas/DirContentResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "path",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "ContentsDeleteSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyDict"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "path",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/feedback": {
+      "post": {
+        "operationId": "SendEmailWithFeedback",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeedbackRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/feedbacks": {
+      "post": {
+        "operationId": "FeedbackCreateNew",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackCreationRequest"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeedbackCreationRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/feedbacks/{feedbackId}": {
+      "get": {
+        "operationId": "FeedbackGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbacksResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "feedbackId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "put": {
+        "operationId": "FeedbackEditSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbacksResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "feedbackId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeedbackUpdateRequest"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "FeedbackDeleteSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyDict"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "feedbackId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/forgottenPassword": {
+      "post": {
+        "operationId": "ForgottenPasswordReset",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForgottenPasswordResult"
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ForgottenPasswordRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/images/{context}/{imagesId}": {
+      "get": {
+        "operationId": "ImagesGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Uint8Array"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "context",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "imagesId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "file",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "module",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "user",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/logout": {
+      "get": {
+        "operationId": "SendEmailWithFeedback",
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": []
+      }
+    },
+    "/modules/{modulesId}": {
+      "get": {
+        "operationId": "ModulesGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "modulesId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/modules/{modulesId}/submit": {
+      "post": {
+        "operationId": "ModulesSubmitSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleSubmitResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "modulesId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModuleSubmissionRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/modules/{modulesId}/submitFiles": {
+      "post": {
+        "operationId": "ModulesSubmitFiles",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModuleSubmitResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "modulesId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "files": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": [
+                  "files"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts": {
+      "post": {
+        "operationId": "PostsCreateNew",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostsCreationRequest"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostsCreationRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/{postsId}": {
+      "get": {
+        "operationId": "PostsGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "postsId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "put": {
+        "operationId": "PostsEditSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "postsId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostsEditRequest"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "PostsDeleteSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyDict"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "postsId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/profile": {
+      "get": {
+        "operationId": "ProfileGetMy",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": []
+      },
+      "put": {
+        "operationId": "ProfileEditMy",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileEdit"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profile/{profileId}": {
+      "get": {
+        "operationId": "ProfileGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profileId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/profile/picture": {
+      "post": {
+        "operationId": "ProfileUploadPicture",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyDict"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": [
+                  "file"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/registration": {
+      "post": {
+        "operationId": "RegisterNewUser",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyDict"
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrationRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/runCode/{moduleId}/submit": {
+      "post": {
+        "operationId": "RunCode",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunCodeResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "moduleId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RunCodeRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/settings/changePassword": {
+      "post": {
+        "operationId": "ForgottenPasswordReset",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChangePasswordResult"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/submFiles/{submFileId}": {
+      "get": {
+        "operationId": "SubmFilesGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "submFileId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "SubFilesDeleteSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyDict"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "submFileId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/task-content/{contentId}/{view}": {
+      "get": {
+        "operationId": "TaskContentGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Uint8Array"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "view",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "contentId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/taskContent/{contentId}/{view}": {
+      "get": {
+        "operationId": "TaskContent2GetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Uint8Array"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "view",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "contentId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/task-details/{taskDetailsId}": {
+      "get": {
+        "operationId": "TaskDetailsGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskDetailResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "taskDetailsId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/tasks": {
+      "get": {
+        "operationId": "TasksGetAll",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TasksResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "year",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/tasks/{tasksId}": {
+      "get": {
+        "operationId": "TasksGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "tasksId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/threadDetails/{threadDetailsId}": {
+      "get": {
+        "operationId": "ThreadDetailsGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThreadDetailResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "threadDetailsId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/threads": {
+      "get": {
+        "operationId": "ThreadsGetAll",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThreadsResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "_wave",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "header",
+            "name": "year",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "post": {
+        "operationId": "ThreadsCreateNew",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThreadResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ThreadsCreationRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/threads/{threadsId}": {
+      "get": {
+        "operationId": "ThreadsGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThreadResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "threadsId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "put": {
+        "operationId": "ThreadsMarkVisited",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyDict"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "threadsId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/users": {
+      "get": {
+        "operationId": "UsersGetAll",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsersResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "filter",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "year",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/users/{usersId}": {
+      "get": {
+        "operationId": "UsersGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "usersId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "UsersDeleteSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyDict"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "usersId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/waves": {
+      "get": {
+        "operationId": "WavesGetAll",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Waves"
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "year",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "post": {
+        "operationId": "WavesCreateNew",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WaveResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WaveCreationRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/waves/{waveId}": {
+      "get": {
+        "operationId": "WavesGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WaveResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "waveId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "put": {
+        "operationId": "WavesUpdateSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WaveResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "waveId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WaveUpdateRequest"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "WavesDeleteSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyDict"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "waveId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/years": {
+      "get": {
+        "operationId": "YearsGetAll",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Years"
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "parameters": []
+      },
+      "post": {
+        "operationId": "YearsCreateNew",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/YearResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/YearCreationRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/years/{yearId}": {
+      "get": {
+        "operationId": "YearsGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/YearResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "yearId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "put": {
+        "operationId": "YearsUpdateSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/YearResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "yearId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/YearUpdateRequest"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "YearsDeleteSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyDict"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "yearId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ]
 }

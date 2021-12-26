@@ -4,7 +4,7 @@ import {
     Get,
     Post,
     Route,
-    Request, Security, Path,
+    Request, Security, Path, UploadedFile,
 } from 'tsoa';
 import express from 'express';
 import { ProxyController } from '../util/proxy-controller';
@@ -30,4 +30,15 @@ export class EndpointModules extends ProxyController {
     ): Promise<ModuleSubmitResponse> {
         return await this.proxy(request);
     }
+
+    @Security('ksi')
+    @Post('{modulesId}/submitFiles')
+    public async modulesSubmitFiles(
+        @Request() request: express.Request,
+        @Path() modulesId: number,
+        @UploadedFile() files: File,
+    ): Promise<ModuleSubmitResponse> {
+        return await this.proxy(request);
+    }
+
 }

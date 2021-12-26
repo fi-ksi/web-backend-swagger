@@ -16,7 +16,7 @@ export class EndpointSubmFiles extends ProxyController {
     public async submFilesGetSingle(
         @Request() request: express.Request,
         @Path() submFileId: number,
-    ): Promise<Uint8Array> {
+    ): Promise<string> {
         return await this.proxy(request);
     }
 
