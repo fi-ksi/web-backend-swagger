@@ -1648,30 +1648,25 @@
 			},
 			"RunCodeResponse": {
 				"properties": {
+					"report": {
+						"type": "string"
+					},
+					"message": {
+						"type": "string"
+					},
+					"stdout": {
+						"type": "string"
+					},
 					"result": {
-						"properties": {
-							"result": {
-								"type": "string",
-								"enum": [
-									"ok"
-								],
-								"nullable": false
-							},
-							"stdout": {
-								"type": "string"
-							},
-							"report": {
-								"type": "string"
-							}
-						},
-						"required": [
-							"result",
-							"stdout"
-						],
-						"type": "object"
+						"type": "string",
+						"enum": [
+							"ok",
+							"error"
+						]
 					}
 				},
 				"required": [
+					"stdout",
 					"result"
 				],
 				"type": "object",

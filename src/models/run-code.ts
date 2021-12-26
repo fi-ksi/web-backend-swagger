@@ -3,9 +3,8 @@ export interface RunCodeRequest {
 }
 
 export interface RunCodeResponse {
-    result: {
-        report?: string;
-        stdout: string;
-        result: 'ok';
-    }
+    report?: string;
+    message?: string;
+    stdout: string;
+    result: 'ok' | 'error';
 }
