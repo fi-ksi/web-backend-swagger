@@ -704,7 +704,7 @@
 						"format": "double",
 						"nullable": true
 					},
-					"question": {
+					"questions": {
 						"items": {
 							"properties": {
 								"options": {
@@ -747,7 +747,7 @@
 					"max_score",
 					"state",
 					"score",
-					"question"
+					"questions"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -1055,6 +1055,15 @@
 					{
 						"items": {
 							"type": "string"
+						},
+						"type": "array"
+					},
+					{
+						"items": {
+							"items": {
+								"type": "string"
+							},
+							"type": "array"
 						},
 						"type": "array"
 					}

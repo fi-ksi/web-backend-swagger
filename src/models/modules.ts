@@ -20,7 +20,7 @@ interface ModuleProgramming extends ModuleBase {
 }
 
 interface ModuleQuiz extends ModuleBase {
-    question: {
+    questions: {
         type: 'radio' | 'checkbox';
         question: string;
         text: string;
@@ -74,4 +74,4 @@ export interface ModuleSubmissionRequest {
     content: ModuleSubmissionData;
 }
 
-export type ModuleSubmissionData = string | string[];
+export type ModuleSubmissionData = string | string[] | string[][];
