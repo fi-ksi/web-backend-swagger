@@ -1092,12 +1092,14 @@
           },
           "parent": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           }
         },
         "required": [
           "body",
-          "thread"
+          "thread",
+          "parent"
         ],
         "type": "object",
         "additionalProperties": false
