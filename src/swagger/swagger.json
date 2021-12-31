@@ -4028,7 +4028,7 @@
         ]
       }
     },
-    "/task-details/{taskDetailsId}": {
+    "/taskDetails/{taskDetailsId}": {
       "get": {
         "operationId": "TaskDetailsGetSingle",
         "responses": {

@@ -8,7 +8,7 @@ import express from 'express';
 import { ProxyController } from '../util/proxy-controller';
 import { TaskDetailResponse } from '../models/task-details';
 
-@Route('task-details')
+@Route('taskDetails')
 export class EndpointTaskDetails extends ProxyController {
     @Security('ksi')
     @Get('{taskDetailsId}')
