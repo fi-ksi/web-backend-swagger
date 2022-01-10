@@ -17,6 +17,10 @@
           "description": {
             "type": "string"
           },
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
           "year": {
             "type": "number",
             "format": "double",
@@ -27,6 +31,7 @@
           "title",
           "picture",
           "description",
+          "id",
           "year"
         ],
         "type": "object",

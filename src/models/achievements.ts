@@ -13,6 +13,7 @@ export interface AchievementCreationRequest {
 }
 
 export interface Achievement extends AchievementBase {
+    id: number;
     year: number | null;
 }
 
