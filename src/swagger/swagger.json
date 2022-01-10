@@ -4375,6 +4375,15 @@
               "format": "double",
               "type": "number"
             }
+          },
+          {
+            "in": "header",
+            "name": "year",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
           }
         ]
       },

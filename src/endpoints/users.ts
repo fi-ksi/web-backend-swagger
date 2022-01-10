@@ -27,6 +27,7 @@ export class EndpointUsers extends ProxyController {
     public async usersGetSingle(
         @Request() request: express.Request,
         @Path() usersId: number,
+        @Header() year?: number
     ): Promise<UserResponse> {
         return await this.proxy(request);
     }
