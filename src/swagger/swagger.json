@@ -1557,6 +1557,15 @@
         "type": "object",
         "additionalProperties": false
       },
+      "PossibleErrorDict": {
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "additionalProperties": false
+      },
       "RegistrationRequest": {
         "properties": {
           "email": {
@@ -3792,7 +3801,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EmptyDict"
+                  "$ref": "#/components/schemas/PossibleErrorDict"
                 }
               }
             }
