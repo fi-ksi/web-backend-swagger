@@ -333,8 +333,7 @@
                 "type": "string"
               },
               "profile_picture": {
-                "type": "number",
-                "format": "double"
+                "type": "string"
               },
               "nick_name": {
                 "type": "string"

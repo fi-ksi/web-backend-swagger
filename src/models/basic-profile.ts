@@ -7,7 +7,7 @@ export interface BasicProfileResponse {
         first_name: string;
         last_name: string;
         nick_name: string;
-        profile_picture: number;
+        profile_picture: string;
         short_info: string;
         email: string;
         gender: string;
