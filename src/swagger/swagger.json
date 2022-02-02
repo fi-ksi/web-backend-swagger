@@ -3865,7 +3865,7 @@
     },
     "/settings/changePassword": {
       "post": {
-        "operationId": "ForgottenPasswordReset",
+        "operationId": "ChangePassword",
         "responses": {
           "200": {
             "description": "Ok",

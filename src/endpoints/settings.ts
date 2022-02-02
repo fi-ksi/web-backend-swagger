@@ -13,7 +13,7 @@ import { ChangePasswordRequest, ChangePasswordResult } from '../models/settings'
 export class EndpointSettings extends ProxyController {
     @Security('ksi')
     @Post('changePassword')
-    public async forgottenPasswordReset(
+    public async changePassword(
         @Request() request: express.Request,
         @Body() forgottenPasswordRequest: ChangePasswordRequest
     ): Promise<ChangePasswordResult> {
