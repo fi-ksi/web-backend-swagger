@@ -3,7 +3,7 @@ import {
     Body,
     Get,
     Route,
-    Request, Security, Path, Put, Post, UploadedFile
+    Request, Security, Path, Put, Post, UploadedFile, Header
 } from 'tsoa';
 import express from 'express';
 import { ProxyController } from '../util/proxy-controller';
@@ -16,6 +16,7 @@ export class EndpointProfile extends ProxyController {
     @Get()
     public async profileGetMy(
         @Request() request: express.Request,
+        @Header() year?: number,
     ): Promise<ProfileResponse> {
         return await this.proxy(request);
     }
@@ -25,6 +26,7 @@ export class EndpointProfile extends ProxyController {
     public async profileGetSingle(
         @Request() request: express.Request,
         @Path() profileId: number,
+        @Header() year?: number,
     ): Promise<ProfileResponse> {
         return await this.proxy(request);
     }

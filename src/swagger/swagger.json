@@ -3682,7 +3682,17 @@
             "ksi": []
           }
         ],
-        "parameters": []
+        "parameters": [
+          {
+            "in": "header",
+            "name": "year",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
       },
       "put": {
         "operationId": "ProfileEditMy",
@@ -3741,6 +3751,15 @@
             "in": "path",
             "name": "profileId",
             "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "header",
+            "name": "year",
+            "required": false,
             "schema": {
               "format": "double",
               "type": "number"
