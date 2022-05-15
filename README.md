@@ -23,7 +23,9 @@ npm run serve.dev
 
 The backend will then proxy all request to `http://localhost:3030`.
 
-## Modification
+## Code structure
 
 - All endpoint definitions are placed under `src/endpoint/`
 - All model definitions are placed under `src/model/`
+
+The `src/util` directory holds functions and classes for proxying requests to the real backend and for masking authentication (which is also handled by the real backend).
