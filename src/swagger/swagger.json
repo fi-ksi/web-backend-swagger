@@ -432,7 +432,15 @@
             "type": "string"
           },
           "answer": {
-            "type": "string"
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number",
+                "format": "double"
+              }
+            ]
           },
           "ftype": {
             "type": "string",
@@ -448,7 +456,6 @@
         },
         "required": [
           "id",
-          "answer",
           "ftype",
           "text"
         ],
@@ -469,8 +476,7 @@
           }
         },
         "required": [
-          "categories",
-          "taskId"
+          "categories"
         ],
         "type": "object",
         "additionalProperties": false
@@ -520,7 +526,6 @@
         },
         "required": [
           "categories",
-          "taskId",
           "id",
           "userId",
           "lastUpdated",

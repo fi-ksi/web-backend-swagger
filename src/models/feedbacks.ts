@@ -1,6 +1,6 @@
 interface Category {
     id: string;
-    answer: string;
+    answer?: string | number;
     ftype: 'stars' | 'line' | 'text_large';
     text: string;
 }
@@ -10,7 +10,7 @@ export interface FeedbackUpdate {
 }
 
 export interface FeedbackCreation extends FeedbackUpdate{
-    taskId: number;
+    taskId?: number;
 }
 
 export interface FeedbackUpdateRequest {
