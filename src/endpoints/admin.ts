@@ -3,11 +3,11 @@ import {
     Get,
     Route,
     Request,
-    Security
+    Security, Post, Body
 } from 'tsoa';
 import express from 'express';
 import { ProxyController } from '../util/proxy-controller';
-import { MonitoringDashboardURLResponse } from '../models/admin';
+import { EmailSendRequest, EmailSendResponse, MonitoringDashboardURLResponse } from '../models/admin';
 
 @Route('admin')
 export class EndpointAdmin extends ProxyController {
@@ -24,6 +24,15 @@ export class EndpointAdmin extends ProxyController {
     public async adminUserExport(
         @Request() request: express.Request,
     ): Promise<string> {
+        return await this.proxy(request);
+    }
+
+    @Security('ksi')
+    @Post('email/')
+    public async adminEmailSend(
+        @Request() request: express.Request,
+        @Body() emailBody: EmailSendRequest,
+    ): Promise<EmailSendResponse> {
         return await this.proxy(request);
     }
 }
