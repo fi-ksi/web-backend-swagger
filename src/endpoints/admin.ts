@@ -13,9 +13,17 @@ import { MonitoringDashboardURLResponse } from '../models/admin';
 export class EndpointAdmin extends ProxyController {
     @Security('ksi')
     @Get('monitoring-dashboard')
-    public async monitoringDashboardURL(
+    public async adminMonitoringDashboardURL(
         @Request() request: express.Request,
     ): Promise<MonitoringDashboardURLResponse> {
+        return await this.proxy(request);
+    }
+
+    @Security('ksi')
+    @Get('user-export')
+    public async adminUserExport(
+        @Request() request: express.Request,
+    ): Promise<string> {
         return await this.proxy(request);
     }
 }

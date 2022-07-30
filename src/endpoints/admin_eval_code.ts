@@ -14,7 +14,7 @@ import { CodeEvaluationResponse } from '../models/admin_eval_code';
 export class EndpointAdminEvalCodes extends ProxyController {
     @Security('ksi')
     @Get('{evaluationId}')
-    public async executionGetSingle(
+    public async adminEvaluationGetSingle(
         @Request() request: express.Request,
         @Path() evaluationId: number,
     ): Promise<CodeEvaluationResponse> {

@@ -15,7 +15,7 @@ import { Execution, ExecutionResult, ExecutionsResponse } from '../models/admin_
 export class EndpointAdminExecs extends ProxyController {
     @Security('ksi')
     @Get('{executionId}')
-    public async executionGetSingle(
+    public async adminExecutionGetSingle(
         @Request() request: express.Request,
         @Path() executionId: number,
     ): Promise<Execution> {
@@ -24,7 +24,7 @@ export class EndpointAdminExecs extends ProxyController {
 
     @Security('ksi')
     @Get()
-    public async executionGetMultiple(
+    public async adminExecutionGetMultiple(
         @Request() request: express.Request,
         @Query() user?: number,
         @Query() module?: number,

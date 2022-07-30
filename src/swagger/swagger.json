@@ -105,6 +105,93 @@
         "type": "object",
         "additionalProperties": false
       },
+      "CodeEvaluation": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "code": {
+            "type": "string"
+          },
+          "merged": {
+            "type": "string"
+          },
+          "stdout": {
+            "type": "string"
+          },
+          "stderr": {
+            "type": "string"
+          },
+          "merge_stdout": {
+            "type": "string"
+          },
+          "check_stdout": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "merged",
+          "stdout",
+          "stderr",
+          "merge_stdout",
+          "check_stdout"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CodeEvaluationResponseSuccess": {
+        "properties": {
+          "evalCode": {
+            "$ref": "#/components/schemas/CodeEvaluation"
+          }
+        },
+        "required": [
+          "evalCode"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CodeEvaluationResponseError": {
+        "properties": {
+          "errors": {
+            "items": {
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "number",
+                  "format": "double"
+                }
+              },
+              "required": [
+                "title",
+                "id"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "errors"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CodeEvaluationResponse": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/CodeEvaluationResponseSuccess"
+          },
+          {
+            "$ref": "#/components/schemas/CodeEvaluationResponseError"
+          }
+        ]
+      },
       "ExecutionResult": {
         "type": "string",
         "enum": [
@@ -2827,9 +2914,42 @@
         ]
       }
     },
+    "/admin/evalCodes/{evaluationId}": {
+      "get": {
+        "operationId": "AdminEvaluationGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodeEvaluationResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "evaluationId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
     "/admin/execs/{executionId}": {
       "get": {
-        "operationId": "ExecutionGetSingle",
+        "operationId": "AdminExecutionGetSingle",
         "responses": {
           "200": {
             "description": "Ok",
@@ -2862,7 +2982,7 @@
     },
     "/admin/execs": {
       "get": {
-        "operationId": "ExecutionGetMultiple",
+        "operationId": "AdminExecutionGetMultiple",
         "responses": {
           "200": {
             "description": "Ok",
@@ -2946,7 +3066,7 @@
     },
     "/admin/monitoring-dashboard": {
       "get": {
-        "operationId": "MonitoringDashboardURL",
+        "operationId": "AdminMonitoringDashboardURL",
         "responses": {
           "200": {
             "description": "Ok",
@@ -2954,6 +3074,29 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/MonitoringDashboardURLResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": []
+      }
+    },
+    "/admin/user-export": {
+      "get": {
+        "operationId": "AdminUserExport",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
                 }
               }
             }
