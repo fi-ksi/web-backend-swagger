@@ -664,6 +664,12 @@
         "type": "object",
         "additionalProperties": false
       },
+      "Uint8Array": {
+        "description": "A typed array of 8-bit unsigned integer values. The contents are initialized to 0. If the\r\nrequested number of bytes could not be allocated an exception is raised.",
+        "properties": {},
+        "type": "object",
+        "additionalProperties": false
+      },
       "Article": {
         "properties": {
           "title": {
@@ -933,12 +939,6 @@
         "required": [
           "basicProfile"
         ],
-        "type": "object",
-        "additionalProperties": false
-      },
-      "Uint8Array": {
-        "description": "A typed array of 8-bit unsigned integer values. The contents are initialized to 0. If the\r\nrequested number of bytes could not be allocated an exception is raised.",
-        "properties": {},
         "type": "object",
         "additionalProperties": false
       },
@@ -3861,6 +3861,74 @@
             }
           }
         }
+      }
+    },
+    "/admin/subm/eval/{evaluationId}": {
+      "get": {
+        "operationId": "AdminSubmissionEvaluation",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Uint8Array",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "evaluationId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/subm/task/{taskId}": {
+      "get": {
+        "operationId": "AdminSubmissionTask",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Uint8Array",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "taskId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
       }
     },
     "/articles": {
