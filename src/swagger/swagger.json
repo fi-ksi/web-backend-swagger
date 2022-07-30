@@ -310,6 +310,234 @@
         "type": "object",
         "additionalProperties": false
       },
+      "AdminTaskDeployStatus": {
+        "type": "string",
+        "enum": [
+          "default",
+          "deploying",
+          "done",
+          "error",
+          "diff"
+        ]
+      },
+      "AdminTask": {
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "wave": {
+            "type": "number",
+            "format": "double"
+          },
+          "author": {
+            "type": "number",
+            "format": "double"
+          },
+          "git_path": {
+            "type": "string"
+          },
+          "git_branch": {
+            "type": "string"
+          },
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "co_author": {
+            "type": "number",
+            "format": "double"
+          },
+          "git_commit": {
+            "type": "string"
+          },
+          "deploy_date": {
+            "type": "string"
+          },
+          "deploy_status": {
+            "$ref": "#/components/schemas/AdminTaskDeployStatus"
+          },
+          "max_score": {
+            "type": "number",
+            "format": "double"
+          },
+          "eval_comment": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "wave",
+          "author",
+          "git_path",
+          "git_branch",
+          "id",
+          "co_author",
+          "git_commit",
+          "deploy_date",
+          "deploy_status",
+          "max_score",
+          "eval_comment"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AdminTasksResponse": {
+        "properties": {
+          "atasks": {
+            "items": {
+              "$ref": "#/components/schemas/AdminTask"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "atasks"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AdminTaskResponse": {
+        "properties": {
+          "atask": {
+            "$ref": "#/components/schemas/AdminTask"
+          }
+        },
+        "required": [
+          "atask"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AdminTaskCreation": {
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "wave": {
+            "type": "number",
+            "format": "double"
+          },
+          "author": {
+            "type": "number",
+            "format": "double"
+          },
+          "git_path": {
+            "type": "string"
+          },
+          "git_branch": {
+            "type": "string"
+          },
+          "git_commit": {
+            "type": "string"
+          },
+          "git_create": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "title",
+          "wave",
+          "author",
+          "git_path",
+          "git_branch",
+          "git_create"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AdminTaskCreationRequest": {
+        "properties": {
+          "atask": {
+            "$ref": "#/components/schemas/AdminTaskCreation"
+          }
+        },
+        "required": [
+          "atask"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AdminTaskUpdate": {
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "git_path": {
+            "type": "string"
+          },
+          "git_branch": {
+            "type": "string"
+          },
+          "git_commit": {
+            "type": "string"
+          },
+          "eval_comment": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "git_path",
+          "git_branch",
+          "git_commit"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AdminTaskUpdateRequest": {
+        "properties": {
+          "atask": {
+            "$ref": "#/components/schemas/AdminTaskUpdate"
+          }
+        },
+        "required": [
+          "atask"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AdminTaskDeployResponse": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "log": {
+            "type": "string"
+          },
+          "deploy_date": {
+            "type": "string",
+            "nullable": true
+          },
+          "deploy_status": {
+            "$ref": "#/components/schemas/AdminTaskDeployStatus"
+          }
+        },
+        "required": [
+          "id",
+          "log",
+          "deploy_date",
+          "deploy_status"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AdminTaskMergeResponse": {
+        "properties": {
+          "result": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "error"
+            ]
+          },
+          "error": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "additionalProperties": false
+      },
       "MonitoringDashboardURLResponse": {
         "properties": {
           "url": {
@@ -3131,6 +3359,272 @@
             "required": false,
             "schema": {
               "$ref": "#/components/schemas/ExecutionResult"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/atasks": {
+      "get": {
+        "operationId": "AdminTasksGetAll",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminTasksResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "wave",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "post": {
+        "operationId": "AdminTasksCreateNew",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminTaskResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminTaskCreationRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/atasks/{taskId}": {
+      "get": {
+        "operationId": "AdminTasksGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminTaskResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "taskId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "AdminTasksDeleteSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyDict"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "taskId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "put": {
+        "operationId": "AdminTasksUpdateSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminTaskResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "taskId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminTaskUpdateRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/atasks/{taskId}/deploy": {
+      "get": {
+        "operationId": "AdminTasksGetDeploySingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminTaskDeployResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "taskId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "post": {
+        "operationId": "AdminTaskDeploySingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminTaskMergeResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "taskId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/atasks/{taskId}/merge": {
+      "post": {
+        "operationId": "AdminTaskMergeSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminTaskMergeResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "taskId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
             }
           }
         ]
