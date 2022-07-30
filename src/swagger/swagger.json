@@ -670,6 +670,82 @@
         "type": "object",
         "additionalProperties": false
       },
+      "CorrectionEvaluationFile": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "filename": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "filename"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionEvaluation": {
+        "properties": {
+          "eval_id": {
+            "type": "number",
+            "format": "double"
+          },
+          "points": {
+            "type": "number",
+            "format": "double"
+          },
+          "last_modified": {
+            "type": "number",
+            "format": "double"
+          },
+          "corrected_by": {
+            "type": "number",
+            "format": "double"
+          },
+          "full_report": {
+            "type": "string"
+          },
+          "cheat": {
+            "type": "boolean"
+          },
+          "programming": {
+            "properties": {
+              "files": {
+                "items": {
+                  "$ref": "#/components/schemas/CorrectionEvaluationFile"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "files"
+            ],
+            "type": "object"
+          },
+          "quiz": {
+            "$ref": "#/components/schemas/EmptyDict"
+          },
+          "sortable": {
+            "$ref": "#/components/schemas/EmptyDict"
+          },
+          "text": {
+            "$ref": "#/components/schemas/EmptyDict"
+          }
+        },
+        "required": [
+          "eval_id",
+          "points",
+          "last_modified",
+          "corrected_by",
+          "full_report",
+          "cheat"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
       "Article": {
         "properties": {
           "title": {
@@ -3922,6 +3998,39 @@
           {
             "in": "path",
             "name": "taskId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/evaluations/{evaluationId}": {
+      "get": {
+        "operationId": "AdminGetEvaluationSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CorrectionEvaluation"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "evaluationId",
             "required": true,
             "schema": {
               "format": "double",

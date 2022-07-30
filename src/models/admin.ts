@@ -1,3 +1,5 @@
+import { EmptyDict } from './emptyDict';
+
 export interface MonitoringDashboardURLResponse {
     url: string;
 }
@@ -28,4 +30,24 @@ export interface EmailSendResponseSuccess {
 
 export interface EmailSendResponseFail {
     error: string;
+}
+
+export interface CorrectionEvaluation {
+    eval_id: number;
+    points: number;
+    last_modified: number;
+    corrected_by: number;
+    full_report: string;
+    cheat: boolean;
+    programming?: {
+        files: CorrectionEvaluationFile[];
+    };
+    quiz?: EmptyDict;
+    sortable?: EmptyDict;
+    text?: EmptyDict;
+}
+
+export interface CorrectionEvaluationFile {
+    id: number;
+    filename: string;
 }

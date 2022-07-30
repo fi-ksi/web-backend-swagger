@@ -7,7 +7,12 @@ import {
 } from 'tsoa';
 import express from 'express';
 import { ProxyController } from '../util/proxy-controller';
-import { EmailSendRequest, EmailSendResponse, MonitoringDashboardURLResponse } from '../models/admin';
+import {
+    CorrectionEvaluation,
+    EmailSendRequest,
+    EmailSendResponse,
+    MonitoringDashboardURLResponse
+} from '../models/admin';
 
 @Route('admin')
 export class EndpointAdmin extends ProxyController {
@@ -51,6 +56,15 @@ export class EndpointAdmin extends ProxyController {
         @Request() request: express.Request,
         @Path('taskId') taskId: number,
     ): Promise<Uint8Array> {
+        return await this.proxy(request);
+    }
+
+    @Security('ksi')
+    @Get('evaluations/{evaluationId}')
+    public async adminGetEvaluationSingle(
+        @Request() request: express.Request,
+        @Path('evaluationId') taskId: number,
+    ): Promise<CorrectionEvaluation> {
         return await this.proxy(request);
     }
 }
