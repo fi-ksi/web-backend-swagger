@@ -3136,6 +3136,46 @@
         ]
       }
     },
+    "/admin/waves/{waveId}/diff": {
+      "get": {
+        "operationId": "AdminWavesDiff",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "$ref": "#/components/schemas/EmptyDict"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "waveId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
     "/admin/monitoring-dashboard": {
       "get": {
         "operationId": "AdminMonitoringDashboardURL",
