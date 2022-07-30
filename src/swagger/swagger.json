@@ -105,6 +105,18 @@
         "type": "object",
         "additionalProperties": false
       },
+      "MonitoringDashboardURLResponse": {
+        "properties": {
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "url"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
       "Article": {
         "properties": {
           "title": {
@@ -2734,6 +2746,29 @@
             }
           }
         ]
+      }
+    },
+    "/admin/monitoring-dashboard": {
+      "get": {
+        "operationId": "MonitoringDashboardURL",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MonitoringDashboardURLResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": []
       }
     },
     "/articles": {
