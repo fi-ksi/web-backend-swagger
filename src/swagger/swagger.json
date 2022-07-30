@@ -3404,6 +3404,51 @@
         }
       }
     },
+    "/admin/corrections/{correctionId}/publish": {
+      "get": {
+        "operationId": "AdminCorrectionsPublish",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyDict"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "correctionId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "public",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "enum": [
+                "0",
+                "1"
+              ]
+            }
+          }
+        ]
+      }
+    },
     "/admin/evalCodes/{evaluationId}": {
       "get": {
         "operationId": "AdminEvaluationGetSingle",
@@ -4035,6 +4080,51 @@
             "schema": {
               "format": "double",
               "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/correctionsEmail/{taskId}": {
+      "put": {
+        "operationId": "AdminCorrectionsEmail",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailSendResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "taskId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "public",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "enum": [
+                "0",
+                "1"
+              ]
             }
           }
         ]

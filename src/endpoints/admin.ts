@@ -3,7 +3,7 @@ import {
     Get,
     Route,
     Request,
-    Security, Post, Body, Path
+    Security, Post, Body, Path, Query, Put
 } from 'tsoa';
 import express from 'express';
 import { ProxyController } from '../util/proxy-controller';
@@ -63,8 +63,18 @@ export class EndpointAdmin extends ProxyController {
     @Get('evaluations/{evaluationId}')
     public async adminGetEvaluationSingle(
         @Request() request: express.Request,
-        @Path('evaluationId') taskId: number,
+        @Path('evaluationId') evaluationId: number,
     ): Promise<CorrectionEvaluation> {
+        return await this.proxy(request);
+    }
+
+    @Security('ksi')
+    @Put('correctionsEmail/{taskId}')
+    public async adminCorrectionsEmail(
+        @Request() request: express.Request,
+        @Path('taskId') taskId: number,
+        @Query('public') publish: 0 | 1,
+    ): Promise<EmailSendResponse> {
         return await this.proxy(request);
     }
 }
