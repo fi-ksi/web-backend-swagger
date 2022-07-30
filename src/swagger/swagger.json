@@ -105,6 +105,45 @@
         "type": "object",
         "additionalProperties": false
       },
+      "AchievementGrantResponse": {
+        "properties": {
+          "errors": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AchievementGrantRequest": {
+        "properties": {
+          "users": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          },
+          "task": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "achievement": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": [
+          "users",
+          "task",
+          "achievement"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
       "CodeEvaluation": {
         "properties": {
           "id": {
@@ -2912,6 +2951,39 @@
             }
           }
         ]
+      }
+    },
+    "/admin/achievements": {
+      "post": {
+        "operationId": "AdminAchievementsGrant",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AchievementGrantResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AchievementGrantRequest"
+              }
+            }
+          }
+        }
       }
     },
     "/admin/evalCodes/{evaluationId}": {
