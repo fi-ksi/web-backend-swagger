@@ -105,6 +105,85 @@
         "type": "object",
         "additionalProperties": false
       },
+      "ExecutionResult": {
+        "type": "string",
+        "enum": [
+          "ok",
+          "error"
+        ]
+      },
+      "Execution": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "module": {
+            "type": "number",
+            "format": "double"
+          },
+          "user": {
+            "type": "number",
+            "format": "double"
+          },
+          "code": {
+            "type": "string"
+          },
+          "result": {
+            "$ref": "#/components/schemas/ExecutionResult"
+          },
+          "time": {
+            "type": "string"
+          },
+          "report": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "module",
+          "user",
+          "code",
+          "result",
+          "time",
+          "report"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ExecutionsResponse": {
+        "properties": {
+          "execs": {
+            "items": {
+              "$ref": "#/components/schemas/Execution"
+            },
+            "type": "array"
+          },
+          "meta": {
+            "properties": {
+              "count": {
+                "type": "number",
+                "format": "double"
+              },
+              "total": {
+                "type": "number",
+                "format": "double"
+              }
+            },
+            "required": [
+              "count",
+              "total"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "execs",
+          "meta"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
       "MonitoringDashboardURLResponse": {
         "properties": {
           "url": {
@@ -2743,6 +2822,123 @@
             "schema": {
               "format": "double",
               "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/execs/{executionId}": {
+      "get": {
+        "operationId": "ExecutionGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Execution"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "executionId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/execs": {
+      "get": {
+        "operationId": "ExecutionGetMultiple",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExecutionsResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "user",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "module",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "from",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "result",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/ExecutionResult"
             }
           }
         ]
