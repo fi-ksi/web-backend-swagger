@@ -3,7 +3,7 @@ import {
     Get,
     Route,
     Request,
-    Security, Post, Body, Path, Query, Put
+    Security, Post, Body, Path, Query, Put, Header
 } from 'tsoa';
 import express from 'express';
 import { ProxyController } from '../util/proxy-controller';
@@ -28,6 +28,7 @@ export class EndpointAdmin extends ProxyController {
     @Get('user-export')
     public async adminUserExport(
         @Request() request: express.Request,
+        @Header() year?: number
     ): Promise<string> {
         return await this.proxy(request);
     }

@@ -3,7 +3,7 @@ import {
     Get,
     Route,
     Request,
-    Security, Path
+    Security, Path, Header
 } from 'tsoa';
 import express from 'express';
 import { ProxyController } from '../util/proxy-controller';
@@ -15,6 +15,7 @@ export class EndpointAdminCorrections extends ProxyController {
     @Get()
     public async adminCorrectionInfosGetAll(
         @Request() request: express.Request,
+        @Header() year?: number
     ): Promise<CorrectionInfosAllResponse> {
         return await this.proxy(request);
     }

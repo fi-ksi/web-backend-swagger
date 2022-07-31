@@ -5,7 +5,7 @@ import {
     Request,
     Security,
     Path,
-    Query,
+    Query, Header,
 } from 'tsoa';
 import express from 'express';
 import { ProxyController } from '../util/proxy-controller';
@@ -33,6 +33,7 @@ export class EndpointAdminExecs extends ProxyController {
         @Query() from?: string,
         @Query() to?: string,
         @Query() result?: ExecutionResult,
+        @Header() year?: number
     ): Promise<ExecutionsResponse> {
         return await this.proxy(request);
     }

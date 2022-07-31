@@ -3802,7 +3802,17 @@
             "ksi": []
           }
         ],
-        "parameters": []
+        "parameters": [
+          {
+            "in": "header",
+            "name": "year",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
       }
     },
     "/admin/correctionInfos/{taskId}": {
@@ -3883,6 +3893,15 @@
             "required": false,
             "schema": {
               "$ref": "#/components/schemas/CorrectionState"
+            }
+          },
+          {
+            "in": "header",
+            "name": "year",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
             }
           }
         ]
@@ -4153,6 +4172,15 @@
             "schema": {
               "$ref": "#/components/schemas/ExecutionResult"
             }
+          },
+          {
+            "in": "header",
+            "name": "year",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
           }
         ]
       }
@@ -4186,6 +4214,15 @@
               "format": "double",
               "type": "number"
             }
+          },
+          {
+            "in": "header",
+            "name": "year",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
           }
         ]
       },
@@ -4208,7 +4245,17 @@
             "ksi": []
           }
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "year",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -4506,7 +4553,17 @@
             "ksi": []
           }
         ],
-        "parameters": []
+        "parameters": [
+          {
+            "in": "header",
+            "name": "year",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
       }
     },
     "/admin/email": {

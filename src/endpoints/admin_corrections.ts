@@ -3,7 +3,7 @@ import {
     Get,
     Route,
     Request,
-    Security, Path, Query, Put, Body
+    Security, Path, Query, Put, Body, Header
 } from 'tsoa';
 import express from 'express';
 import { ProxyController } from '../util/proxy-controller';
@@ -24,6 +24,7 @@ export class EndpointAdminCorrections extends ProxyController {
         @Query('task') taskId?: number,
         @Query('participant') userId?: number,
         @Query('state') state?: CorrectionState,
+        @Header() year?: number
     ): Promise<CorrectionsAllResponse> {
         return await this.proxy(request);
     }

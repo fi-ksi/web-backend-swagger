@@ -5,7 +5,7 @@ import {
     Request,
     Security,
     Path,
-    Query, Post, Delete, Put, Body,
+    Query, Post, Delete, Put, Body, Header,
 } from 'tsoa';
 import express from 'express';
 import { ProxyController } from '../util/proxy-controller';
@@ -24,6 +24,7 @@ export class EndpointAdminTasks extends ProxyController {
     public async adminTasksGetAll(
         @Request() request: express.Request,
         @Query() wave?: number,
+        @Header() year?: number
     ): Promise<AdminTasksResponse> {
         return await this.proxy(request);
     }
@@ -32,7 +33,8 @@ export class EndpointAdminTasks extends ProxyController {
     @Post()
     public async adminTasksCreateNew(
         @Request() request: express.Request,
-        @Body() adminTaskCreationRequest: AdminTaskCreationRequest
+        @Body() adminTaskCreationRequest: AdminTaskCreationRequest,
+        @Header() year?: number
     ): Promise<AdminTaskResponse> {
         return await this.proxy(request);
     }
