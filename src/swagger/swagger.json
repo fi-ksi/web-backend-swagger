@@ -144,6 +144,187 @@
         "type": "object",
         "additionalProperties": false
       },
+      "CorrectionInfoTask": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "title": {
+            "type": "string"
+          },
+          "wave": {
+            "type": "number",
+            "format": "double"
+          },
+          "author": {
+            "type": "number",
+            "format": "double"
+          },
+          "corr_state": {
+            "type": "string",
+            "enum": [
+              "published",
+              "corrected",
+              "working",
+              "base"
+            ]
+          },
+          "solvers": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "wave",
+          "author",
+          "corr_state",
+          "solvers"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Wave": {
+        "properties": {
+          "index": {
+            "type": "number",
+            "format": "double"
+          },
+          "caption": {
+            "type": "string",
+            "nullable": true
+          },
+          "garant": {
+            "type": "number",
+            "format": "double"
+          },
+          "time_published": {
+            "type": "string",
+            "nullable": true
+          },
+          "year": {
+            "type": "number",
+            "format": "double"
+          },
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "public": {
+            "type": "boolean"
+          },
+          "sum_points": {
+            "type": "number",
+            "format": "double"
+          },
+          "task_cnt": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": [
+          "index",
+          "caption",
+          "garant",
+          "year",
+          "id",
+          "public",
+          "sum_points",
+          "task_cnt"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "UserRole": {
+        "type": "string",
+        "enum": [
+          "admin",
+          "org",
+          "tester",
+          "participant",
+          "participant_hidden"
+        ]
+      },
+      "CorrectionInfoUser": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "role": {
+            "$ref": "#/components/schemas/UserRole"
+          },
+          "gender": {
+            "type": "string",
+            "enum": [
+              "male",
+              "female",
+              "other"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "first_name",
+          "last_name",
+          "role",
+          "gender"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionInfosAllResponse": {
+        "properties": {
+          "correctionInfos": {
+            "items": {
+              "$ref": "#/components/schemas/CorrectionInfoTask"
+            },
+            "type": "array"
+          },
+          "waves": {
+            "items": {
+              "$ref": "#/components/schemas/Wave"
+            },
+            "type": "array"
+          },
+          "users": {
+            "items": {
+              "$ref": "#/components/schemas/CorrectionInfoUser"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "correctionInfos",
+          "waves",
+          "users"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionInfoResponse": {
+        "properties": {
+          "correctionsInfo": {
+            "$ref": "#/components/schemas/CorrectionInfoTask"
+          }
+        },
+        "required": [
+          "correctionsInfo"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
       "CorrectionState": {
         "type": "string",
         "enum": [
@@ -1344,16 +1525,6 @@
         ],
         "type": "object",
         "additionalProperties": false
-      },
-      "UserRole": {
-        "type": "string",
-        "enum": [
-          "admin",
-          "org",
-          "tester",
-          "participant",
-          "participant_hidden"
-        ]
       },
       "BasicProfileResponse": {
         "properties": {
@@ -3094,57 +3265,6 @@
         "type": "object",
         "additionalProperties": false
       },
-      "Wave": {
-        "properties": {
-          "index": {
-            "type": "number",
-            "format": "double"
-          },
-          "caption": {
-            "type": "string",
-            "nullable": true
-          },
-          "garant": {
-            "type": "number",
-            "format": "double"
-          },
-          "time_published": {
-            "type": "string",
-            "nullable": true
-          },
-          "year": {
-            "type": "number",
-            "format": "double"
-          },
-          "id": {
-            "type": "number",
-            "format": "double"
-          },
-          "public": {
-            "type": "boolean"
-          },
-          "sum_points": {
-            "type": "number",
-            "format": "double"
-          },
-          "task_cnt": {
-            "type": "number",
-            "format": "double"
-          }
-        },
-        "required": [
-          "index",
-          "caption",
-          "garant",
-          "year",
-          "id",
-          "public",
-          "sum_points",
-          "task_cnt"
-        ],
-        "type": "object",
-        "additionalProperties": false
-      },
       "Waves": {
         "properties": {
           "waves": {
@@ -3660,6 +3780,62 @@
             }
           }
         }
+      }
+    },
+    "/admin/correctionInfos": {
+      "get": {
+        "operationId": "AdminCorrectionInfosGetAll",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CorrectionInfosAllResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": []
+      }
+    },
+    "/admin/correctionInfos/{taskId}": {
+      "get": {
+        "operationId": "AdminCorrectionInfosGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CorrectionInfoResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "taskId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
       }
     },
     "/admin/corrections": {
