@@ -105,6 +105,1226 @@
         "type": "object",
         "additionalProperties": false
       },
+      "AchievementGrantResponse": {
+        "properties": {
+          "errors": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AchievementGrantRequest": {
+        "properties": {
+          "users": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          },
+          "task": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "achievement": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": [
+          "users",
+          "task",
+          "achievement"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionInfoTask": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "title": {
+            "type": "string"
+          },
+          "wave": {
+            "type": "number",
+            "format": "double"
+          },
+          "author": {
+            "type": "number",
+            "format": "double"
+          },
+          "corr_state": {
+            "type": "string",
+            "enum": [
+              "published",
+              "corrected",
+              "working",
+              "base"
+            ]
+          },
+          "solvers": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "wave",
+          "author",
+          "corr_state",
+          "solvers"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Wave": {
+        "properties": {
+          "index": {
+            "type": "number",
+            "format": "double"
+          },
+          "caption": {
+            "type": "string",
+            "nullable": true
+          },
+          "garant": {
+            "type": "number",
+            "format": "double"
+          },
+          "time_published": {
+            "type": "string",
+            "nullable": true
+          },
+          "year": {
+            "type": "number",
+            "format": "double"
+          },
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "public": {
+            "type": "boolean"
+          },
+          "sum_points": {
+            "type": "number",
+            "format": "double"
+          },
+          "task_cnt": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": [
+          "index",
+          "caption",
+          "garant",
+          "year",
+          "id",
+          "public",
+          "sum_points",
+          "task_cnt"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "UserRole": {
+        "type": "string",
+        "enum": [
+          "admin",
+          "org",
+          "tester",
+          "participant",
+          "participant_hidden"
+        ]
+      },
+      "CorrectionInfoUser": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "role": {
+            "$ref": "#/components/schemas/UserRole"
+          },
+          "gender": {
+            "type": "string",
+            "enum": [
+              "male",
+              "female",
+              "other"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "first_name",
+          "last_name",
+          "role",
+          "gender"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionInfosAllResponse": {
+        "properties": {
+          "correctionInfos": {
+            "items": {
+              "$ref": "#/components/schemas/CorrectionInfoTask"
+            },
+            "type": "array"
+          },
+          "waves": {
+            "items": {
+              "$ref": "#/components/schemas/Wave"
+            },
+            "type": "array"
+          },
+          "users": {
+            "items": {
+              "$ref": "#/components/schemas/CorrectionInfoUser"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "correctionInfos",
+          "waves",
+          "users"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionInfoResponse": {
+        "properties": {
+          "correctionsInfo": {
+            "$ref": "#/components/schemas/CorrectionInfoTask"
+          }
+        },
+        "required": [
+          "correctionsInfo"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionState": {
+        "type": "string",
+        "enum": [
+          "corrected",
+          "notcorrected"
+        ]
+      },
+      "CorrectionEvaluationFile": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "filename": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "filename"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionEvaluation": {
+        "properties": {
+          "eval_id": {
+            "type": "number",
+            "format": "double"
+          },
+          "points": {
+            "type": "number",
+            "format": "double"
+          },
+          "corrected_by": {
+            "type": "number",
+            "format": "double"
+          },
+          "cheat": {
+            "type": "boolean"
+          },
+          "last_modified": {
+            "type": "number",
+            "format": "double"
+          },
+          "full_report": {
+            "type": "string"
+          },
+          "programming": {
+            "properties": {
+              "files": {
+                "items": {
+                  "$ref": "#/components/schemas/CorrectionEvaluationFile"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "files"
+            ],
+            "type": "object"
+          },
+          "quiz": {
+            "$ref": "#/components/schemas/EmptyDict"
+          },
+          "sortable": {
+            "$ref": "#/components/schemas/EmptyDict"
+          },
+          "text": {
+            "$ref": "#/components/schemas/EmptyDict"
+          }
+        },
+        "required": [
+          "eval_id",
+          "points",
+          "corrected_by",
+          "cheat",
+          "last_modified",
+          "full_report"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionModuleEvaluation": {
+        "properties": {
+          "module_id": {
+            "type": "number",
+            "format": "double"
+          },
+          "evaluations_list": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          },
+          "evaluation": {
+            "$ref": "#/components/schemas/CorrectionEvaluation"
+          }
+        },
+        "required": [
+          "module_id",
+          "evaluations_list",
+          "evaluation"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionEvaluationUpdate": {
+        "properties": {
+          "eval_id": {
+            "type": "number",
+            "format": "double"
+          },
+          "points": {
+            "type": "number",
+            "format": "double"
+          },
+          "corrected_by": {
+            "type": "number",
+            "format": "double"
+          },
+          "cheat": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "eval_id",
+          "points",
+          "corrected_by",
+          "cheat"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionUpdateModuleEvaluation": {
+        "properties": {
+          "evaluation": {
+            "$ref": "#/components/schemas/CorrectionEvaluationUpdate"
+          }
+        },
+        "required": [
+          "evaluation"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Correction": {
+        "properties": {
+          "task_id": {
+            "type": "number",
+            "format": "double"
+          },
+          "user": {
+            "type": "number",
+            "format": "double"
+          },
+          "comment": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "achievements": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          },
+          "modules": {
+            "items": {
+              "$ref": "#/components/schemas/CorrectionModuleEvaluation"
+            },
+            "type": "array"
+          },
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "state": {
+            "$ref": "#/components/schemas/CorrectionState"
+          }
+        },
+        "required": [
+          "task_id",
+          "user",
+          "comment",
+          "achievements",
+          "modules",
+          "id",
+          "state"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionTask": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "title": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ModuleType": {
+        "type": "string",
+        "enum": [
+          "general",
+          "programming",
+          "quiz",
+          "sortable",
+          "text"
+        ]
+      },
+      "CorrectionModule": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "name": {
+            "type": "string"
+          },
+          "autocorrect": {
+            "type": "boolean"
+          },
+          "max_points": {
+            "type": "number",
+            "format": "double"
+          },
+          "type": {
+            "$ref": "#/components/schemas/ModuleType"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "autocorrect",
+          "max_points",
+          "type"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Thread": {
+        "properties": {
+          "public": {
+            "type": "boolean"
+          },
+          "title": {
+            "type": "string"
+          },
+          "year": {
+            "type": "number",
+            "format": "double"
+          },
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "unread": {
+            "type": "number",
+            "format": "double"
+          },
+          "posts_count": {
+            "type": "number",
+            "format": "double"
+          },
+          "details": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": [
+          "public",
+          "title",
+          "year",
+          "id",
+          "unread",
+          "posts_count",
+          "details"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Post": {
+        "properties": {
+          "author": {
+            "type": "number",
+            "format": "double"
+          },
+          "body": {
+            "type": "string"
+          },
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "thread": {
+            "type": "number",
+            "format": "double"
+          },
+          "published_at": {
+            "type": "string"
+          },
+          "reaction": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          },
+          "is_new": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "author",
+          "body",
+          "id",
+          "thread",
+          "published_at",
+          "reaction",
+          "is_new"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ThreadDetail": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "root_posts": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "root_posts"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionsAllResponse": {
+        "properties": {
+          "corrections": {
+            "items": {
+              "$ref": "#/components/schemas/Correction"
+            },
+            "type": "array"
+          },
+          "tasks": {
+            "$ref": "#/components/schemas/CorrectionTask"
+          },
+          "modules": {
+            "items": {
+              "$ref": "#/components/schemas/CorrectionModule"
+            },
+            "type": "array"
+          },
+          "achievements": {
+            "items": {
+              "$ref": "#/components/schemas/Achievement"
+            },
+            "type": "array"
+          },
+          "threads": {
+            "items": {
+              "$ref": "#/components/schemas/Thread"
+            },
+            "type": "array"
+          },
+          "posts": {
+            "items": {
+              "$ref": "#/components/schemas/Post"
+            },
+            "type": "array"
+          },
+          "threadDetails": {
+            "items": {
+              "$ref": "#/components/schemas/ThreadDetail"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "corrections",
+          "tasks",
+          "modules",
+          "achievements",
+          "threads",
+          "posts",
+          "threadDetails"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionResponse": {
+        "properties": {
+          "correction": {
+            "$ref": "#/components/schemas/Correction"
+          }
+        },
+        "required": [
+          "correction"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionUpdate": {
+        "properties": {
+          "task_id": {
+            "type": "number",
+            "format": "double"
+          },
+          "user": {
+            "type": "number",
+            "format": "double"
+          },
+          "comment": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "achievements": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          },
+          "modules": {
+            "items": {
+              "$ref": "#/components/schemas/CorrectionUpdateModuleEvaluation"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "task_id",
+          "user",
+          "comment",
+          "achievements",
+          "modules"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionUpdateRequest": {
+        "properties": {
+          "correction": {
+            "$ref": "#/components/schemas/CorrectionUpdate"
+          }
+        },
+        "required": [
+          "correction"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CodeEvaluation": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "code": {
+            "type": "string"
+          },
+          "merged": {
+            "type": "string"
+          },
+          "stdout": {
+            "type": "string"
+          },
+          "stderr": {
+            "type": "string"
+          },
+          "merge_stdout": {
+            "type": "string"
+          },
+          "check_stdout": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "merged",
+          "stdout",
+          "stderr",
+          "merge_stdout",
+          "check_stdout"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CodeEvaluationResponseSuccess": {
+        "properties": {
+          "evalCode": {
+            "$ref": "#/components/schemas/CodeEvaluation"
+          }
+        },
+        "required": [
+          "evalCode"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CodeEvaluationResponseError": {
+        "properties": {
+          "errors": {
+            "items": {
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "number",
+                  "format": "double"
+                }
+              },
+              "required": [
+                "title",
+                "id"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "errors"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CodeEvaluationResponse": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/CodeEvaluationResponseSuccess"
+          },
+          {
+            "$ref": "#/components/schemas/CodeEvaluationResponseError"
+          }
+        ]
+      },
+      "ExecutionResult": {
+        "type": "string",
+        "enum": [
+          "ok",
+          "error"
+        ]
+      },
+      "Execution": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "module": {
+            "type": "number",
+            "format": "double"
+          },
+          "user": {
+            "type": "number",
+            "format": "double"
+          },
+          "code": {
+            "type": "string"
+          },
+          "result": {
+            "$ref": "#/components/schemas/ExecutionResult"
+          },
+          "time": {
+            "type": "string"
+          },
+          "report": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "module",
+          "user",
+          "code",
+          "result",
+          "time",
+          "report"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ExecutionsResponse": {
+        "properties": {
+          "execs": {
+            "items": {
+              "$ref": "#/components/schemas/Execution"
+            },
+            "type": "array"
+          },
+          "meta": {
+            "properties": {
+              "count": {
+                "type": "number",
+                "format": "double"
+              },
+              "total": {
+                "type": "number",
+                "format": "double"
+              }
+            },
+            "required": [
+              "count",
+              "total"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "execs",
+          "meta"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AdminTaskDeployStatus": {
+        "type": "string",
+        "enum": [
+          "default",
+          "deploying",
+          "done",
+          "error",
+          "diff"
+        ]
+      },
+      "AdminTask": {
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "wave": {
+            "type": "number",
+            "format": "double"
+          },
+          "author": {
+            "type": "number",
+            "format": "double"
+          },
+          "git_path": {
+            "type": "string"
+          },
+          "git_branch": {
+            "type": "string"
+          },
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "co_author": {
+            "type": "number",
+            "format": "double"
+          },
+          "git_commit": {
+            "type": "string"
+          },
+          "deploy_date": {
+            "type": "string"
+          },
+          "deploy_status": {
+            "$ref": "#/components/schemas/AdminTaskDeployStatus"
+          },
+          "max_score": {
+            "type": "number",
+            "format": "double"
+          },
+          "eval_comment": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "wave",
+          "author",
+          "git_path",
+          "git_branch",
+          "id",
+          "co_author",
+          "git_commit",
+          "deploy_date",
+          "deploy_status",
+          "max_score",
+          "eval_comment"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AdminTasksResponse": {
+        "properties": {
+          "atasks": {
+            "items": {
+              "$ref": "#/components/schemas/AdminTask"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "atasks"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AdminTaskResponse": {
+        "properties": {
+          "atask": {
+            "$ref": "#/components/schemas/AdminTask"
+          }
+        },
+        "required": [
+          "atask"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AdminTaskCreation": {
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "wave": {
+            "type": "number",
+            "format": "double"
+          },
+          "author": {
+            "type": "number",
+            "format": "double"
+          },
+          "git_path": {
+            "type": "string"
+          },
+          "git_branch": {
+            "type": "string"
+          },
+          "git_commit": {
+            "type": "string"
+          },
+          "git_create": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "title",
+          "wave",
+          "author",
+          "git_path",
+          "git_branch",
+          "git_create"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AdminTaskCreationRequest": {
+        "properties": {
+          "atask": {
+            "$ref": "#/components/schemas/AdminTaskCreation"
+          }
+        },
+        "required": [
+          "atask"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AdminTaskUpdate": {
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "git_path": {
+            "type": "string"
+          },
+          "git_branch": {
+            "type": "string"
+          },
+          "git_commit": {
+            "type": "string"
+          },
+          "eval_comment": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "git_path",
+          "git_branch",
+          "git_commit"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AdminTaskUpdateRequest": {
+        "properties": {
+          "atask": {
+            "$ref": "#/components/schemas/AdminTaskUpdate"
+          }
+        },
+        "required": [
+          "atask"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AdminTaskDeployResponse": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "log": {
+            "type": "string"
+          },
+          "deploy_date": {
+            "type": "string",
+            "nullable": true
+          },
+          "deploy_status": {
+            "$ref": "#/components/schemas/AdminTaskDeployStatus"
+          }
+        },
+        "required": [
+          "id",
+          "log",
+          "deploy_date",
+          "deploy_status"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "AdminTaskMergeResponse": {
+        "properties": {
+          "result": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "error"
+            ]
+          },
+          "error": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "additionalProperties": false
+      },
+      "MonitoringDashboardURLResponse": {
+        "properties": {
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "url"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "EmailSendResponseSuccess": {
+        "properties": {
+          "count": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": [
+          "count"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "EmailSendResponseFail": {
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "EmailSendResponse": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/EmailSendResponseSuccess"
+          },
+          {
+            "$ref": "#/components/schemas/EmailSendResponseFail"
+          }
+        ]
+      },
+      "EmailSend": {
+        "properties": {
+          "Subject": {
+            "type": "string"
+          },
+          "Body": {
+            "type": "string"
+          },
+          "Reply-To": {
+            "type": "string"
+          },
+          "To": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          },
+          "Bcc": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "Gender": {
+            "type": "string",
+            "enum": [
+              "both",
+              "male",
+              "female"
+            ]
+          },
+          "KarlikSign": {
+            "type": "boolean"
+          },
+          "EasterEgg": {
+            "type": "boolean"
+          },
+          "Category": {
+            "type": "string",
+            "enum": [
+              "hs",
+              "other",
+              "both"
+            ]
+          },
+          "Type": {
+            "type": "string",
+            "enum": [
+              "ksi",
+              "events"
+            ]
+          },
+          "Successful": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "Subject",
+          "Body",
+          "To",
+          "Bcc",
+          "Type"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "EmailSendRequest": {
+        "properties": {
+          "e-mail": {
+            "$ref": "#/components/schemas/EmailSend"
+          }
+        },
+        "required": [
+          "e-mail"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Uint8Array": {
+        "description": "A typed array of 8-bit unsigned integer values. The contents are initialized to 0. If the\r\nrequested number of bytes could not be allocated an exception is raised.",
+        "properties": {},
+        "type": "object",
+        "additionalProperties": false
+      },
       "Article": {
         "properties": {
           "title": {
@@ -306,16 +1526,6 @@
         "type": "object",
         "additionalProperties": false
       },
-      "UserRole": {
-        "type": "string",
-        "enum": [
-          "admin",
-          "org",
-          "tester",
-          "participant",
-          "participant_hidden"
-        ]
-      },
       "BasicProfileResponse": {
         "properties": {
           "basicProfile": {
@@ -374,12 +1584,6 @@
         "required": [
           "basicProfile"
         ],
-        "type": "object",
-        "additionalProperties": false
-      },
-      "Uint8Array": {
-        "description": "A typed array of 8-bit unsigned integer values. The contents are initialized to 0. If the\r\nrequested number of bytes could not be allocated an exception is raised.",
-        "properties": {},
         "type": "object",
         "additionalProperties": false
       },
@@ -608,14 +1812,7 @@
             "format": "double"
           },
           "type": {
-            "type": "string",
-            "enum": [
-              "general",
-              "programming",
-              "quiz",
-              "sortable",
-              "text"
-            ]
+            "$ref": "#/components/schemas/ModuleType"
           },
           "name": {
             "type": "string"
@@ -678,14 +1875,7 @@
             "format": "double"
           },
           "type": {
-            "type": "string",
-            "enum": [
-              "general",
-              "programming",
-              "quiz",
-              "sortable",
-              "text"
-            ]
+            "$ref": "#/components/schemas/ModuleType"
           },
           "name": {
             "type": "string"
@@ -785,14 +1975,7 @@
             "format": "double"
           },
           "type": {
-            "type": "string",
-            "enum": [
-              "general",
-              "programming",
-              "quiz",
-              "sortable",
-              "text"
-            ]
+            "$ref": "#/components/schemas/ModuleType"
           },
           "name": {
             "type": "string"
@@ -863,14 +2046,7 @@
             "format": "double"
           },
           "type": {
-            "type": "string",
-            "enum": [
-              "general",
-              "programming",
-              "quiz",
-              "sortable",
-              "text"
-            ]
+            "$ref": "#/components/schemas/ModuleType"
           },
           "name": {
             "type": "string"
@@ -939,14 +2115,7 @@
             "format": "double"
           },
           "type": {
-            "type": "string",
-            "enum": [
-              "general",
-              "programming",
-              "quiz",
-              "sortable",
-              "text"
-            ]
+            "$ref": "#/components/schemas/ModuleType"
           },
           "name": {
             "type": "string"
@@ -1121,49 +2290,6 @@
         },
         "required": [
           "post"
-        ],
-        "type": "object",
-        "additionalProperties": false
-      },
-      "Post": {
-        "properties": {
-          "author": {
-            "type": "number",
-            "format": "double"
-          },
-          "body": {
-            "type": "string"
-          },
-          "id": {
-            "type": "number",
-            "format": "double"
-          },
-          "thread": {
-            "type": "number",
-            "format": "double"
-          },
-          "published_at": {
-            "type": "string"
-          },
-          "reaction": {
-            "items": {
-              "type": "number",
-              "format": "double"
-            },
-            "type": "array"
-          },
-          "is_new": {
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "author",
-          "body",
-          "id",
-          "thread",
-          "published_at",
-          "reaction",
-          "is_new"
         ],
         "type": "object",
         "additionalProperties": false
@@ -1846,68 +2972,6 @@
         "type": "object",
         "additionalProperties": false
       },
-      "Thread": {
-        "properties": {
-          "public": {
-            "type": "boolean"
-          },
-          "title": {
-            "type": "string"
-          },
-          "year": {
-            "type": "number",
-            "format": "double"
-          },
-          "id": {
-            "type": "number",
-            "format": "double"
-          },
-          "unread": {
-            "type": "number",
-            "format": "double"
-          },
-          "posts_count": {
-            "type": "number",
-            "format": "double"
-          },
-          "details": {
-            "type": "number",
-            "format": "double"
-          }
-        },
-        "required": [
-          "public",
-          "title",
-          "year",
-          "id",
-          "unread",
-          "posts_count",
-          "details"
-        ],
-        "type": "object",
-        "additionalProperties": false
-      },
-      "ThreadDetail": {
-        "properties": {
-          "id": {
-            "type": "number",
-            "format": "double"
-          },
-          "root_posts": {
-            "items": {
-              "type": "number",
-              "format": "double"
-            },
-            "type": "array"
-          }
-        },
-        "required": [
-          "id",
-          "root_posts"
-        ],
-        "type": "object",
-        "additionalProperties": false
-      },
       "TaskDetailResponse": {
         "properties": {
           "taskDetails": {
@@ -2197,57 +3261,6 @@
         },
         "required": [
           "user"
-        ],
-        "type": "object",
-        "additionalProperties": false
-      },
-      "Wave": {
-        "properties": {
-          "index": {
-            "type": "number",
-            "format": "double"
-          },
-          "caption": {
-            "type": "string",
-            "nullable": true
-          },
-          "garant": {
-            "type": "number",
-            "format": "double"
-          },
-          "time_published": {
-            "type": "string",
-            "nullable": true
-          },
-          "year": {
-            "type": "number",
-            "format": "double"
-          },
-          "id": {
-            "type": "number",
-            "format": "double"
-          },
-          "public": {
-            "type": "boolean"
-          },
-          "sum_points": {
-            "type": "number",
-            "format": "double"
-          },
-          "task_cnt": {
-            "type": "number",
-            "format": "double"
-          }
-        },
-        "required": [
-          "index",
-          "caption",
-          "garant",
-          "year",
-          "id",
-          "public",
-          "sum_points",
-          "task_cnt"
         ],
         "type": "object",
         "additionalProperties": false
@@ -2731,6 +3744,945 @@
             "schema": {
               "format": "double",
               "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/achievements": {
+      "post": {
+        "operationId": "AdminAchievementsGrant",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AchievementGrantResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AchievementGrantRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/correctionInfos": {
+      "get": {
+        "operationId": "AdminCorrectionInfosGetAll",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CorrectionInfosAllResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": []
+      }
+    },
+    "/admin/correctionInfos/{taskId}": {
+      "get": {
+        "operationId": "AdminCorrectionInfosGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CorrectionInfoResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "taskId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/corrections": {
+      "get": {
+        "operationId": "AdminCorrectionsGetAll",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CorrectionsAllResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "task",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "participant",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "state",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/CorrectionState"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/corrections/{correctionId}/publish": {
+      "get": {
+        "operationId": "AdminCorrectionsPublish",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyDict"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "correctionId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "public",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "enum": [
+                "0",
+                "1"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "/admin/corrections/{correctionId}": {
+      "get": {
+        "operationId": "AdminCorrectionsGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CorrectionResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "correctionId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "put": {
+        "operationId": "AdminCorrectionsUpdateSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CorrectionResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "correctionId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CorrectionUpdateRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/evalCodes/{evaluationId}": {
+      "get": {
+        "operationId": "AdminEvaluationGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodeEvaluationResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "evaluationId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/execs/{executionId}": {
+      "get": {
+        "operationId": "AdminExecutionGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Execution"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "executionId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/execs": {
+      "get": {
+        "operationId": "AdminExecutionGetMultiple",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExecutionsResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "user",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "module",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "from",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "result",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/ExecutionResult"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/atasks": {
+      "get": {
+        "operationId": "AdminTasksGetAll",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminTasksResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "wave",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "post": {
+        "operationId": "AdminTasksCreateNew",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminTaskResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminTaskCreationRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/atasks/{taskId}": {
+      "get": {
+        "operationId": "AdminTasksGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminTaskResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "taskId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "AdminTasksDeleteSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyDict"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "taskId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "put": {
+        "operationId": "AdminTasksUpdateSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminTaskResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "taskId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminTaskUpdateRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/atasks/{taskId}/deploy": {
+      "get": {
+        "operationId": "AdminTasksGetDeploySingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminTaskDeployResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "taskId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "post": {
+        "operationId": "AdminTaskDeploySingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminTaskMergeResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "taskId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/atasks/{taskId}/merge": {
+      "post": {
+        "operationId": "AdminTaskMergeSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminTaskMergeResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "taskId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/waves/{waveId}/diff": {
+      "get": {
+        "operationId": "AdminWavesDiff",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "$ref": "#/components/schemas/EmptyDict"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "waveId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/monitoring-dashboard": {
+      "get": {
+        "operationId": "AdminMonitoringDashboardURL",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MonitoringDashboardURLResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": []
+      }
+    },
+    "/admin/user-export": {
+      "get": {
+        "operationId": "AdminUserExport",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": []
+      }
+    },
+    "/admin/email": {
+      "post": {
+        "operationId": "AdminEmailSend",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailSendResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailSendRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/subm/eval/{evaluationId}": {
+      "get": {
+        "operationId": "AdminSubmissionEvaluation",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Uint8Array",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "evaluationId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/subm/task/{taskId}": {
+      "get": {
+        "operationId": "AdminSubmissionTask",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Uint8Array",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "taskId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/evaluations/{evaluationId}": {
+      "get": {
+        "operationId": "AdminGetEvaluationSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CorrectionEvaluation"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "evaluationId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/correctionsEmail/{taskId}": {
+      "put": {
+        "operationId": "AdminCorrectionsEmail",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailSendResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "taskId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "public",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "enum": [
+                "0",
+                "1"
+              ]
             }
           }
         ]

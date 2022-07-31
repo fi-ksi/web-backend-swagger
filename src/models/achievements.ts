@@ -24,3 +24,13 @@ export interface AchievementsResponse {
 export interface AchievementResponse {
     achievement: Achievement;
 }
+
+export interface AchievementGrantRequest {
+    users: number[],
+    task: number | null,
+    achievement: number
+}
+
+export interface AchievementGrantResponse {
+    errors?: string[];
+}

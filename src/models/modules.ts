@@ -2,7 +2,7 @@ export type KSIModule = ModuleProgramming | ModuleQuiz | ModuleSortable | Module
 
 interface ModuleBase {
     id: number,
-    type: 'general' | 'programming' | 'quiz' | 'sortable' | 'text';
+    type: ModuleType;
     name: string;
     description: string;
     autocorrect: boolean;
@@ -11,6 +11,8 @@ interface ModuleBase {
     state: 'correct' | 'incorrect' | 'blank';
     score: number | null;
 }
+
+export type ModuleType = 'general' | 'programming' | 'quiz' | 'sortable' | 'text';
 
 interface ModuleProgramming extends ModuleBase {
     code: string;
