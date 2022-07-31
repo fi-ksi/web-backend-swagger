@@ -32,13 +32,16 @@ export interface EmailSendResponseFail {
     error: string;
 }
 
-export interface CorrectionEvaluation {
+export interface CorrectionEvaluationUpdate {
     eval_id: number;
     points: number;
-    last_modified: number;
     corrected_by: number;
-    full_report: string;
     cheat: boolean;
+}
+
+export interface CorrectionEvaluation extends CorrectionEvaluationUpdate {
+    last_modified: number;
+    full_report: string;
     programming?: {
         files: CorrectionEvaluationFile[];
     };

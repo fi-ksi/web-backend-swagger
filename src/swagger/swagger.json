@@ -144,6 +144,480 @@
         "type": "object",
         "additionalProperties": false
       },
+      "CorrectionState": {
+        "type": "string",
+        "enum": [
+          "corrected",
+          "notcorrected"
+        ]
+      },
+      "CorrectionEvaluationFile": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "filename": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "filename"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionEvaluation": {
+        "properties": {
+          "eval_id": {
+            "type": "number",
+            "format": "double"
+          },
+          "points": {
+            "type": "number",
+            "format": "double"
+          },
+          "corrected_by": {
+            "type": "number",
+            "format": "double"
+          },
+          "cheat": {
+            "type": "boolean"
+          },
+          "last_modified": {
+            "type": "number",
+            "format": "double"
+          },
+          "full_report": {
+            "type": "string"
+          },
+          "programming": {
+            "properties": {
+              "files": {
+                "items": {
+                  "$ref": "#/components/schemas/CorrectionEvaluationFile"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "files"
+            ],
+            "type": "object"
+          },
+          "quiz": {
+            "$ref": "#/components/schemas/EmptyDict"
+          },
+          "sortable": {
+            "$ref": "#/components/schemas/EmptyDict"
+          },
+          "text": {
+            "$ref": "#/components/schemas/EmptyDict"
+          }
+        },
+        "required": [
+          "eval_id",
+          "points",
+          "corrected_by",
+          "cheat",
+          "last_modified",
+          "full_report"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionModuleEvaluation": {
+        "properties": {
+          "module_id": {
+            "type": "number",
+            "format": "double"
+          },
+          "evaluations_list": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          },
+          "evaluation": {
+            "$ref": "#/components/schemas/CorrectionEvaluation"
+          }
+        },
+        "required": [
+          "module_id",
+          "evaluations_list",
+          "evaluation"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionEvaluationUpdate": {
+        "properties": {
+          "eval_id": {
+            "type": "number",
+            "format": "double"
+          },
+          "points": {
+            "type": "number",
+            "format": "double"
+          },
+          "corrected_by": {
+            "type": "number",
+            "format": "double"
+          },
+          "cheat": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "eval_id",
+          "points",
+          "corrected_by",
+          "cheat"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionUpdateModuleEvaluation": {
+        "properties": {
+          "evaluation": {
+            "$ref": "#/components/schemas/CorrectionEvaluationUpdate"
+          }
+        },
+        "required": [
+          "evaluation"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Correction": {
+        "properties": {
+          "task_id": {
+            "type": "number",
+            "format": "double"
+          },
+          "user": {
+            "type": "number",
+            "format": "double"
+          },
+          "comment": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "achievements": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          },
+          "modules": {
+            "items": {
+              "$ref": "#/components/schemas/CorrectionModuleEvaluation"
+            },
+            "type": "array"
+          },
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "state": {
+            "$ref": "#/components/schemas/CorrectionState"
+          }
+        },
+        "required": [
+          "task_id",
+          "user",
+          "comment",
+          "achievements",
+          "modules",
+          "id",
+          "state"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionTask": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "title": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ModuleType": {
+        "type": "string",
+        "enum": [
+          "general",
+          "programming",
+          "quiz",
+          "sortable",
+          "text"
+        ]
+      },
+      "CorrectionModule": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "name": {
+            "type": "string"
+          },
+          "autocorrect": {
+            "type": "boolean"
+          },
+          "max_points": {
+            "type": "number",
+            "format": "double"
+          },
+          "type": {
+            "$ref": "#/components/schemas/ModuleType"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "autocorrect",
+          "max_points",
+          "type"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Thread": {
+        "properties": {
+          "public": {
+            "type": "boolean"
+          },
+          "title": {
+            "type": "string"
+          },
+          "year": {
+            "type": "number",
+            "format": "double"
+          },
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "unread": {
+            "type": "number",
+            "format": "double"
+          },
+          "posts_count": {
+            "type": "number",
+            "format": "double"
+          },
+          "details": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": [
+          "public",
+          "title",
+          "year",
+          "id",
+          "unread",
+          "posts_count",
+          "details"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Post": {
+        "properties": {
+          "author": {
+            "type": "number",
+            "format": "double"
+          },
+          "body": {
+            "type": "string"
+          },
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "thread": {
+            "type": "number",
+            "format": "double"
+          },
+          "published_at": {
+            "type": "string"
+          },
+          "reaction": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          },
+          "is_new": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "author",
+          "body",
+          "id",
+          "thread",
+          "published_at",
+          "reaction",
+          "is_new"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ThreadDetail": {
+        "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "root_posts": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "root_posts"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionsAllResponse": {
+        "properties": {
+          "corrections": {
+            "items": {
+              "$ref": "#/components/schemas/Correction"
+            },
+            "type": "array"
+          },
+          "tasks": {
+            "$ref": "#/components/schemas/CorrectionTask"
+          },
+          "modules": {
+            "items": {
+              "$ref": "#/components/schemas/CorrectionModule"
+            },
+            "type": "array"
+          },
+          "achievements": {
+            "items": {
+              "$ref": "#/components/schemas/Achievement"
+            },
+            "type": "array"
+          },
+          "threads": {
+            "items": {
+              "$ref": "#/components/schemas/Thread"
+            },
+            "type": "array"
+          },
+          "posts": {
+            "items": {
+              "$ref": "#/components/schemas/Post"
+            },
+            "type": "array"
+          },
+          "threadDetails": {
+            "items": {
+              "$ref": "#/components/schemas/ThreadDetail"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "corrections",
+          "tasks",
+          "modules",
+          "achievements",
+          "threads",
+          "posts",
+          "threadDetails"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionResponse": {
+        "properties": {
+          "correction": {
+            "$ref": "#/components/schemas/Correction"
+          }
+        },
+        "required": [
+          "correction"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionUpdate": {
+        "properties": {
+          "task_id": {
+            "type": "number",
+            "format": "double"
+          },
+          "user": {
+            "type": "number",
+            "format": "double"
+          },
+          "comment": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "achievements": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          },
+          "modules": {
+            "items": {
+              "$ref": "#/components/schemas/CorrectionUpdateModuleEvaluation"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "task_id",
+          "user",
+          "comment",
+          "achievements",
+          "modules"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "CorrectionUpdateRequest": {
+        "properties": {
+          "correction": {
+            "$ref": "#/components/schemas/CorrectionUpdate"
+          }
+        },
+        "required": [
+          "correction"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
       "CodeEvaluation": {
         "properties": {
           "id": {
@@ -670,82 +1144,6 @@
         "type": "object",
         "additionalProperties": false
       },
-      "CorrectionEvaluationFile": {
-        "properties": {
-          "id": {
-            "type": "number",
-            "format": "double"
-          },
-          "filename": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "filename"
-        ],
-        "type": "object",
-        "additionalProperties": false
-      },
-      "CorrectionEvaluation": {
-        "properties": {
-          "eval_id": {
-            "type": "number",
-            "format": "double"
-          },
-          "points": {
-            "type": "number",
-            "format": "double"
-          },
-          "last_modified": {
-            "type": "number",
-            "format": "double"
-          },
-          "corrected_by": {
-            "type": "number",
-            "format": "double"
-          },
-          "full_report": {
-            "type": "string"
-          },
-          "cheat": {
-            "type": "boolean"
-          },
-          "programming": {
-            "properties": {
-              "files": {
-                "items": {
-                  "$ref": "#/components/schemas/CorrectionEvaluationFile"
-                },
-                "type": "array"
-              }
-            },
-            "required": [
-              "files"
-            ],
-            "type": "object"
-          },
-          "quiz": {
-            "$ref": "#/components/schemas/EmptyDict"
-          },
-          "sortable": {
-            "$ref": "#/components/schemas/EmptyDict"
-          },
-          "text": {
-            "$ref": "#/components/schemas/EmptyDict"
-          }
-        },
-        "required": [
-          "eval_id",
-          "points",
-          "last_modified",
-          "corrected_by",
-          "full_report",
-          "cheat"
-        ],
-        "type": "object",
-        "additionalProperties": false
-      },
       "Article": {
         "properties": {
           "title": {
@@ -1243,14 +1641,7 @@
             "format": "double"
           },
           "type": {
-            "type": "string",
-            "enum": [
-              "general",
-              "programming",
-              "quiz",
-              "sortable",
-              "text"
-            ]
+            "$ref": "#/components/schemas/ModuleType"
           },
           "name": {
             "type": "string"
@@ -1313,14 +1704,7 @@
             "format": "double"
           },
           "type": {
-            "type": "string",
-            "enum": [
-              "general",
-              "programming",
-              "quiz",
-              "sortable",
-              "text"
-            ]
+            "$ref": "#/components/schemas/ModuleType"
           },
           "name": {
             "type": "string"
@@ -1420,14 +1804,7 @@
             "format": "double"
           },
           "type": {
-            "type": "string",
-            "enum": [
-              "general",
-              "programming",
-              "quiz",
-              "sortable",
-              "text"
-            ]
+            "$ref": "#/components/schemas/ModuleType"
           },
           "name": {
             "type": "string"
@@ -1498,14 +1875,7 @@
             "format": "double"
           },
           "type": {
-            "type": "string",
-            "enum": [
-              "general",
-              "programming",
-              "quiz",
-              "sortable",
-              "text"
-            ]
+            "$ref": "#/components/schemas/ModuleType"
           },
           "name": {
             "type": "string"
@@ -1574,14 +1944,7 @@
             "format": "double"
           },
           "type": {
-            "type": "string",
-            "enum": [
-              "general",
-              "programming",
-              "quiz",
-              "sortable",
-              "text"
-            ]
+            "$ref": "#/components/schemas/ModuleType"
           },
           "name": {
             "type": "string"
@@ -1756,49 +2119,6 @@
         },
         "required": [
           "post"
-        ],
-        "type": "object",
-        "additionalProperties": false
-      },
-      "Post": {
-        "properties": {
-          "author": {
-            "type": "number",
-            "format": "double"
-          },
-          "body": {
-            "type": "string"
-          },
-          "id": {
-            "type": "number",
-            "format": "double"
-          },
-          "thread": {
-            "type": "number",
-            "format": "double"
-          },
-          "published_at": {
-            "type": "string"
-          },
-          "reaction": {
-            "items": {
-              "type": "number",
-              "format": "double"
-            },
-            "type": "array"
-          },
-          "is_new": {
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "author",
-          "body",
-          "id",
-          "thread",
-          "published_at",
-          "reaction",
-          "is_new"
         ],
         "type": "object",
         "additionalProperties": false
@@ -2477,68 +2797,6 @@
           "id",
           "user",
           "score"
-        ],
-        "type": "object",
-        "additionalProperties": false
-      },
-      "Thread": {
-        "properties": {
-          "public": {
-            "type": "boolean"
-          },
-          "title": {
-            "type": "string"
-          },
-          "year": {
-            "type": "number",
-            "format": "double"
-          },
-          "id": {
-            "type": "number",
-            "format": "double"
-          },
-          "unread": {
-            "type": "number",
-            "format": "double"
-          },
-          "posts_count": {
-            "type": "number",
-            "format": "double"
-          },
-          "details": {
-            "type": "number",
-            "format": "double"
-          }
-        },
-        "required": [
-          "public",
-          "title",
-          "year",
-          "id",
-          "unread",
-          "posts_count",
-          "details"
-        ],
-        "type": "object",
-        "additionalProperties": false
-      },
-      "ThreadDetail": {
-        "properties": {
-          "id": {
-            "type": "number",
-            "format": "double"
-          },
-          "root_posts": {
-            "items": {
-              "type": "number",
-              "format": "double"
-            },
-            "type": "array"
-          }
-        },
-        "required": [
-          "id",
-          "root_posts"
         ],
         "type": "object",
         "additionalProperties": false
@@ -3404,6 +3662,56 @@
         }
       }
     },
+    "/admin/corrections": {
+      "get": {
+        "operationId": "AdminCorrectionsGetAll",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CorrectionsAllResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "task",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "participant",
+            "required": false,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "state",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/CorrectionState"
+            }
+          }
+        ]
+      }
+    },
     "/admin/corrections/{correctionId}/publish": {
       "get": {
         "operationId": "AdminCorrectionsPublish",
@@ -3447,6 +3755,80 @@
             }
           }
         ]
+      }
+    },
+    "/admin/corrections/{correctionId}": {
+      "get": {
+        "operationId": "AdminCorrectionsGetSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CorrectionResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "correctionId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "put": {
+        "operationId": "AdminCorrectionsUpdateSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CorrectionResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "correctionId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CorrectionUpdateRequest"
+              }
+            }
+          }
+        }
       }
     },
     "/admin/evalCodes/{evaluationId}": {
