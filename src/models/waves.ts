@@ -21,7 +21,7 @@ export interface Wave extends WaveCreate {
     id: number;
     public: boolean;
     sum_points: number;
-    task_cnt: number;
+    tasks_cnt: number;
 }
 
 export interface WaveUpdateRequest {

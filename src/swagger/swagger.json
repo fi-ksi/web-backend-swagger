@@ -222,7 +222,7 @@
             "type": "number",
             "format": "double"
           },
-          "task_cnt": {
+          "tasks_cnt": {
             "type": "number",
             "format": "double"
           }
@@ -235,7 +235,7 @@
           "id",
           "public",
           "sum_points",
-          "task_cnt"
+          "tasks_cnt"
         ],
         "type": "object",
         "additionalProperties": false
