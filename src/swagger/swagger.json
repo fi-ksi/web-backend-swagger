@@ -3785,6 +3785,25 @@
         ]
       }
     },
+    "/achievements/special/successful": {
+      "get": {
+        "operationId": "AchievementsGetSuccessful",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AchievementResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "parameters": []
+      }
+    },
     "/admin/achievements": {
       "post": {
         "operationId": "AdminAchievementsGrant",

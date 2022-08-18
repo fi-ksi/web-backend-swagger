@@ -41,6 +41,13 @@ export class EndpointAchievements extends ProxyController {
         return await this.proxy(request);
     }
 
+    @Get('special/successful')
+    public async achievementsGetSuccessful(
+        @Request() request: express.Request,
+    ): Promise<AchievementResponse> {
+        return await this.proxy(request);
+    }
+
     @Security('ksi')
     @Put('{achievementId}')
     public async achievementsEditSingle(
