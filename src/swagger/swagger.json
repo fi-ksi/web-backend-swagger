@@ -3804,7 +3804,7 @@
         "parameters": []
       }
     },
-    "/admin/achievements": {
+    "/admin/achievements/grant": {
       "post": {
         "operationId": "AdminAchievementsGrant",
         "responses": {

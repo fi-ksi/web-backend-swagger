@@ -14,7 +14,7 @@ import {
 
 @Route('admin/achievements')
 export class EndpointAdminAchievements extends ProxyController {
-    @Post()
+    @Post('grant')
     @Security('ksi')
     public async adminAchievementsGrant(
         @Request() request: express.Request,

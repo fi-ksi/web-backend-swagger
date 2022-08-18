@@ -27,7 +27,7 @@ export interface AchievementResponse {
 
 export interface AchievementGrantRequest {
     users: number[],
-    task: number | null,
+    task: null | number,
     achievement: number
 }
 
