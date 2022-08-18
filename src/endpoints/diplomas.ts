@@ -18,4 +18,13 @@ export class EndpointDiplomas extends ProxyController {
     ): Promise<DiplomasListResponse> {
         return await this.proxy(request);
     }
+
+    @Get('{userId}/{yearId}/show')
+    public async diplomaDownloadSingle(
+        @Request() request: express.Request,
+        @Path() userId: number,
+        @Path() yearId: number,
+    ): Promise<string> {
+        return await this.proxy(request);
+    }
 }

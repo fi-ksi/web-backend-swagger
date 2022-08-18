@@ -1607,11 +1607,15 @@
           },
           "revoked": {
             "type": "boolean"
+          },
+          "url": {
+            "type": "string"
           }
         },
         "required": [
           "year",
-          "revoked"
+          "revoked",
+          "url"
         ],
         "type": "object",
         "additionalProperties": false
@@ -5237,6 +5241,45 @@
           {
             "in": "path",
             "name": "userId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/diplomas/{userId}/{yearId}/show": {
+      "get": {
+        "operationId": "DiplomaDownloadSingle",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "format": "double",
+              "type": "number"
+            }
+          },
+          {
+            "in": "path",
+            "name": "yearId",
             "required": true,
             "schema": {
               "format": "double",
