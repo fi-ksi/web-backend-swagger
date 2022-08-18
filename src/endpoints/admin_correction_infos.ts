@@ -10,7 +10,7 @@ import { ProxyController } from '../util/proxy-controller';
 import { CorrectionInfoResponse, CorrectionInfosAllResponse } from '../models/admin_correction_infos';
 
 @Route('admin/correctionInfos')
-export class EndpointAdminCorrections extends ProxyController {
+export class EndpointAdminCorrectionInfos extends ProxyController {
     @Security('ksi')
     @Get()
     public async adminCorrectionInfosGetAll(

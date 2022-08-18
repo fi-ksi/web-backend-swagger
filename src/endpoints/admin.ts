@@ -3,7 +3,7 @@ import {
     Get,
     Route,
     Request,
-    Security, Post, Body, Path, Query, Put, Header
+    Security, Post, Body, Path, Query, Put, Header, UploadedFile
 } from 'tsoa';
 import express from 'express';
 import { ProxyController } from '../util/proxy-controller';
@@ -76,6 +76,17 @@ export class EndpointAdmin extends ProxyController {
         @Path('taskId') taskId: number,
         @Query('public') publish: 0 | 1,
     ): Promise<EmailSendResponse> {
+        return await this.proxy(request);
+    }
+
+    @Security('ksi')
+    @Post('diploma/{userId}/grant')
+    public async adminDiplomaGrant (
+        @Request() request: express.Request,
+        @Path('userId') userId: number,
+        @UploadedFile() files: File,
+        @Header() year?: number,
+    ): Promise<void> {
         return await this.proxy(request);
     }
 }
