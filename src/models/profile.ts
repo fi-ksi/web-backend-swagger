@@ -8,6 +8,7 @@ export interface ProfileEdit {
     last_name: string;
     gender: string;
     short_info: string;
+    github: string | null;
 
     addr_street: string;
     addr_city: string;

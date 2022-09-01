@@ -2391,6 +2391,10 @@
           "short_info": {
             "type": "string"
           },
+          "github": {
+            "type": "string",
+            "nullable": true
+          },
           "addr_street": {
             "type": "string"
           },
@@ -2455,6 +2459,7 @@
           "last_name",
           "gender",
           "short_info",
+          "github",
           "addr_street",
           "addr_city",
           "addr_zip",
@@ -2655,6 +2660,10 @@
           "short_info": {
             "type": "string"
           },
+          "github": {
+            "type": "string",
+            "nullable": true
+          },
           "addr_street": {
             "type": "string"
           },
@@ -2708,6 +2717,7 @@
           "last_name",
           "gender",
           "short_info",
+          "github",
           "addr_street",
           "addr_city",
           "addr_zip",
@@ -2751,6 +2761,10 @@
           },
           "short_info": {
             "type": "string"
+          },
+          "github": {
+            "type": "string",
+            "nullable": true
           },
           "addr_street": {
             "type": "string"
@@ -2811,6 +2825,7 @@
           "last_name",
           "gender",
           "short_info",
+          "github",
           "addr_street",
           "addr_city",
           "addr_zip",
