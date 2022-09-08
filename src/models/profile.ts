@@ -28,10 +28,14 @@ export interface ProfileEdit {
     notify_events?: boolean;
 }
 
-export interface Profile extends ProfileEdit {
+export interface Profile extends Omit<ProfileEdit, 'addr_street' | 'addr_city' | 'addr_zip'> {
     id: number,
     author: number;
     resource: string;
+
+    addr_street?: string;
+    addr_city?: string;
+    addr_zip?: string;
 }
 
 export interface ProfileResponse {

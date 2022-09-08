@@ -2371,8 +2371,28 @@
         "type": "object",
         "additionalProperties": false
       },
-      "Profile": {
+      "Pick_ProfileEdit.Exclude_keyofProfileEdit.addr_street-or-addr_city-or-addr_zip__": {
         "properties": {
+          "id": {
+            "type": "number",
+            "format": "double"
+          },
+          "author": {
+            "type": "number",
+            "format": "double"
+          },
+          "resource": {
+            "type": "string"
+          },
+          "addr_street": {
+            "type": "string"
+          },
+          "addr_city": {
+            "type": "string"
+          },
+          "addr_zip": {
+            "type": "string"
+          },
           "email": {
             "type": "string"
           },
@@ -2394,15 +2414,6 @@
           "github": {
             "type": "string",
             "nullable": true
-          },
-          "addr_street": {
-            "type": "string"
-          },
-          "addr_city": {
-            "type": "string"
-          },
-          "addr_zip": {
-            "type": "string"
           },
           "addr_country": {
             "type": "string"
@@ -2440,7 +2451,32 @@
           },
           "notify_events": {
             "type": "boolean"
-          },
+          }
+        },
+        "required": [
+          "id",
+          "author",
+          "resource",
+          "email",
+          "first_name",
+          "last_name",
+          "gender",
+          "short_info",
+          "github",
+          "addr_country",
+          "school_name",
+          "school_street",
+          "school_city",
+          "school_zip",
+          "school_country",
+          "school_finish",
+          "tshirt_size"
+        ],
+        "type": "object",
+        "description": "From T, pick a set of properties whose keys are in the union K"
+      },
+      "Profile": {
+        "properties": {
           "id": {
             "type": "number",
             "format": "double"
@@ -2451,18 +2487,86 @@
           },
           "resource": {
             "type": "string"
+          },
+          "addr_street": {
+            "type": "string"
+          },
+          "addr_city": {
+            "type": "string"
+          },
+          "addr_zip": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "nick_name": {
+            "type": "string"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "short_info": {
+            "type": "string"
+          },
+          "github": {
+            "type": "string",
+            "nullable": true
+          },
+          "addr_country": {
+            "type": "string"
+          },
+          "school_name": {
+            "type": "string"
+          },
+          "school_street": {
+            "type": "string"
+          },
+          "school_city": {
+            "type": "string"
+          },
+          "school_zip": {
+            "type": "string"
+          },
+          "school_country": {
+            "type": "string"
+          },
+          "school_finish": {
+            "type": "number",
+            "format": "double"
+          },
+          "tshirt_size": {
+            "type": "string"
+          },
+          "notify_eval": {
+            "type": "boolean"
+          },
+          "notify_response": {
+            "type": "boolean"
+          },
+          "notify_ksi": {
+            "type": "boolean"
+          },
+          "notify_events": {
+            "type": "boolean"
           }
         },
         "required": [
+          "id",
+          "author",
+          "resource",
           "email",
           "first_name",
           "last_name",
           "gender",
           "short_info",
           "github",
-          "addr_street",
-          "addr_city",
-          "addr_zip",
           "addr_country",
           "school_name",
           "school_street",
@@ -2470,10 +2574,7 @@
           "school_zip",
           "school_country",
           "school_finish",
-          "tshirt_size",
-          "id",
-          "author",
-          "resource"
+          "tshirt_size"
         ],
         "type": "object",
         "additionalProperties": false
