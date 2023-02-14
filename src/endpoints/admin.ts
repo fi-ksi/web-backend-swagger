@@ -34,7 +34,7 @@ export class EndpointAdmin extends ProxyController {
     }
 
     @Security('ksi')
-    @Post('email/')
+    @Post('e-mail/')
     public async adminEmailSend(
         @Request() request: express.Request,
         @Body() emailBody: EmailSendRequest,

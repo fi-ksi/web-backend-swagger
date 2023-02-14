@@ -4737,7 +4737,7 @@
         ]
       }
     },
-    "/admin/email": {
+    "/admin/e-mail": {
       "post": {
         "operationId": "AdminEmailSend",
         "responses": {
