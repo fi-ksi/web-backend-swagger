@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="serve.prod" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="serve.dev" />
+    </scripts>
+    <node-interpreter value="project" />
+    <envs>
+      <env name="PROXY_HOST" value="https://rest.ksi.fi.muni.cz" />
+    </envs>
+    <method v="2" />
+  </configuration>
+</component>
