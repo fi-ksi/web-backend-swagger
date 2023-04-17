@@ -17,12 +17,7 @@ export async function proxyRequest(controller: Controller, request: Request): Pr
         options.body = request.body;
     }
 
-    const urlParams = Object
-        .keys(request.params)
-        .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(request.params[key])}`)
-        .join('&');
-
-    const url = `${proxyHost}/${request.path}?${urlParams}`;
+    const url = `${proxyHost}${request.url}`;
     console.debug('[PROXY-REQUEST]', url);
     const response = await fetch(url, options);
     controller.setStatus(response.status);
