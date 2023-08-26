@@ -2415,6 +2415,10 @@
             "type": "string",
             "nullable": true
           },
+          "discord": {
+            "type": "string",
+            "nullable": true
+          },
           "addr_country": {
             "type": "string"
           },
@@ -2463,6 +2467,7 @@
           "gender",
           "short_info",
           "github",
+          "discord",
           "addr_country",
           "school_name",
           "school_street",
@@ -2519,6 +2524,10 @@
             "type": "string",
             "nullable": true
           },
+          "discord": {
+            "type": "string",
+            "nullable": true
+          },
           "addr_country": {
             "type": "string"
           },
@@ -2567,6 +2576,7 @@
           "gender",
           "short_info",
           "github",
+          "discord",
           "addr_country",
           "school_name",
           "school_street",
@@ -2765,6 +2775,10 @@
             "type": "string",
             "nullable": true
           },
+          "discord": {
+            "type": "string",
+            "nullable": true
+          },
           "addr_street": {
             "type": "string"
           },
@@ -2819,6 +2833,7 @@
           "gender",
           "short_info",
           "github",
+          "discord",
           "addr_street",
           "addr_city",
           "addr_zip",
@@ -2864,6 +2879,10 @@
             "type": "string"
           },
           "github": {
+            "type": "string",
+            "nullable": true
+          },
+          "discord": {
             "type": "string",
             "nullable": true
           },
@@ -2927,6 +2946,7 @@
           "gender",
           "short_info",
           "github",
+          "discord",
           "addr_street",
           "addr_city",
           "addr_zip",
@@ -3311,6 +3331,9 @@
             "type": "string"
           },
           "email": {
+            "type": "string"
+          },
+          "discord": {
             "type": "string"
           },
           "role": {
