@@ -33,6 +33,16 @@ export class EndpointUsers extends ProxyController {
     }
 
     @Security('ksi')
+    @Get('{usersId}/discord')
+    public async usersGetSingleDiscordInvite(
+        @Request() request: express.Request,
+        @Path() usersId: number,
+        @Header() year?: number
+    ): Promise<string | null> {
+        return await this.proxy(request);
+    }
+
+    @Security('ksi')
     @Delete('{usersId}')
     public async usersDeleteSingle(
         @Request() request: express.Request,
