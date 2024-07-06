@@ -6545,7 +6545,7 @@
         "parameters": [
           {
             "in": "query",
-            "name": "_wave",
+            "name": "wave",
             "required": false,
             "schema": {
               "format": "double",
