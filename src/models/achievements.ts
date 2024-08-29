@@ -2,11 +2,10 @@ export interface AchievementBase {
     title: string;
     picture: string;
     description: string;
-}
-
-export interface AchievementCreation extends AchievementBase {
     persistent: boolean;
 }
+
+export type AchievementCreation = AchievementBase;
 
 export interface AchievementCreationRequest {
     achievement: AchievementCreation;
