@@ -1921,6 +1921,9 @@
           "default_code": {
             "type": "string"
           },
+          "edulint_source_id": {
+            "type": "string"
+          },
           "last_time": {
             "type": "string"
           },
@@ -1938,7 +1941,8 @@
           "state",
           "score",
           "code",
-          "default_code"
+          "default_code",
+          "edulint_source_id"
         ],
         "type": "object",
         "additionalProperties": false
