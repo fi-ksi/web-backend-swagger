@@ -14,6 +14,7 @@ import { EmptyDict } from '../models/emptyDict';
 @Route('waves')
 export class EndpointWaves extends ProxyController {
     @Get()
+    @Security('ksi')
     public async wavesGetAll(
         @Request() request: express.Request,
         @Header() year?: number
@@ -31,6 +32,7 @@ export class EndpointWaves extends ProxyController {
     }
 
     @Get('{waveId}')
+    @Security('ksi')
     public async wavesGetSingle(
         @Request() request: express.Request,
         @Path() waveId: number,

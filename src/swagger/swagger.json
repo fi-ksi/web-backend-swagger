@@ -6936,7 +6936,11 @@
             }
           }
         },
-        "security": [],
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
         "parameters": [
           {
             "in": "header",
@@ -6996,7 +7000,11 @@
             }
           }
         },
-        "security": [],
+        "security": [
+          {
+            "ksi": []
+          }
+        ],
         "parameters": [
           {
             "in": "path",
