@@ -11,7 +11,7 @@ import { DiplomasListResponse } from '../models/diplomas';
 import { AdminInstanceConfig, AdminInstanceConfigResponse } from '../models/admin_instance-config';
 
 @Route('admin/instanceConfig')
-export class EndpointDiplomas extends ProxyController {
+export class EndpointAdminInstanceConfig extends ProxyController {
     @Security('ksi')
     @Get()
     public async instanceConfigGetAll(
